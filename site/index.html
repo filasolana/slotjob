@@ -166,7 +166,7 @@ input[type=file]{font-size:13px;max-width:100%}
 .yn .small{flex:1}
 .yn button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:9px;padding:6px 16px;font:600 14px var(--text);min-height:38px}
 .yn button.on{background:var(--ink);border-color:var(--ink);color:#fff}
-.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:6px 14px;font:600 13.5px var(--text);min-height:36px;margin:-6px 0 14px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:6px 14px;font:600 13.5px var(--text);min-height:34px;margin:-6px 0 12px}
 .chip.on{background:var(--ink);border-color:var(--ink);color:#fff}
 .toast{position:absolute;left:16px;right:16px;bottom:80px;background:var(--ink);color:var(--card);border-radius:14px;padding:12px 14px;font-size:14px;font-weight:500;opacity:0;transform:translateY(10px);transition:.22s ease;pointer-events:none;z-index:5;display:flex;gap:10px;align-items:center}
 .toast.show{opacity:1;transform:none}
@@ -365,7 +365,7 @@ function slotsView(){
   const list=base.filter(cur[2]);
   const f=([k,l,fn])=>`<button class="f ${cur[0]===k?'on':''}" data-act="filter" data-v="${k}" aria-pressed="${cur[0]===k}">${l}<span class="n">${base.filter(fn).length}</span></button>`;
   const days=DAYS.filter(d=>S.avail.includes(d));
-  return `${scoreCard()}<h2>Freie Schichten</h2><p class="sub">Diese Woche in Potsdam</p>
+  return `${scoreCard()}<h2>Freie Schichten</h2>
    <div class="myday"><span>${days.length?`An deinen freien Tagen: <b>${days.join(', ')}</b>`:'Du hast noch keine freien Tage gewählt.'}</span><button class="link" data-act="availgo">Ändern</button></div>
    <div class="filters" role="group" aria-label="Filter">${FILTERS.map(f).join('')}</div>
    ${S.field!=='Anderes'?`<button class="chip ${fieldOn?'on':''}" data-act="fieldf" aria-pressed="${fieldOn}">Nur passend zu ${esc(S.field)}</button>`:''}
