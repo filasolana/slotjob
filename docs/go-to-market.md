@@ -12,7 +12,7 @@ Feedback aus der Probe: zu viel Inhalt. Nur das Kernprinzip zeigen. Kein Gratis-
 |---|---|---|
 | 1 Vorbereiten | Uni-Jobs + 5–10 Cafés und Bars am Campus. Pilotpreis 3 Monate: 40 % statt 60 % Aufschlag. Nebenbei Warteliste für Studis. | 90 % der Schichten besetzt |
 | 2 Auffallen | Da sein, wo gesucht wird: Betriebe gezielt ansprechen, wenn sie suchen („Aushilfe gesucht“), und Anzeigen auf Indeed und der Uni-Jobbörse für Studis, die einen Job suchen. | 13 Schichten am Tag = Break-even (Folie 4) |
-| 3 Wachsen | Eigendynamik (mehr Studis → schneller besetzt → mehr Betriebe) + Referral-Boni auf beiden Seiten: Studis werben Studis, Betriebe werben Betriebe | nächste Uni-Stadt |
+| 3 Wachsen | Eigendynamik (mehr Studis → schneller besetzt → mehr Betriebe) + Referral-Boni auf beiden Seiten: Studis werben Studis, Betriebe werben Betriebe | Hälfte der Neuen (Studis und Betriebe) kommt über Empfehlung; erst dann nächste Uni-Stadt, dort wieder ab Phase 1 |
 
 Weitere Ideen nur nennen: SEO und KI-Suche, BAföG-Rechner, Ersti-Wochen, Ketten.
 
