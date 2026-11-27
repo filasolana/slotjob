@@ -1,4 +1,4 @@
-Wie verdient SlotJob Geld? Wir sind der Arbeitgeber der Studis und verleihen sie pro Schicht an Betriebe. Eine Schicht dauert bei uns vier Stunden. Der Studi bekommt 15 Euro die Stunde. Wir schlagen 60 Prozent drauf, der Betrieb zahlt also 24 Euro. Und das ist transparent: ein fester Aufschlag für alle, keine Verhandlung, keine versteckten Gebühren.
+Wie verdienen wir Geld? Wir sind der Arbeitgeber der Studis und verleihen sie pro Schicht an Betriebe. Der Betrieb zahlt uns 24 Euro pro Stunde, ein Festpreis für alle, ohne Verhandlung und ohne versteckte Gebühren. Davon bekommt der Studi 15 Euro Lohn. Der Rest deckt alles, was ein Arbeitgeber zahlt, und unseren Anteil.
 
 Machen wir das konkret: Rudolf arbeitet am Samstag eine Vier-Stunden-Schicht in der Pizzeria Mamma Mia. Die Pizzeria zahlt uns 4 mal 24 Euro, also 96 Euro. Davon gehen 60 Euro Lohn an Rudolf, 12 Euro Lohnnebenkosten, 6 Euro für Urlaub und Feiertage und 2 Euro in unseren Topf für Spontan-Schichten, falls mal jemand krank wird. Unterm Strich bleiben uns 16 Euro an dieser Schicht.
 
@@ -6,7 +6,7 @@ Das Wichtigste auf der Kostenseite: Wir haben keine Fixkosten pro Studi. Wer nic
 
 Und wir brauchen niemanden, der Schichten von Hand verteilt. Das macht unser Algorithmus. Unsere Fixkosten sind deshalb gering: Entwicklung, Support, Lohnbuchhaltung, Server, Versicherungen und Marketing, zusammen rund 6.000 Euro im Monat.
 
-Daraus ergibt sich unsere wichtigste Zahl: Ab etwa 13 Schichten mit jeweils vier Stunden am Tag trägt sich SlotJob. Jede Schicht darüber ist Gewinn.
+Daraus ergibt sich unsere wichtigste Zahl: Ab etwa 13 Schichten wie der von Rudolf am Tag tragen wir uns. Jede Schicht darüber ist Gewinn.
 
 Woran messen wir Erfolg? An vier Kennzahlen:
 Erstens der Besetzungsquote: Wie viele Slots werden besetzt?
@@ -14,6 +14,6 @@ Zweitens die Zeit bis zur Besetzung. Unser Ziel: Fällt jemand aus, ist der Ersa
 Drittens den besetzten Schichten pro Tag, das ist unser Break-even.
 Und viertens, ob Betriebe im nächsten Monat wieder Slots einstellen.
 
-Unser größter Hebel: Weil der Algorithmus die Arbeit macht, wachsen unsere Fixkosten kaum mit. Über dem Break-even bringt uns jede zusätzliche Schicht 16 Euro Gewinn.
+Unser größter Hebel: Weil der Algorithmus die Arbeit macht, wachsen unsere Fixkosten kaum mit. Über dem Break-even bringt uns jede weitere Schicht wie die von Rudolf 16 Euro Gewinn.
 
 Kurz gesagt: Betriebe zahlen nur die Schichten, die sie brauchen, und wissen vorher genau, was sie kosten.
