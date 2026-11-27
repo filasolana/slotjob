@@ -106,3 +106,11 @@ Offen:
 - Sollen die vier vorgeschlagenen Rollen so bleiben?
 - Wie verhindern wir, dass Betriebe den Score unfair drücken (z. B. Einspruch, Mindestanzahl Bewertungen)?
 - Rechtlicher Rahmen für unverbindliche Mitarbeiter und Abruf (On-Duty).
+- Weitere kritische Punkte und offene Fragen (Score vs. Einsteiger, Absage-Strafe, Geschäftsmodell, BAföG-Beschriftung): `docs/plan.txt` unter OFFEN.
+
+## Weitere Unterlagen (für die Folien)
+
+- `docs/vorgaben.md`: Prüfungsformat, Zeitplan, Abgabe (Folien-Upload Fr 27.11., 23:59)
+- `docs/recherche.md`: Desk Research zu Problemen beim Nebenjob (Folie 1)
+- `docs/interview-insights.md`: anonymisierte Insights und Zitate aus dem Interview (Folien 1 und 2)
+- `docs/go-to-market.md`: Ideen für Phase 3 „Wachsen“ (Folie 5)
