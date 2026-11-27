@@ -73,7 +73,10 @@ Team:
   mit SlotJob und wird pro Slot an Betriebe verliehen.
 - Betrieb zahlt einen Stundensatz an SlotJob, SlotJob zahlt den Lohn.
   Einnahme = Marge pro Stunde. Grob: Studi 15 €/h, Betrieb zahlt ca. 25 €/h,
-  nach Lohnnebenkosten (9-30 % je nach Anstellung) bleiben ca. 5-8 €/h.
+  nach Lohnnebenkosten, Urlaub und Spontan-Bonus bleiben ca. 3,50-6,60 €/h (Mix ca. 5 €/h).
+- Keine Fixkosten pro Studi: Rahmenvertrag ohne Arbeitspflicht, bezahlt wird nur die Schicht.
+  Fixkosten nur als Firma (Schichten-Manager, Technik, Verwaltung).
+  Break-even grob ab ca. 20 Schichten pro Tag in einer Stadt.
 - Dazu Vermittlungsgebühr, wenn ein Betrieb einen Studi fest übernimmt.
 - Details, Begründung, Rechnung: docs/vertragsmodell.md
 Team:
@@ -132,3 +135,4 @@ AUFGABEN (Name eintragen)
 - Prototyp: Profil-Karte "BAföG-Freigrenze" in "Minijob-Grenze" umbenennen:
 - Optional: BAföG-Grenze als extra Balken:
 - Geld durchrechnen für Folie 4 (Marge vs. Spontan-Bonus, Ausfälle, Schichten-Manager):
+  erste Rechnung steht in docs/vertragsmodell.md
