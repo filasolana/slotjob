@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1920">
+<title>Recherche + Analyse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sun:#ffcd38; --ink:#16181b; --mute:#575c62; --line:#dcddd7; --soft:#f3f3ef; --coral:#ff5a45;
+    --display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+    --text:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:#fff}
+  body{width:1920px;height:1080px;overflow:hidden;font-family:var(--text);color:var(--ink)}
+  .slide{display:grid;grid-template-columns:680px 1fr;width:1920px;height:1080px}
+
+  /* Linke Seite: Hook */
+  .stage{background:var(--sun);position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:56px;padding:64px}
+  .logo{position:absolute;top:56px;left:64px;display:flex;align-items:center;gap:14px;font-family:var(--display);font-weight:800;font-size:34px;letter-spacing:-.5px}
+  .logo svg{width:52px;height:52px}
+  .phone{width:340px;height:660px;background:var(--ink);border-radius:56px;padding:14px;transform:rotate(-4deg);box-shadow:0 40px 80px rgba(22,24,27,.28),0 8px 20px rgba(22,24,27,.18)}
+  .screen{width:100%;height:100%;background:#fff;border-radius:44px;overflow:hidden;display:flex;flex-direction:column;position:relative}
+  .notch{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:96px;height:26px;background:var(--ink);border-radius:20px}
+  .bank-head{padding:64px 30px 28px;background:#f6f6f2;border-bottom:1px solid var(--line)}
+  .bank-name{font-size:17px;font-weight:600;color:var(--mute)}
+  .bank-label{margin-top:26px;font-size:19px;font-weight:500;color:var(--mute)}
+  .bank-sum{font-family:var(--display);font-weight:800;font-size:64px;letter-spacing:-1.5px;margin-top:4px}
+  .bank-date{font-size:16px;color:var(--mute);margin-top:6px}
+  .tx{padding:8px 30px}
+  .tx-title{font-size:15px;font-weight:600;color:var(--mute);text-transform:uppercase;letter-spacing:.8px;margin:18px 0 6px}
+  .row{display:flex;justify-content:space-between;gap:12px;padding:15px 0;border-bottom:1px solid var(--line);font-size:18px;white-space:nowrap}
+  .row span:last-child{font-weight:600}
+  .hook{font-family:var(--display);font-weight:800;font-size:58px;line-height:1.05;letter-spacing:-1px;text-align:center}
+  .hook small{display:block;font-family:var(--text);font-weight:500;font-size:24px;letter-spacing:0;margin-bottom:14px;color:#3b3200}
+
+  /* Rechte Seite: Inhalt */
+  .content{padding:60px 80px 44px 80px;display:flex;flex-direction:column}
+  .eyebrow{display:inline-flex;align-self:flex-start;align-items:center;gap:12px;font-weight:600;font-size:22px;color:var(--mute)}
+  .eyebrow b{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--ink);color:var(--sun);font-size:20px}
+  h1{font-family:var(--display);font-weight:800;font-size:92px;line-height:1;letter-spacing:-2.5px;margin:18px 0 0}
+  h1 em{font-style:normal;background:linear-gradient(transparent 58%,var(--sun) 58%,var(--sun) 92%,transparent 92%)}
+  .method{display:flex;gap:14px;margin-top:30px}
+  .chip{border:2px solid var(--ink);border-radius:999px;padding:8px 20px;font-size:20px;font-weight:600}
+  .voices{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+  .voice{background:var(--soft);border-radius:28px;padding:34px 30px 30px;display:flex;flex-direction:column}
+  .who{display:flex;align-items:center;gap:12px;font-weight:700;font-size:26px}
+  .who i{width:16px;height:16px;border-radius:50%;background:var(--ink);display:inline-block}
+  .voice.biz .who i{background:var(--coral)}
+  .tag{align-self:flex-start;margin-top:14px;background:#fff;border-radius:10px;padding:6px 12px;font-size:17px;white-space:nowrap;font-weight:600;color:var(--mute)}
+  .quote{font-family:var(--display);font-weight:600;font-size:32px;line-height:1.2;letter-spacing:-.3px;margin-top:24px;flex:1}
+    .src{font-size:17px;color:var(--mute);margin-top:18px}
+  .insight{margin-top:40px;background:var(--ink);color:#fff;border-radius:28px;padding:34px 40px;display:flex;align-items:center;gap:28px}
+  .insight svg{flex:none;width:58px;height:58px}
+  .insight p{margin:0;font-family:var(--display);font-weight:600;font-size:36px;line-height:1.15;letter-spacing:-.5px}
+  .insight p b{color:var(--sun);font-weight:800}
+  .foot{margin-top:auto;padding-top:18px;font-size:15px;color:var(--mute);display:flex;justify-content:space-between;gap:24px}
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <section class="stage">
+    <div class="logo">
+      <svg viewBox="0 0 40 40" aria-hidden="true">
+        <rect x="0" y="6" width="40" height="28" rx="7" fill="#16181b"/>
+        <circle cx="0" cy="20" r="4.5" fill="#ffcd38"/>
+        <circle cx="40" cy="20" r="4.5" fill="#ffcd38"/>
+        <circle cx="20" cy="20" r="8" fill="none" stroke="#ffcd38" stroke-width="2.6"/>
+        <path d="M20 15.4V20l3.2 2.2" stroke="#ffcd38" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+      </svg>
+      SlotJob
+    </div>
+
+    <div class="phone">
+      <div class="screen">
+        <div class="notch"></div>
+        <div class="bank-head">
+          <div class="bank-name">Girokonto</div>
+          <div class="bank-label">Kontostand</div>
+          <div class="bank-sum">41,20 €</div>
+          <div class="bank-date">Sonntag, 22:47</div>
+        </div>
+        <div class="tx">
+          <div class="tx-title">Letzte Umsätze</div>
+          <div class="row"><span>Miete</span><span>−390,00 €</span></div>
+          <div class="row"><span>Mensa</span><span>−3,80 €</span></div>
+          <div class="row"><span>Semesterticket</span><span>−29,40 €</span></div>
+          <div class="row"><span>BAföG</span><span style="color:#575c62">ausstehend</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hook">
+      <small>Café gegenüber sucht. Zwei Minuten zu Fuß.</small>
+      „Ich geh nicht hin.“
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="eyebrow"><b>1</b> Recherche + Analyse</div>
+    <h1>Viele Stimmen.<br><em>Ein Muster.</em></h1>
+
+    <div class="method">
+      <span class="chip">Interviews mit Studis</span>
+      <span class="chip">Studien &amp; Umfragen</span>
+      <span class="chip">Foren</span>
+    </div>
+
+    <div class="voices">
+      <div class="voice">
+        <div class="who"><i></i>Die jobben</div>
+        <span class="tag">Jede:r Dritte: Studium leidet</span>
+        <div class="quote">„Der Schichtplan steht vier Wochen vorher. Mein Stundenplan nicht.“</div>
+        <div class="src">Interview, Studi</div>
+      </div>
+      <div class="voice">
+        <div class="who"><i></i>Die nicht jobben</div>
+        <span class="tag">Passt zeitlich nicht</span>
+        <div class="quote">„Ich will Geld. Aber ich will mich nicht jede Woche festlegen.“</div>
+        <div class="src">Interview, Studi</div>
+      </div>
+      <div class="voice biz">
+        <div class="who"><i></i>Die Betriebe</div>
+        <span class="tag">Ausfälle kommen kurzfristig</span>
+        <div class="quote">„Samstag, 7 Uhr. Mein Kellner ist krank. Keiner kann.“</div>
+        <div class="src">Gastro am Campus*</div>
+      </div>
+    </div>
+
+    <div class="insight">
+      <svg viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="13" cy="20" r="10" fill="none" stroke="#ffcd38" stroke-width="3"/>
+        <circle cx="27" cy="20" r="10" fill="none" stroke="#fff" stroke-width="3"/>
+      </svg>
+      <p>Beide Seiten suchen dasselbe: einzelne Schichten.<br><b>Sie finden sich nur nicht.</b></p>
+    </div>
+
+    <div class="foot">
+      <span>Quellen: eigene Interviews · 22. Sozialerhebung (DZHW/DSW 2023) · Studierendenbefragung Uni Gießen 2025 · Forsa/Minijob-Zentrale 2020</span>
+      <span>* Szene, Gespräche mit Betrieben folgen</span>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
