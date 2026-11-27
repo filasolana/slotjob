@@ -1,0 +1,87 @@
+FOLIE 3: WIE SLOTJOB DIE PROBLEME LÖST (2 Minuten)
+Quellen: docs/recherche.md, docs/interview-insights.md, docs/plan.txt, docs/vertragsmodell.md
+[App] = im Prototyp zu sehen   [Konzept] = entschieden, aber noch nicht im Prototyp
+
+
+CHECKLISTE: PROBLEM -> LÖSUNG
+
+STUDIS
+1. Planbarkeit (Hauptproblem im Interview)
+   Problem: Schichtplan 4 Wochen vorher, Stundenplan ändert sich, Prüfungsphase: Chefin gibt nicht frei.
+   Lösung: Freie Tage jede Woche neu wählen, nur Slots an diesen Tagen [App].
+   Kein fester Job, keine Pflicht: in der Prüfungsphase einfach keine Tage.
+
+2. Einstieg und Bewerbungen
+   Problem: "Erfahrung erforderlich", 15 Bewerbungen, Funkstille.
+   Lösung: Keine Bewerbung. Ein Klick, Schicht gebucht [App].
+   Zwei Scores entscheiden: Verhalten (verlässlich?) und Qualifikation je Rolle (kann den Job?).
+   Der Betrieb setzt die Schwellen, wer drüber liegt, bucht sofort [App].
+   Ohne Erfahrung: Slots mit Schwelle 0, Kurse bringen +200 Qualifikation [App].
+
+3. Geld kommt zu spät, unbezahlte Arbeit
+   Problem: BAföG nach 3 Monaten, HiWi 6 Wochen ohne Vertrag, 6 h unbezahltes Probearbeiten.
+   Lösung: SlotJob ist Arbeitgeber. Vertrag vor der ersten Schicht, jede Schicht bezahlt,
+   Auszahlung wöchentlich [Konzept]. Sofort arbeiten, schon morgen [App].
+
+4. Regel-Chaos (Minijob, BAföG, Krankenkasse)
+   Problem: jede Seite nennt andere Zahlen, Angst vor Rückforderung.
+   Lösung: ein Arbeitgeber, Verdienst gegen Minijob-Grenze 603 € im Profil [App].
+
+5. Betrug
+   Problem: "Pakete weiterleiten" per WhatsApp, fast reingefallen.
+   Lösung: nur geprüfte Betriebe, SlotJob ist der Vertragspartner [Konzept].
+
+6. Fachnahe Jobs und HiWi-Stellen schwer zu finden
+   Lösung: Filter "Nur passend zu Maschinenbau", Uni stellt HiWi-Slots ein (Rolle Campus) [App].
+
+7. Kurze Wege
+   Lösung: Weg auf jedem Slot, z. B. "9 Min" [App].
+
+BETRIEBE
+8. Ausfälle und Abspringen
+   Problem: Krankmeldung um 7, um 11:30 wird geöffnet.
+   Lösung: Spontan-Schichten mit höherem Lohn, den Bonus zahlt SlotJob aus der Marge [Konzept].
+   On-Duty: Studis auf Abruf, freiwillig [Konzept].
+   Verhaltensscore: unentschuldigt fehlen -30, zu spät -5. Unter der Schwelle kann man nicht
+   mehr buchen [App]. Krankmeldung kostet 0 Punkte.
+
+9. Qualität: fremde Leute
+   Lösung: Qualifikationsscore je Rolle, Schwelle setzt der Betrieb [App].
+   Nach jeder Schicht zwei Fragen: pünktlich? wie gut? [App]
+
+10. Kosten und Aufwand
+   Problem: feste Mitarbeiter brauchen feste Stunden, Recruiting kostet.
+   Lösung: "Betriebe zahlen nur die Schichten, die sie brauchen." Kein Papierkram, keine Auswahl,
+   eine Rechnung pro Stunde [Konzept].
+
+Nicht in 2 Minuten (nur bei Fragen): internationale Studis (140-Tage-Regel), BAföG-Rechner
+(Folie 5), Geld und Marge (Folie 4).
+
+
+REDETEXT (ca. 2 Minuten)
+
+Im Interview fiel ein Satz: "Das Café war die feste Sache, und das Studium musste flexibel
+sein. Eigentlich sollte es andersrum sein." SlotJob dreht das um: Schichten statt Stellen.
+
+Erstens, Planbarkeit. Schichtpläne kommen vier Wochen vorher, der Stundenplan ändert sich
+ständig, und in der Prüfungsphase gibt die Chefin nicht frei. Bei uns wählt man jede Woche
+neu seine freien Tage und sieht nur Schichten an diesen Tagen. Prüfungsphase? Dann eben keine.
+
+Zweitens, der Einstieg. Fünfzehn Bewerbungen, Funkstille, überall "Erfahrung erforderlich".
+Bei uns gibt es keine Bewerbung. Ein Klick, und die Schicht ist gebucht. Möglich machen das
+zwei Scores: Verhalten zeigt, ob man sich auf dich verlassen kann. Qualifikation zeigt, ob du
+den Job kannst. Der Betrieb setzt die Schwellen, wer drüber liegt, bucht sofort. Wer neu ist,
+startet mit Schichten ohne Erfahrung oder macht einen Kurs, zum Beispiel für Kellner.
+
+Drittens, Geld und Regeln. Das BAföG kommt nach drei Monaten, der HiWi-Vertrag nach sechs
+Wochen, Probearbeiten ist unbezahlt. Bei uns ist SlotJob der Arbeitgeber. Der Vertrag steht
+vor der ersten Schicht, jede Schicht wird bezahlt, jede Woche. Weil alles über uns läuft,
+zeigt die App, wie weit man von der Minijob-Grenze weg ist. Und Jobs per WhatsApp von
+Fremden gibt es bei uns nicht, nur geprüfte Betriebe.
+
+Und die Betriebe? Ihr größtes Problem: Um sieben sagt jemand ab, um halb zwölf wird geöffnet.
+Dafür gibt es Spontan-Schichten mit höherem Lohn und Studis auf Abruf. Wer unentschuldigt
+fehlt, verliert Verhaltenspunkte und kann gute Schichten nicht mehr buchen. Dazu kein
+Papierkram und keine Recruiting-Kosten. Betriebe zahlen nur die Schichten, die sie brauchen.
+
+So passt sich der Job ans Studium an, und nicht mehr umgekehrt.
