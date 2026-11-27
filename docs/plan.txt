@@ -130,9 +130,9 @@ AUFGABEN (Name eintragen)
 - Balken bauen:
 - Instant-Zusage bauen:
 - Filter bauen:
-- Betriebsprofil: Hinweis "Provision" ersetzen durch "Stundensatz, SlotJob ist Arbeitgeber, kein Papierkram":
+- Betriebsprofil: Hinweis "Provision" ersetzen durch "Stundensatz, SlotJob ist Arbeitgeber, kein Papierkram": Claude, erledigt 27.11.
 - Prototyp: Start-Score über den Slot-Schwellen umsetzen (startet im Prototyp noch bei 0):
-- Prototyp: Profil-Karte "BAföG-Freigrenze" in "Minijob-Grenze" umbenennen:
+- Prototyp: Profil-Karte "BAföG-Freigrenze" in "Minijob-Grenze" umbenennen: Claude, erledigt 27.11.
 - Optional: BAföG-Grenze als extra Balken:
 - Geld durchrechnen für Folie 4 (Marge vs. Spontan-Bonus, Ausfälle, Schichten-Manager):
   erste Rechnung steht in docs/vertragsmodell.md

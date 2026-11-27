@@ -371,7 +371,7 @@ function profilView(){
   const earned=S.shifts.reduce((a,x)=>a+hrs(x.s,x.e)*x.pay,0),pct=Math.min(100,earned/LIMIT*100);
   return `<div style="margin-bottom:14px"><div><h2 style="margin:0">Rudolf M.</h2><p class="sub" style="margin:0">${esc(S.field)} · ★ 4,8 aus 19 Schichten</p></div></div>
   <div class="card" id="availcard"><h3>Meine freien Tage</h3><p class="small" style="margin:4px 0 0">Slots an anderen Tagen stehen unter Nicht verfügbar.</p><div class="days" style="margin:12px 0 0">${DAYS.map(d=>`<button data-act="day" data-v="${d}" class="${S.avail.includes(d)?'on':''}" aria-pressed="${S.avail.includes(d)}">${d}</button>`).join('')}</div></div>
-  <div class="card"><h3>BAföG-Freigrenze</h3><div class="row" style="margin-top:6px"><span class="big-num">${eur(earned)}</span><span class="small">von ${LIMIT} € im November</span></div><div class="bar"><i style="width:${pct}%"></i></div><p class="small" style="margin:0">Noch ${eur(Math.max(0,LIMIT-earned))} bis zur Grenze.</p></div>
+  <div class="card"><h3>Minijob-Grenze</h3><div class="row" style="margin-top:6px"><span class="big-num">${eur(earned)}</span><span class="small">von ${LIMIT} € im November</span></div><div class="bar"><i style="width:${pct}%"></i></div><p class="small" style="margin:0">Noch ${eur(Math.max(0,LIMIT-earned))} bis zur Grenze.</p></div>
   <div class="card"><h3>Qualifikationen</h3><div class="meta">${S.roles.length?S.roles.map(r=>`<span class="tag sun">${esc(r)}</span>`).join(''):'<span class="small">Noch keine. Mach einen Kurs unter Kurse.</span>'}</div></div>
   <div class="card" id="certcard"><h3>Mit Zeugnis freischalten</h3><p class="small" style="margin:4px 0 12px">Ein Zeugnis aus dem Job zählt wie der Kurs: Qualifikation und +100 Score, aber nur einmal.</p>
    ${Object.entries(S.certs).map(([r,c])=>`<div class="app"><span>${esc(r)} · <span class="small">${esc(c.file)}</span></span>${S.roles.includes(r)?'<span class="tag sun">Erhalten</span>':`<button class="btn dark" data-act="certok" data-v="${esc(r)}">Freischalten</button>`}</div>`).join('')}
@@ -406,7 +406,7 @@ function empNew(){
 
 function empProf(){
   return `<h2>${esc(S.biz)}</h2><p class="sub">★ 4,7 von Studis</p>
-  <div class="card"><h3>Provision</h3><p class="small" style="margin:4px 0 0">SlotJob verdient eine Provision, wenn du Studis über die Plattform einstellst.</p></div>
+  <div class="card"><h3>Stundensatz</h3><p class="small" style="margin:4px 0 0">SlotJob ist Arbeitgeber der Studis. Du zahlst nur die Schichten, die du brauchst. Kein Papierkram.</p></div>
   <button class="btn ghost wide" data-act="switch">Zur Ansicht für Studis</button><button class="link" data-act="reset">Zurücksetzen</button>`;
 }
 
