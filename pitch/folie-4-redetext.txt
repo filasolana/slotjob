@@ -6,14 +6,14 @@ Das Wichtigste auf der Kostenseite: Wir haben keine Fixkosten pro Studi. Wer nic
 
 Und wir brauchen niemanden, der Schichten von Hand verteilt. Das macht unser Algorithmus. Unsere Fixkosten sind deshalb gering: Entwicklung, Support, Lohnbuchhaltung, Server, Versicherungen und Marketing, zusammen rund 6.000 Euro im Monat.
 
-Daraus ergibt sich unsere wichtigste Zahl: Ab etwa 13 Schichten wie der von Rudolf am Tag tragen wir uns. Jede Schicht darüber ist Gewinn.
+Daraus ergibt sich unsere wichtigste Zahl: Ab etwa 50 Arbeitsstunden am Tag tragen wir uns. Das sind zum Beispiel 13 Schichten wie die von Rudolf. Jede Stunde darüber ist Gewinn.
 
 Woran messen wir Erfolg? An vier Kennzahlen:
 Erstens der Besetzungsquote: Wie viele Slots werden besetzt?
 Zweitens die Zeit bis zur Besetzung. Unser Ziel: Fällt jemand aus, ist der Ersatz in zwei Stunden da.
-Drittens den besetzten Schichten pro Tag, das ist unser Break-even.
+Drittens den gearbeiteten Stunden pro Tag, das ist unser Break-even.
 Und viertens, ob Betriebe im nächsten Monat wieder Slots einstellen.
 
-Unser größter Hebel: Weil der Algorithmus die Arbeit macht, wachsen unsere Fixkosten kaum mit. Über dem Break-even bringt uns jede weitere Schicht wie die von Rudolf 16 Euro Gewinn.
+Unser größter Hebel: Weil der Algorithmus die Arbeit macht, wachsen unsere Fixkosten kaum mit. Über dem Break-even bringt uns jede weitere Stunde 4 Euro Gewinn.
 
 Kurz gesagt: Betriebe zahlen nur die Schichten, die sie brauchen, und wissen vorher genau, was sie kosten.
