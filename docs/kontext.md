@@ -22,7 +22,7 @@
 - **Schichten**: Zugesagt (sofort gebucht oder angenommen), Beworben, Abgeschlossen mit Sternebewertung des Betriebs.
 - **Profil**: Minijob-Grenze (Verdienst im Monat gegen 603 €), Qualifikationen, Arbeitszeugnis hochladen (+100 in der Rolle, die es abdeckt, gleiche Qualifikation einmal). Es gibt keine Kurse und keinen Kurse-Tab.
 
-### Betriebs-Ansicht (Trattoria Lupo)
+### Betriebs-Ansicht (Pizzeria Mamma Mia)
 
 - **Meine Slots**: je Slot Lohn, Rolle, "Sofort ab: Verhalten 80 · Qualifikation 500" und "Noch frei" oder "Gebucht". Bucht ein Studi, steht dort "Sofort gebucht: Rudolf M. · Verhalten 92 · Qualifikation 450".
 - Nach der Schicht fragt die App den Betrieb zwei Dinge: "Pünktlich und zuverlässig?" Ja (+2 Verhalten) oder Nein (−5), und "Wie gut war die Arbeit?" mit Sternen (Schicht +10 Qualifikation, 5 Sterne +10, 1 bis 2 Sterne −10). Bei Rudolf ändert das sofort seine Werte.
@@ -51,11 +51,11 @@
 
 1. Rudolf sieht Verhalten 92 und seine Qualifikationen und bucht "Service und Kasse" sofort.
 2. Bei der Kellner-Schicht fehlt Qualifikation (250 von 300). Er lädt sein Arbeitszeugnis vom Café hoch (+100, Gastronomie 350) und bucht sie danach sofort.
-3. Auf "Betrieb" umschalten: Die Trattoria sieht "Sofort gebucht: Rudolf M.", klickt "Pünktlich: Ja" (+2 Verhalten) und gibt 5 Sterne (+20 Qualifikation).
+3. Auf "Betrieb" umschalten: Die Pizzeria Mamma Mia sieht "Sofort gebucht: Rudolf M.", klickt "Pünktlich: Ja" (+2 Verhalten) und gibt 5 Sterne (+20 Qualifikation).
 
 ## Technik
 
-- Eine Datei `site/index.html` (HTML, CSS, JavaScript), kein Server. Der Zustand liegt im Browser (localStorage, Schlüssel `slotjob-v7`). "Zurücksetzen" im Profil stellt die Demo-Daten wieder her.
+- Eine Datei `site/index.html` (HTML, CSS, JavaScript), kein Server. Der Zustand liegt im Browser (localStorage, Schlüssel `slotjob-v8`). "Zurücksetzen" im Profil stellt die Demo-Daten wieder her.
 - Repo mit `site/index.html`, `docs/plan.txt`, `docs/kontext.md`, `ideen/`. Deploy mit `python3 deploy.py` auf Cloudflare Pages.
 - Beide Scores werden aus einer Ereignisliste berechnet (Rolle oder Verhalten, Text, Punkte). Verhalten 0 bis 100. Qualifikation 0 bis 1000: gleiche Qualifikation einmal, Schichten höchstens +400. Der Studiengang zählt nicht.
 

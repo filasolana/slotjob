@@ -221,7 +221,7 @@ input[type=file]{font-size:13px;max-width:100%}
 </div>
 <script>
 {
-const KEY='slotjob-v7';
+const KEY='slotjob-v8';
 const DAYS=['Mo','Di','Mi','Do','Fr','Sa','So'];
 const FIELDS=['Maschinenbau','Informatik','BWL','Lehramt','Umweltwissenschaften','Anderes'];
 const LIMIT=603;
@@ -233,7 +233,7 @@ const RULES={v:[[['Start','80'],['Pünktlich','+2'],['Spontan','+5'],['Krank','0
  q:[[['Arbeitszeugnis','+100'],['Schicht','+10']],[['5 Sterne','+10'],['1–2 Sterne','−10']]]};
 const NOTE={v:'Minuspunkte halbieren sich nach 3 Monaten.',q:'Gleiche Qualifikation zählt einmal. Schichten zählen bis +400.'};
 const rulesBox=t=>`<div class="rules">${RULES[t].map(col=>`<div>${col.map(([l,v])=>`<p><span>${l}</span><b>${v}</b></p>`).join('')}</div>`).join('')}</div><p class="small" style="margin:6px 0 0">${NOTE[t]}</p>`;
-const fresh=()=>({role:null,onb:0,field:'Maschinenbau',noExp:true,tab:'slots',filter:'ok',open:null,roles:[],instant:[],rated:{},cert:null,certRole:'Kellner',certs:{},biz:'Trattoria Lupo',etab:'mine',
+const fresh=()=>({role:null,onb:0,field:'Maschinenbau',noExp:true,tab:'slots',filter:'ok',open:null,roles:[],instant:[],rated:{},cert:null,certRole:'Kellner',certs:{},biz:'Pizzeria Mamma Mia',etab:'mine',
  ev:[
   {a:'v',t:'Start',p:80},
   {a:'v',t:'16 × pünktlich',p:32},
@@ -247,7 +247,7 @@ const fresh=()=>({role:null,onb:0,field:'Maschinenbau',noExp:true,tab:'slots',fi
  ],
  slots:[
   {id:1,emp:'Café Kantstein',title:'Service und Kasse',day:'Fr',date:'27.11.',s:'16:00',e:'20:00',pay:14.5,dist:'4 Min',noExp:true,fields:[],area:'gastro',min:0,minV:70},
-  {id:2,emp:'Trattoria Lupo',title:'Kellner:in Abendschicht',day:'Sa',date:'28.11.',s:'18:00',e:'23:00',pay:15,dist:'9 Min',noExp:false,fields:[],area:'gastro',min:300,minV:70,eid:102},
+  {id:2,emp:'Pizzeria Mamma Mia',title:'Kellner:in Abendschicht',day:'Sa',date:'28.11.',s:'18:00',e:'23:00',pay:15,dist:'9 Min',noExp:false,fields:[],area:'gastro',min:300,minV:70,eid:102},
   {id:3,emp:'Getränkemarkt Fass & Co',title:'Lager und Leergut',day:'Sa',date:'28.11.',s:'09:00',e:'13:00',pay:14,dist:'11 Min',noExp:true,fields:[],area:'handel',min:0,minV:70},
   {id:4,emp:'Lehrstuhl Konstruktion (HiWi)',title:'CAD-Modelle aufbereiten',day:'Mo',date:'30.11.',s:'10:00',e:'14:00',pay:14.2,dist:'Campus',noExp:false,fields:['Maschinenbau'],area:'campus',min:0,minV:80},
   {id:5,emp:'IT-Service Rechenzentrum',title:'Helpdesk für Erstis',day:'Di',date:'01.12.',s:'12:00',e:'16:00',pay:14.8,dist:'Campus',noExp:false,fields:['Informatik'],area:'buero',min:100,minV:70},
