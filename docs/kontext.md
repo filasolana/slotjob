@@ -14,14 +14,14 @@
 
 - **Slots**
   - Oben "Dein Score" mit zwei Teilen. Verhalten: ein Balken für alle Rollen, 0 bis 100. Qualifikation: 5 Balken, einer je Rolle, 0 bis 1000. Tippen auf einen Balken zeigt, woraus der Wert besteht, und die Punkteregeln in zwei Spalten.
-  - Darunter "Freie Schichten" mit der Zeile "An deinen freien Tagen: Mo, Mi, Fr, Sa · Ändern".
-  - Filter: "Verfügbar" (an freien Tagen) und "Nicht verfügbar" (mit Grund, z. B. "Di ist kein freier Tag"). Darunter der Schalter "Nur passend zu Maschinenbau": zeigt nur Slots, die der Betrieb mit dem eigenen Studiengang markiert hat.
+  - Darunter "Freie Schichten": alle offenen Schichten, jederzeit buchbar, sobald beide Schwellen erreicht sind. Es gibt keine festen Tage und keinen Wochenplan.
+  - Filter: "Verfügbar" (beide Schwellen erreicht) und "Nicht verfügbar" (mit Grund, z. B. "Gastronomie 300 nötig, du hast 250"). Darunter der Schalter "Nur passend zu Maschinenbau": zeigt nur Slots, die der Betrieb mit dem eigenen Studiengang markiert hat.
   - Slotkarte: Datum, Uhrzeit, Betrieb, Tätigkeit, Weg, Dauer, Rolle als Tag, Lohn, darunter "Sofort ab: Verhalten 70 ✓ · Gastronomie 300 ✓". Der Knopf:
     - "Sofort buchen", wenn beide Schwellen erreicht sind. Die Schicht steht dann direkt unter Zugesagt.
-    - "Nicht verfügbar", wenn eine Schwelle fehlt ("Gastronomie 300 nötig, du hast 250", mit Link zu Kurs und Zeugnis) oder der Tag kein freier Tag ist.
+    - "Nicht verfügbar", wenn eine Schwelle fehlt ("Gastronomie 300 nötig, du hast 250", mit Link zu Kurs und Zeugnis).
 - **Kurse**: Service-Grundkurs (Kellner) und Barista-Basics (Barista), beide Gastronomie. Anmelden, dann "Kurs abschließen": +200 Qualifikation in der Rolle.
 - **Schichten**: Zugesagt (sofort gebucht oder angenommen), Beworben, Abgeschlossen mit Sternebewertung des Betriebs.
-- **Profil**: freie Tage (Mo bis So), Minijob-Grenze (Verdienst im Monat gegen 603 €), Qualifikationen, Zeugnis hochladen (zählt wie der Kurs, gleiche Qualifikation einmal).
+- **Profil**: Minijob-Grenze (Verdienst im Monat gegen 603 €), Qualifikationen, Zeugnis hochladen (zählt wie der Kurs, gleiche Qualifikation einmal).
 
 ### Betriebs-Ansicht (Trattoria Lupo)
 
@@ -40,13 +40,13 @@
 
 - Rudolf, Verhalten 92: Start 80, 16 × pünktlich +32, spontan eingesprungen +5, 3 × zu spät −15, Absage unter 24 h −10.
 - Rudolf, Qualifikation: Gastronomie 250 (14 Schichten +140, 11 × 5 Sterne +110), Handel und Lager 70, Events und Aufbau 0, Campus 0, Büro und IT 0.
-- 7 Slots: 3 verfügbar, 4 nicht verfügbar (Kellner wegen Qualifikation, Konzert wegen Verhalten, Di und Do keine freien Tage).
+- 7 Slots: 4 verfügbar, 3 nicht verfügbar (Kellner und Helpdesk wegen Qualifikation, Konzert wegen Verhalten).
   - Service und Kasse (Gastronomie, Verhalten 70, Qualifikation 0): Sofort buchen.
   - Kellner:in Abendschicht (Gastronomie, 70, 300): nicht verfügbar (250), nach dem Kurs Sofort buchen.
   - Lager und Leergut (Handel und Lager, 70, 0): Sofort buchen.
   - CAD-Modelle (Campus, 80, 0, passt zu Maschinenbau): Sofort buchen.
   - Aufbau Konzert (Events und Aufbau, 95, 0): nicht verfügbar, weil Verhalten 92.
-  - Helpdesk (Dienstag) und Inventur (Donnerstag): nicht verfügbar.
+  - Helpdesk (Büro und IT, 70, 100): nicht verfügbar. Inventur (Handel und Lager, 70, 0): Sofort buchen.
 
 ### Demo-Ablauf (1 Minute)
 
@@ -56,7 +56,7 @@
 
 ## Technik
 
-- Eine Datei `site/index.html` (HTML, CSS, JavaScript), kein Server. Der Zustand liegt im Browser (localStorage, Schlüssel `slotjob-v5`). "Zurücksetzen" im Profil stellt die Demo-Daten wieder her.
+- Eine Datei `site/index.html` (HTML, CSS, JavaScript), kein Server. Der Zustand liegt im Browser (localStorage, Schlüssel `slotjob-v6`). "Zurücksetzen" im Profil stellt die Demo-Daten wieder her.
 - Repo mit `site/index.html`, `docs/plan.txt`, `docs/kontext.md`, `ideen/`. Deploy mit `python3 deploy.py` auf Cloudflare Pages.
 - Beide Scores werden aus einer Ereignisliste berechnet (Rolle oder Verhalten, Text, Punkte). Verhalten 0 bis 100. Qualifikation 0 bis 1000: gleiche Qualifikation einmal, Schichten höchstens +400. Der Studiengang zählt nicht.
 

@@ -8,8 +8,9 @@ CHECKLISTE: PROBLEM -> LÖSUNG
 STUDIS
 1. Planbarkeit (Hauptproblem im Interview)
    Problem: Schichtplan 4 Wochen vorher, Stundenplan ändert sich, Prüfungsphase: Chefin gibt nicht frei.
-   Lösung: Freie Tage jede Woche neu wählen, nur Slots an diesen Tagen [App].
-   Kein fester Job, keine Pflicht: in der Prüfungsphase einfach keine Tage.
+   Lösung: Kein Schichtplan, keine festen Tage. Man sieht alle offenen Schichten und bucht sich
+   spontan ein, wann es passt, auch am selben Morgen, sobald der Score die Schwelle erfüllt [App].
+   Keine Pflicht: in der Prüfungsphase bucht man einfach nichts.
 
 2. Einstieg und Bewerbungen
    Problem: "Erfahrung erforderlich", 15 Bewerbungen, Funkstille.
@@ -64,8 +65,9 @@ Im Interview fiel ein Satz: "Das Café war die feste Sache, und das Studium muss
 sein. Eigentlich sollte es andersrum sein." SlotJob dreht das um: Schichten statt Stellen.
 
 Erstens, Planbarkeit. Schichtpläne kommen vier Wochen vorher, der Stundenplan ändert sich
-ständig, und in der Prüfungsphase gibt die Chefin nicht frei. Bei uns wählt man jede Woche
-neu seine freien Tage und sieht nur Schichten an diesen Tagen. Prüfungsphase? Dann eben keine.
+ständig, und in der Prüfungsphase gibt die Chefin nicht frei. Bei uns gibt es keinen
+Schichtplan. Man sieht alle offenen Schichten und bucht sich ein, wann es passt, auch spontan
+am selben Morgen. Prüfungsphase? Dann bucht man eben nichts.
 
 Zweitens, der Einstieg. Fünfzehn Bewerbungen, Funkstille, überall "Erfahrung erforderlich".
 Bei uns gibt es keine Bewerbung. Ein Klick, und die Schicht ist gebucht. Möglich machen das

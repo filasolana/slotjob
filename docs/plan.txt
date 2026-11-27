@@ -44,8 +44,9 @@ Team:
 
 
 4. FILTER
-- Verfügbar: beide Schwellen erreicht und freier Tag, Knopf "Sofort buchen"
-- Nicht verfügbar (mit Grund: Schwelle nicht erreicht oder kein freier Tag)
+- Verfügbar: beide Schwellen erreicht, Knopf "Sofort buchen". Man sieht immer alle offenen
+  Schichten und bucht spontan, wann es passt. Keine festen Tage, kein Wochenplan (entschieden 27.11.).
+- Nicht verfügbar (mit Grund: welche Schwelle fehlt)
 - Studiengang (entschieden 27.11.): zählt nicht für den Score. Der Betrieb kann einen Slot
   mit Studiengängen markieren, der Studi filtert mit "Nur passend zu <Studiengang>".
 Team:
