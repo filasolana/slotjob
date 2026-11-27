@@ -40,7 +40,7 @@ Lohn und Abgaben hängen nur am tatsächlich gezahlten Lohn. Wer in einem Monat 
 
 Krankheit ist im Schichtmodell günstig: Lohnfortzahlung gibt es erst nach 4 Wochen ununterbrochener Beschäftigung (§ 3 EFZG). Kosten entstehen nur durch den Spontan-Bonus für den Ersatz.
 
-Echte Fixkosten hat SlotJob als Firma, nicht pro Studi: Schichten-Manager:innen, Plattform, Erlaubnis, Versicherungen, Buchhaltung, Kurse, Marketing.
+Echte Fixkosten hat SlotJob als Firma, nicht pro Studi: Schichten-Manager:innen, Plattform, Erlaubnis, Versicherungen, Buchhaltung, Marketing.
 
 ## Rechnung pro Stunde (grob, Annahmen)
 

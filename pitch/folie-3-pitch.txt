@@ -1,18 +1,18 @@
 FOLIE 3: PITCH (ca. 1:40, Rollenspiel Rudolf und Marco)
 
-Freitag, 7:12 Uhr. Marco, Trattoria Lupo. Seine Kellnerin hat gerade für morgen Abend abgesagt.
+Samstag, 7 Uhr. Marco, Trattoria Lupo. Sein Kellner ist krank, heute Abend ist der Laden voll.
 Marco schreibt in fünf WhatsApp-Gruppen. Antworten: null.
 
-7:14 Uhr. Rudolf, Maschinenbau. Fünfzehn Bewerbungen, null Antworten, ein Angebot:
-Pakete weiterleiten. Danke, nein.
-Heute hat Rudolf keine Vorlesung. Er öffnet SlotJob.
+7:14 Uhr. Rudolf, Maschinenbau, 41 Euro auf dem Konto. Fünfzehn Bewerbungen, null Antworten,
+ein Angebot: Pakete weiterleiten. Danke, nein. Er öffnet SlotJob.
 
 Erstens: Es gibt keinen Schichtplan. Rudolf sieht alle offenen Schichten und bucht, wann es passt.
 Heute spontan, in der Prüfungsphase gar nicht. Der Job passt sich dem Studium an, nicht umgekehrt.
 
 Zweitens: Es gibt keine Bewerbung. Dafür gibt es zwei Scores.
 Verhalten: Kann man sich auf dich verlassen? Rudolf hat 92 von 100.
-Qualifikation: Kannst du den Job? In der Gastronomie hat er 450, auch dank Kellnerkurs.
+Qualifikation: Kannst du den Job? In der Gastronomie hat er 350: vierzehn Schichten,
+gute Bewertungen und das Arbeitszeugnis aus seinem alten Café-Job.
 Marco hat festgelegt: Verhalten 70, Gastronomie 300. Rudolf liegt drüber.
 Ein Klick, gebucht. Kein Anschreiben, kein Probearbeiten, kein "Wir melden uns".
 
@@ -23,7 +23,7 @@ Und Marco? Um 7:15 sieht er: besetzt. Für ganz kurzfristige Ausfälle gibt es S
 mit Bonus. Und wer einfach nicht auftaucht, verliert 30 Punkte und ist bei den guten Schichten raus.
 Papierkram: keiner. Marco zahlt nur die Schichten, die er braucht.
 
-Samstag, 18 Uhr: Rudolf steht in der Trattoria. Marco ist entspannt. Und Rudolfs Score? Steigt.
+18 Uhr: Rudolf steht in der Trattoria. Marco ist entspannt. Und Rudolfs Score? Steigt.
 
 
 SCORE-BEISPIELE (für Fragen)
@@ -36,11 +36,16 @@ Verhalten: einer pro Person, 0 bis 100, Start 80
   Nach 3 Monaten halbiert sich das Minus: 71, er kann wieder buchen.
   (Krankmeldung kostet 0 Punkte.)
 
-Qualifikation: je Rolle, 0 bis 1000, Start 0
-- Rudolf, Gastronomie 450 = 200 (Service-Grundkurs) + 140 (14 Schichten) + 110 (11 x 5 Sterne)
-  Ohne Kurs hätte er 250, dann wäre die Kellner-Schicht (Schwelle 300) nicht verfügbar.
-- Lena, Gastronomie 520 = 200 (Kellner-Zeugnis) + 200 (20 Schichten) + 120 (12 x 5 Sterne)
-  Macht sie noch den Kellnerkurs, zählt er nicht doppelt: gleiche Qualifikation nur einmal.
+Qualifikation: je Rolle, 0 bis 1000, Start 0, keine Kurse
+- Rudolf, Gastronomie 350 = 140 (14 Schichten) + 110 (11 x 5 Sterne)
+  + 100 (Arbeitszeugnis vom Café, deckt Kellner ab)
+  Ohne Zeugnis hätte er 250, dann wäre die Kellner-Schicht (Schwelle 300) nicht verfügbar.
+- Lena, Gastronomie 520 = 300 (30 Schichten) + 120 (12 x 5 Sterne)
+  + 100 (Arbeitszeugnis als Kellnerin)
+  Ein zweites Kellner-Zeugnis zählt nicht doppelt: gleiche Qualifikation nur einmal.
+  Ein Barista-Zeugnis zählt dagegen: +100.
 
-Probleme, die der Pitch abdeckt: Planbarkeit, Bewerbungen ohne Antwort, Betrug, unbezahltes
-Probearbeiten, Geld kommt spät, Regel-Chaos, Ausfälle beim Betrieb, Qualität, Papierkram und Kosten.
+Probleme, die der Pitch abdeckt (Folie 1: Schichtplan 4 Wochen vorher, nicht jede Woche
+festlegen, Ausfälle am Samstag um 7): Planbarkeit, Bewerbungen ohne Antwort, Betrug,
+unbezahltes Probearbeiten, Geld kommt spät, Regel-Chaos, Ausfälle beim Betrieb, Qualität,
+Papierkram und Kosten.

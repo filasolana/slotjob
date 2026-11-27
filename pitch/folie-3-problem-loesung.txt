@@ -17,7 +17,8 @@ STUDIS
    Lösung: Keine Bewerbung. Ein Klick, Schicht gebucht [App].
    Zwei Scores entscheiden: Verhalten (verlässlich?) und Qualifikation je Rolle (kann den Job?).
    Der Betrieb setzt die Schwellen, wer drüber liegt, bucht sofort [App].
-   Ohne Erfahrung: Slots mit Schwelle 0, Kurse bringen +200 Qualifikation [App].
+   Ohne Erfahrung: Slots mit Schwelle 0. Ein Arbeitszeugnis bringt +100 in der Rolle, die es
+   abdeckt [App]. Kurse gibt es nicht.
 
 3. Geld kommt zu spät, unbezahlte Arbeit
    Problem: BAföG nach 3 Monaten, HiWi 6 Wochen ohne Vertrag, 6 h unbezahltes Probearbeiten.
@@ -73,7 +74,7 @@ Zweitens, der Einstieg. Fünfzehn Bewerbungen, Funkstille, überall "Erfahrung e
 Bei uns gibt es keine Bewerbung. Ein Klick, und die Schicht ist gebucht. Möglich machen das
 zwei Scores: Verhalten zeigt, ob man sich auf dich verlassen kann. Qualifikation zeigt, ob du
 den Job kannst. Der Betrieb setzt die Schwellen, wer drüber liegt, bucht sofort. Wer neu ist,
-startet mit Schichten ohne Erfahrung oder macht einen Kurs, zum Beispiel für Kellner.
+startet mit Schichten ohne Erfahrung oder lädt ein altes Arbeitszeugnis hoch.
 
 Drittens, Geld und Regeln. Das BAföG kommt nach drei Monaten, der HiWi-Vertrag nach sechs
 Wochen, Probearbeiten ist unbezahlt. Bei uns ist SlotJob der Arbeitgeber. Der Vertrag steht

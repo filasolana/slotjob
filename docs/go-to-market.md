@@ -13,7 +13,7 @@ Engpass sind die Betriebe: Ohne Slots kommen keine Studis wieder.
 - **Pilotslots** (gelb): 5 Cafés/Restaurants in Potsdam, Ziel ab Tag 1 mindestens 20 Slots pro Woche
 - Kurzes Onboarding für Studis und Arbeitgeber (gelb)
 - Engelsystem (CCC) als Vorbild für die Schichtlogik (gelb)
-- Erste Service-Kurse anbieten, danach Rolle Kellner (gelb)
+- ~~Erste Service-Kurse anbieten, danach Rolle Kellner (gelb)~~ gestrichen 27.11.: keine Kurse, Qualifikation kommt aus Erfahrung und Arbeitszeugnissen
 - Slot per WhatsApp: Foto vom Schichtplan reicht, wir tragen ein (gelb)
 - Pilot mit 5–10 Restaurants und Cafés am Campus
 - Verkaufsargument: hohe Flexibilität, keine Recruiting-Kosten, Einsicht in die Qualität des Personals
@@ -118,7 +118,7 @@ SlotJob ist ein Marktplatz mit zwei Seiten, der in jeder Stadt einzeln funktioni
 
 ## Risiken beim Wachsen
 
-- **Studis, die nicht erscheinen,** zerstören das Vertrauen der Betriebe schneller, als Marketing es aufbaut. Dagegen: Score, Kurse, Leute auf Abruf.
+- **Studis, die nicht erscheinen,** zerstören das Vertrauen der Betriebe schneller, als Marketing es aufbaut. Dagegen: Score, Leute auf Abruf.
 - **Umgehung:** Nach drei Schichten machen Betrieb und Studi direkt etwas aus. Dagegen: Gebühr bei Festanstellung und echter Mehrwert (Abrechnung, Versicherung, Ersatz bei Ausfall).
 - **Zu früh zu breit:** Zwei halbvolle Städte sind schlechter als eine volle.
 

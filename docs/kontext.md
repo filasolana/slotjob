@@ -18,10 +18,9 @@
   - Filter: "Verfügbar" (beide Schwellen erreicht) und "Nicht verfügbar" (mit Grund, z. B. "Gastronomie 300 nötig, du hast 250"). Darunter der Schalter "Nur passend zu Maschinenbau": zeigt nur Slots, die der Betrieb mit dem eigenen Studiengang markiert hat.
   - Slotkarte: Datum, Uhrzeit, Betrieb, Tätigkeit, Weg, Dauer, Rolle als Tag, Lohn, darunter "Sofort ab: Verhalten 70 ✓ · Gastronomie 300 ✓". Der Knopf:
     - "Sofort buchen", wenn beide Schwellen erreicht sind. Die Schicht steht dann direkt unter Zugesagt.
-    - "Nicht verfügbar", wenn eine Schwelle fehlt ("Gastronomie 300 nötig, du hast 250", mit Link zu Kurs und Zeugnis).
-- **Kurse**: Service-Grundkurs (Kellner) und Barista-Basics (Barista), beide Gastronomie. Anmelden, dann "Kurs abschließen": +200 Qualifikation in der Rolle.
+    - "Nicht verfügbar", wenn eine Schwelle fehlt ("Gastronomie 300 nötig, du hast 250", mit Link "Arbeitszeugnis hochladen").
 - **Schichten**: Zugesagt (sofort gebucht oder angenommen), Beworben, Abgeschlossen mit Sternebewertung des Betriebs.
-- **Profil**: Minijob-Grenze (Verdienst im Monat gegen 603 €), Qualifikationen, Zeugnis hochladen (zählt wie der Kurs, gleiche Qualifikation einmal).
+- **Profil**: Minijob-Grenze (Verdienst im Monat gegen 603 €), Qualifikationen, Arbeitszeugnis hochladen (+100 in der Rolle, die es abdeckt, gleiche Qualifikation einmal). Es gibt keine Kurse und keinen Kurse-Tab.
 
 ### Betriebs-Ansicht (Trattoria Lupo)
 
@@ -42,7 +41,7 @@
 - Rudolf, Qualifikation: Gastronomie 250 (14 Schichten +140, 11 × 5 Sterne +110), Handel und Lager 70, Events und Aufbau 0, Campus 0, Büro und IT 0.
 - 7 Slots: 4 verfügbar, 3 nicht verfügbar (Kellner und Helpdesk wegen Qualifikation, Konzert wegen Verhalten).
   - Service und Kasse (Gastronomie, Verhalten 70, Qualifikation 0): Sofort buchen.
-  - Kellner:in Abendschicht (Gastronomie, 70, 300): nicht verfügbar (250), nach dem Kurs Sofort buchen.
+  - Kellner:in Abendschicht (Gastronomie, 70, 300): nicht verfügbar (250), mit Arbeitszeugnis (350) Sofort buchen.
   - Lager und Leergut (Handel und Lager, 70, 0): Sofort buchen.
   - CAD-Modelle (Campus, 80, 0, passt zu Maschinenbau): Sofort buchen.
   - Aufbau Konzert (Events und Aufbau, 95, 0): nicht verfügbar, weil Verhalten 92.
@@ -51,12 +50,12 @@
 ### Demo-Ablauf (1 Minute)
 
 1. Rudolf sieht Verhalten 92 und seine Qualifikationen und bucht "Service und Kasse" sofort.
-2. Bei der Kellner-Schicht fehlt Qualifikation (250 von 300). Er macht den Kellnerkurs (+200, Gastronomie 450) und bucht sie danach sofort.
+2. Bei der Kellner-Schicht fehlt Qualifikation (250 von 300). Er lädt sein Arbeitszeugnis vom Café hoch (+100, Gastronomie 350) und bucht sie danach sofort.
 3. Auf "Betrieb" umschalten: Die Trattoria sieht "Sofort gebucht: Rudolf M.", klickt "Pünktlich: Ja" (+2 Verhalten) und gibt 5 Sterne (+20 Qualifikation).
 
 ## Technik
 
-- Eine Datei `site/index.html` (HTML, CSS, JavaScript), kein Server. Der Zustand liegt im Browser (localStorage, Schlüssel `slotjob-v6`). "Zurücksetzen" im Profil stellt die Demo-Daten wieder her.
+- Eine Datei `site/index.html` (HTML, CSS, JavaScript), kein Server. Der Zustand liegt im Browser (localStorage, Schlüssel `slotjob-v7`). "Zurücksetzen" im Profil stellt die Demo-Daten wieder her.
 - Repo mit `site/index.html`, `docs/plan.txt`, `docs/kontext.md`, `ideen/`. Deploy mit `python3 deploy.py` auf Cloudflare Pages.
 - Beide Scores werden aus einer Ereignisliste berechnet (Rolle oder Verhalten, Text, Punkte). Verhalten 0 bis 100. Qualifikation 0 bis 1000: gleiche Qualifikation einmal, Schichten höchstens +400. Der Studiengang zählt nicht.
 
@@ -65,7 +64,7 @@
 1. **Instant-Zusage** (entschieden 27.11.): Der Betrieb setzt je Slot zwei Schwellen, Verhalten (Standard 70) und Qualifikation in der Rolle. Beide erreicht: sofort buchen. Eine fehlt: nicht verfügbar. Keine Bewerbung. Neue starten mit Verhalten 80 und Qualifikation 0.
 2. **Reputation, zwei Scores** (entschieden 27.11.):
    - Verhalten, einer pro Person, 0 bis 100, Start 80: pünktlich +2, spontan oder On-Duty +5, zu spät −5, Absage unter 24 h −10, gefehlt −30, Krankmeldung 0, Minuspunkte halbieren sich nach 3 Monaten.
-   - Qualifikation je Rolle, 0 bis 1000, Start 0: Kurs +200, Zeugnis +200 (gleiche Qualifikation einmal), Schicht in der Rolle +10 (höchstens +400), 5 Sterne +10, 1 bis 2 Sterne −10. Der Studiengang zählt nicht für den Score.
+   - Qualifikation je Rolle, 0 bis 1000, Start 0: Arbeitszeugnis +100 für die Rolle, die es abdeckt (gleiche Qualifikation einmal), keine Kurse, Schicht in der Rolle +10 (höchstens +400), 5 Sterne +10, 1 bis 2 Sterne −10. Der Studiengang zählt nicht für den Score.
    - Nach der Schicht: "Pünktlich und zuverlässig?" zählt für Verhalten, Sterne für die Arbeit zählen für Qualifikation.
 3. **Rollen (5)**: Gastronomie (fest), Handel und Lager, Events und Aufbau, Campus, Büro und IT (Vorschläge). Kellner und Barista sind Qualifikationen in der Gastronomie.
 4. **Filter**: Verfügbar (Sofort buchen), Nicht verfügbar (mit Grund). Dazu Studiengang als eigener Filter, kein Score (entschieden 27.11.).
@@ -85,7 +84,7 @@ Gebaut:
 - Zwei Scores: Verhalten (einer) und Qualifikation (je Rolle), Balken, Herkunft der Punkte
 - Zwei Schwellen je Slot, Sofort buchen nur wenn beide erreicht, sonst nicht verfügbar
 - Filter verfügbar / nicht verfügbar mit Grund
-- Kurs oder Zeugnis +200 Qualifikation, einmal je Qualifikation
+- Arbeitszeugnis +100 Qualifikation in der abgedeckten Rolle, einmal je Qualifikation
 - Studiengang als Label auf dem Slot ("Passt zu Maschinenbau") und Filter "Nur passend zu Maschinenbau"; der Betrieb wählt den Studiengang beim neuen Slot
 - Betrieb bewertet Pünktlichkeit (Verhalten) und Arbeit (Qualifikation)
 - Minijob-Grenze im Profil, Stundensatz im Betriebsprofil
@@ -99,13 +98,13 @@ Offen:
 ## Offene Fragen
 
 - Passen die Punktewerte, Verhalten Start 80 und Standard-Schwelle 70?
-- Reicht "Kurs angemeldet" oder erst "abgeschlossen"? Im Prototyp: abgeschlossen.
+- Welche Arbeitszeugnisse decken welche Rolle ab, und wer prüft sie?
 - Sollen die vier vorgeschlagenen Rollen so bleiben?
 - Wie verhindern wir, dass Betriebe den Score unfair drücken (z. B. Einspruch, Mindestanzahl Bewertungen)?
 - Rechtlicher Rahmen für unverbindliche Mitarbeiter und Abruf (On-Duty).
 - Dürfen Betriebe die Verhaltensschwelle über 80 setzen (dann können Neue dort nicht buchen)?
 - Keine Minuspunkte auch bei verlegter Prüfung, oder nur bei Krankheit?
-- Weitere offene Fragen (Ausfallgeld, Stundensatz, Auszahlung, Kurse, Konkurrenz, POV): `docs/plan.txt` unter OFFEN.
+- Weitere offene Fragen (Ausfallgeld, Stundensatz, Auszahlung, Konkurrenz, POV): `docs/plan.txt` unter OFFEN.
 
 ## Weitere Unterlagen (für die Folien)
 

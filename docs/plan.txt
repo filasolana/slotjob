@@ -8,7 +8,7 @@ Jeder schreibt einfach unter "Team:" mit Namen.
 - Beide erreicht = sofort buchen. Es gibt keine Bewerbung mehr (entschieden 27.11.).
 - Eine nicht erreicht = Slot nicht verfügbar, mit Grund (z. B. "Gastronomie 300 nötig, du hast 250").
 - Neueinsteiger: Verhalten startet bei 80, also über dem Standard. Qualifikation startet bei 0:
-  Slots mit Qualifikation 0 sind sofort buchbar, für die anderen erst Kurs oder Zeugnis.
+  Slots mit Qualifikation 0 sind sofort buchbar, für die anderen erst Erfahrung oder ein Arbeitszeugnis.
 Team:
 
 
@@ -23,14 +23,14 @@ Team:
   Krankmeldung 0 (siehe 5)
   Minuspunkte halbieren sich nach 3 Monaten
 - QUALIFIKATION: je Rolle, 0 bis 1000, Start 0
-  Kurs abgeschlossen +200
-  Zeugnis / Zertifikat geprüft +200 (gleiche Qualifikation zählt nur einmal)
+  Arbeitszeugnis +100, wenn es die Rolle abdeckt (gleiche Qualifikation zählt nur einmal)
+  Keine Kurse (entschieden 27.11.)
   Schicht in der Rolle +10 (aus Schichten höchstens +400)
   Arbeit 5 Sterne +10, 1 oder 2 Sterne -10
 - Nach der Schicht fragt der Betrieb zwei Dinge:
   Pünktlich und zuverlässig? Ja / Nein  -> Verhalten
   Wie gut war die Arbeit? 1 bis 5 Sterne -> Qualifikation
-- Beispiel Rudolf: Verhalten 92. Gastronomie 250, nach dem Service-Grundkurs 450.
+- Beispiel Rudolf: Verhalten 92. Gastronomie 250, mit dem Arbeitszeugnis vom Café 350.
 Team:
 
 
@@ -97,12 +97,11 @@ Team:
 
 OFFEN
 - Wie viele Punkte gibt es wofür?
-- Reicht Kurs angemeldet oder erst abgeschlossen?
-- Kurse / Zertifikate / Joberfahrung: noch leer
+- Welche Arbeitszeugnisse decken welche Rolle ab, und wer prüft sie?
 
 Kritische Punkte (Jesper, 27.11.), Stand nach Team-Absprache:
 - (erledigt) Score vs. Einsteiger: zwei Scores. Verhalten startet bei 80 über dem Standard 70,
-  Kurse und Zeugnisse geben Qualifikation. Siehe 1. und 2.
+  Erfahrung und Arbeitszeugnisse geben Qualifikation, Kurse gibt es nicht. Siehe 1. und 2.
 - (erledigt) Absage bei Krankheit: Krankmeldung ohne Minuspunkte, SlotJob trägt die
   Spontan-Schicht. Siehe 5.
 - (erledigt) Pitch für Betriebe: "Betriebe zahlen nur die Schichten, die sie brauchen." Siehe 9.
@@ -120,7 +119,6 @@ Noch offene Fragen:
 - Stundensatz für Betriebe: wie hoch genau? (Vorschlag ca. 25 €/h, siehe docs/vertragsmodell.md)
 - Auszahlung: wie oft zahlt SlotJob aus, z. B. wöchentlich? Pünktliches Geld war im Interview
   ein großes Problem und wäre ein starkes Argument.
-- Kurse: wer hält sie, wo, wer zahlt, wie lange dauern sie?
 - Konkurrenz: Zenjob, Studitemps u. a. machen schon Schichtjobs für Studis. Was ist unser USP?
 - POV-Satz für Folie 2 fehlt noch.
 - Go-to-Market Phase 3: Ideen in docs/go-to-market.md

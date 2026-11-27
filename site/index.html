@@ -221,7 +221,7 @@ input[type=file]{font-size:13px;max-width:100%}
 </div>
 <script>
 {
-const KEY='slotjob-v6';
+const KEY='slotjob-v7';
 const DAYS=['Mo','Di','Mi','Do','Fr','Sa','So'];
 const FIELDS=['Maschinenbau','Informatik','BWL','Lehramt','Umweltwissenschaften','Anderes'];
 const LIMIT=603;
@@ -230,10 +230,10 @@ const AN=k=>(AREAS.find(a=>a[0]===k)||AREAS[0])[1];
 const QUAL={Kellner:'gastro',Barista:'gastro'};
 const STARQ={5:10,4:0,3:0,2:-10,1:-10};
 const RULES={v:[[['Start','80'],['Pünktlich','+2'],['Spontan','+5'],['Krank','0']],[['Zu spät','−5'],['Absage <24 h','−10'],['Fehlen','−30']]],
- q:[[['Kurs/Zeugnis','+200'],['Schicht','+10']],[['5 Sterne','+10'],['1–2 Sterne','−10']]]};
+ q:[[['Arbeitszeugnis','+100'],['Schicht','+10']],[['5 Sterne','+10'],['1–2 Sterne','−10']]]};
 const NOTE={v:'Minuspunkte halbieren sich nach 3 Monaten.',q:'Gleiche Qualifikation zählt einmal. Schichten zählen bis +400.'};
 const rulesBox=t=>`<div class="rules">${RULES[t].map(col=>`<div>${col.map(([l,v])=>`<p><span>${l}</span><b>${v}</b></p>`).join('')}</div>`).join('')}</div><p class="small" style="margin:6px 0 0">${NOTE[t]}</p>`;
-const fresh=()=>({role:null,onb:0,field:'Maschinenbau',noExp:true,tab:'slots',filter:'ok',open:null,roles:[],booked:[],instant:[],rated:{},cert:null,certRole:'Kellner',certs:{},biz:'Trattoria Lupo',etab:'mine',
+const fresh=()=>({role:null,onb:0,field:'Maschinenbau',noExp:true,tab:'slots',filter:'ok',open:null,roles:[],instant:[],rated:{},cert:null,certRole:'Kellner',certs:{},biz:'Trattoria Lupo',etab:'mine',
  ev:[
   {a:'v',t:'Start',p:80},
   {a:'v',t:'16 × pünktlich',p:32},
@@ -258,10 +258,6 @@ const fresh=()=>({role:null,onb:0,field:'Maschinenbau',noExp:true,tab:'slots',fi
   {id:'a1',emp:'Café Kantstein',title:'Frühstücksservice',day:'So',date:'29.11.',s:'09:00',e:'13:00',pay:14.5,status:'Gebucht'},
   {id:'p1',emp:'Buchladen Seitenwind',title:'Regale einräumen',day:'Sa',date:'21.11.',s:'10:00',e:'14:00',pay:14,status:'Abgeschlossen'}
  ],
- courses:[
-  {id:'k1',name:'Service-Grundkurs',role:'Kellner',when:'Mi 02.12., 17:00 bis 19:00',seats:4},
-  {id:'k2',name:'Barista-Basics',role:'Barista',when:'Mi 09.12., 17:00 bis 19:00',seats:6}
- ],
  eslots:[
   {id:101,title:'Service Mittag',day:'Fr',date:'27.11.',s:'11:30',e:'15:00',pay:14.5,noExp:true,area:'gastro',min:500,minV:80,by:{n:'Lena K.',v:88,q:520},rating:0},
   {id:102,title:'Kellner:in Abendschicht',day:'Sa',date:'28.11.',s:'18:00',e:'23:00',pay:15,noExp:false,area:'gastro',min:300,minV:70,by:null,rating:0}
@@ -270,14 +266,14 @@ let S;
 try{S=JSON.parse(localStorage.getItem(KEY))||fresh()}catch(e){S=fresh()}
 if(!['ok','no'].includes(S.filter))S.filter='ok';
 if(!S.certs)S.certs={};if(!S.certRole)S.certRole='Kellner';
-if(!['slots','kurse','schichten','profil'].includes(S.tab))S.tab='slots';
+if(!['slots','schichten','profil'].includes(S.tab))S.tab='slots';
 S.slots=S.slots.filter(x=>!(x.id>=8&&x.id<=13&&x.dist===''));S.slots.forEach(x=>{if(x.dist==='4 Min vom Wohnheim')x.dist='4 Min';delete x.lat;delete x.lng});delete S.mapDay;delete S.mapSel;
 // Behaviour: one score per person for all roles, 0 to 100, start 80.
 const VMAX=100,QMAX=1000,XCAP=400;
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const vEvents=()=>S.ev.filter(e=>e.a==='v').map(e=>[e,e.p]);
 const vScore=()=>clamp(vEvents().reduce((a,[,p])=>a+p,0),0,VMAX);
-// Qualification per role, 0 to 1000: course or certificate +200 once per qualification, shifts +10 up to +400, stars.
+// Qualification per role, 0 to 1000: a work certificate +100 once per qualification, shifts +10 up to +400, stars.
 const qEvents=k=>{let xs=0;const seen={};const out=S.ev.filter(e=>e.a===k).map(e=>{if(e.q){const c=seen[e.q]?0:e.p;seen[e.q]=1;return [e,c]}if(e.x){const c=Math.min(e.p,XCAP-xs);xs+=c;return [e,c]}return [e,e.p]});return out};
 const qScore=k=>clamp(qEvents(k).reduce((a,[,p])=>a+p,0),0,QMAX);
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
@@ -290,7 +286,6 @@ let tt;const toast=m=>{toastEl.textContent=m;toastEl.classList.add('show');clear
 
 const ICON={
  slots:'<svg viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 0 2-2h14a2 2 0 0 0 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 0-2 2H5a2 2 0 0 0-2-2v-2a2 2 0 0 0 0-4z"/><path d="M9 6v12" stroke-dasharray="2 2.5"/></svg>',
- kurse:'<svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/></svg>',
  schichten:'<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',
  profil:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>',
  mine:'<svg viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 0 2-2h14a2 2 0 0 0 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 0-2 2H5a2 2 0 0 0-2-2v-2a2 2 0 0 0 0-4z"/></svg>',
@@ -324,7 +319,7 @@ function onboarding(){
 
 function why(x){
   const v=vScore(),q=qScore(x.area);
-  if(q<x.min)return [`${AN(x.area)} ${x.min} nötig, du hast ${q}`,x.area==='gastro'?`<button class="link" data-act="tab" data-v="kurse">Kurs ansehen</button><span class="small">oder</span><button class="link" data-act="certgo" data-v="Kellner">Zeugnis hochladen</button>`:''];
+  if(q<x.min)return [`${AN(x.area)} ${x.min} nötig, du hast ${q}`,x.area==='gastro'?`<button class="link" data-act="certgo" data-v="Kellner">Arbeitszeugnis hochladen</button>`:''];
   if(v<x.minV)return [`Verhalten ${x.minV} nötig, du hast ${v}`,''];
   return null;
 }
@@ -363,13 +358,6 @@ function slotsView(){
    ${list.length?list.map(slotCard).join(''):`<div class="empty">${cur[0]==='ok'?'Gerade ist nichts für dich verfügbar.<br><button class="link" data-act="filter" data-v="no">Warum? Nicht verfügbare ansehen</button>':'Alle Slots sind für dich verfügbar.'}</div>`}`;
 }
 
-function kurseView(){
-  return `<h2>Kurse</h2><p class="sub">Einmal pro Woche. Nach dem Kurs hast du +200 Qualifikation in der Rolle.</p>
-  ${S.courses.map(c=>{const has=S.roles.includes(c.role),bk=S.booked.includes(c.id);return `<div class="card"><div class="row"><h3>${esc(c.name)}</h3>${has?'<span class="tag sun">Erhalten</span>':''}</div>
-   <p class="small" style="margin:4px 0 12px">${esc(c.role)} · ${AN(QUAL[c.role])} +200 · ${esc(c.when)} · ${c.seats} Plätze frei</p>
-   ${has?'':bk?`<div class="row"><span class="status-pill">Angemeldet</span><button class="btn dark" data-act="complete" data-v="${c.id}">Kurs abschließen</button></div>`:`<button class="btn" data-act="book" data-v="${c.id}">Anmelden</button>`}</div>`}).join('')}`;
-}
-
 function shiftsView(){
   const inst=S.slots.filter(x=>S.instant.includes(x.id));
   const acc=S.shifts.filter(x=>x.status!=='Abgeschlossen'),done=S.shifts.filter(x=>x.status==='Abgeschlossen');
@@ -383,11 +371,11 @@ function profilView(){
   const earned=S.shifts.reduce((a,x)=>a+hrs(x.s,x.e)*x.pay,0),pct=Math.min(100,earned/LIMIT*100);
   return `<div style="margin-bottom:14px"><div><h2 style="margin:0">Rudolf M.</h2><p class="sub" style="margin:0">${esc(S.field)} · ★ 4,8 aus 19 Schichten</p></div></div>
   <div class="card"><h3>Minijob-Grenze</h3><div class="row" style="margin-top:6px"><span class="big-num">${eur(earned)}</span><span class="small">von ${LIMIT} € im November</span></div><div class="bar"><i style="width:${pct}%"></i></div><p class="small" style="margin:0">Noch ${eur(Math.max(0,LIMIT-earned))} bis zur Grenze.</p></div>
-  <div class="card"><h3>Qualifikationen</h3><div class="meta">${S.roles.length?S.roles.map(r=>`<span class="tag sun">${esc(r)}</span>`).join(''):'<span class="small">Noch keine. Mach einen Kurs unter Kurse.</span>'}</div></div>
-  <div class="card" id="certcard"><h3>Zeugnis hochladen</h3><p class="small" style="margin:4px 0 12px">Ein Zeugnis zählt wie der Kurs: +200 Qualifikation, die gleiche Qualifikation nur einmal.</p>
+  <div class="card"><h3>Qualifikationen</h3><div class="meta">${S.roles.length?S.roles.map(r=>`<span class="tag sun">${esc(r)}</span>`).join(''):'<span class="small">Noch keine. Lade unten ein Arbeitszeugnis hoch.</span>'}</div></div>
+  <div class="card" id="certcard"><h3>Arbeitszeugnis hochladen</h3><p class="small" style="margin:4px 0 12px">Deckt das Zeugnis eine Rolle ab, gibt es +100 Qualifikation in dieser Rolle. Die gleiche Qualifikation zählt nur einmal.</p>
    ${Object.entries(S.certs).map(([r,c])=>`<div class="app"><span>${esc(r)} · <span class="small">${esc(c.file)}</span></span>${S.roles.includes(r)?'<span class="tag sun">Erhalten</span>':`<button class="btn dark" data-act="certok" data-v="${esc(r)}">Anerkennen</button>`}</div>`).join('')}
    ${ROLES.filter(r=>!S.roles.includes(r)&&!S.certs[r]).length?`<label for="certrole">Welche Qualifikation?</label><select id="certrole">${ROLES.filter(r=>!S.roles.includes(r)&&!S.certs[r]).map(r=>`<option ${r===S.certRole?'selected':''}>${esc(r)}</option>`).join('')}</select>
-   <label class="btn ghost wide upload" for="cert">Zeugnis hochladen</label><input id="cert" class="vh" type="file" accept=".pdf,.jpg,.jpeg,.png">`:'<p class="small" style="margin:8px 0 0">Du hast alle Qualifikationen.</p>'}</div>
+   <label class="btn ghost wide upload" for="cert">Arbeitszeugnis hochladen</label><input id="cert" class="vh" type="file" accept=".pdf,.jpg,.jpeg,.png">`:'<p class="small" style="margin:8px 0 0">Du hast alle Qualifikationen.</p>'}</div>
   <button class="btn ghost wide" data-act="switch">Zur Ansicht für Betriebe</button>
   <button class="link" data-act="reset">Zurücksetzen</button>`;
 }
@@ -431,12 +419,12 @@ function render(){
   if(!S.role||S.onb>=0&&S.onb<99){root.innerHTML=onboarding();return}
   let body,items;
   if(S.role==='emp'){body=S.etab==='new'?empNew():S.etab==='prof'?empProf():empMine();items=[['mine','Meine Slots'],['new','Neuer Slot'],['prof','Profil']]}
-  else{body={slots:slotsView,kurse:kurseView,schichten:shiftsView,profil:profilView}[S.tab]();const n=S.instant.length;items=[['slots','Slots'],['kurse','Kurse'],['schichten','Schichten',n||''],['profil','Profil']]}
+  else{body={slots:slotsView,schichten:shiftsView,profil:profilView}[S.tab]();const n=S.instant.length;items=[['slots','Slots'],['schichten','Schichten',n||''],['profil','Profil']]}
   root.innerHTML=top()+`<div class="main">${body}</div>`+nav(items);
 }
 
-// Course or certificate: +200 qualification in its role, counted once per qualification.
-function qualify(r,t){const k=QUAL[r]||'gastro',b0=qScore(k);if(!S.roles.includes(r))S.roles.push(r);S.ev.push({a:k,t,p:200,q:r});const d=qScore(k)-b0;toast(r+' erhalten'+(d?`, +${d} Qualifikation in ${AN(k)}`:'')+'.')}
+// Work certificate: +100 qualification in the role it covers, counted once per qualification.
+function qualify(r,t){const k=QUAL[r]||'gastro',b0=qScore(k);if(!S.roles.includes(r))S.roles.push(r);S.ev.push({a:k,t,p:100,q:r});const d=qScore(k)-b0;toast(r+' erhalten'+(d?`, +${d} Qualifikation in ${AN(k)}`:'')+'.')}
 const ratedWho=x=>booker(x)?.n;
 root.addEventListener('click',e=>{
   const b=e.target.closest('[data-act]');if(!b)return;
@@ -449,8 +437,6 @@ root.addEventListener('click',e=>{
   else if(a==='fieldf'){S.fieldOnly=!S.fieldOnly}
   else if(a==='instant'){const id=+v;if(S.instant.includes(id)){S.instant=S.instant.filter(x=>x!==id);toast('Buchung storniert')}else{S.instant.push(id);toast('Gebucht. Die Schicht steht unter Meine Schichten.')}}
   else if(a==='scopen'){S.open=S.open===v?null:v}
-  else if(a==='book'){S.booked.push(v);toast('Angemeldet. Du bekommst eine Erinnerung.')}
-  else if(a==='complete'){const c=S.courses.find(x=>x.id===v);qualify(c.role,'Kurs '+c.name)}
   else if(a==='rate'){const k=b.dataset.k;if(k[0]==='e'){const x=S.eslots.find(y=>'e'+y.id===k);x.rating=+v;
      if(ratedWho(x)==='Rudolf M.'){S.ev=S.ev.filter(e=>e.k!==k);const pts=STARQ[v],d=10+pts;S.ev.push({a:x.area,t:'Schicht '+x.title,p:10,x:1,k},{a:x.area,t:v+(+v===1?' Stern':' Sterne')+' von '+S.biz,p:pts,k});toast('Bewertung gespeichert. Rudolf M.: '+(d>=0?'+':'−')+Math.abs(d)+' Qualifikation in '+AN(x.area))}
      else toast('Bewertung gespeichert')}else{S.rated[k]=+v;toast('Bewertung gespeichert')}}
@@ -458,7 +444,7 @@ root.addEventListener('click',e=>{
      if(ratedWho(x)==='Rudolf M.'){S.ev=S.ev.filter(e=>e.k!=='p'+k);S.ev.push({a:'v',t:(+v?'Pünktlich bei ':'Zu spät bei ')+S.biz,p:+v?2:-5,k:'p'+k});toast('Rudolf M.: Verhalten '+(+v?'+2':'−5'))}else toast('Gespeichert')}
   else if(a==='setrole'){if(S.role!==v){S.role=v;if(S.onb<99)S.onb=99}}
   else if(a==='switch'){S.role=S.role==='emp'?'studi':'emp';if(S.onb<99)S.onb=99}
-  else if(a==='certok'){qualify(v,'Zeugnis '+v)}
+  else if(a==='certok'){qualify(v,'Arbeitszeugnis '+v)}
   else if(a==='certgo'){S.tab='profil';S.certRole=v;save();render();const c=document.getElementById('certcard'),m=root.querySelector('.main');if(c&&m)m.scrollTop=c.offsetTop-m.offsetTop-12;return}
   else if(a==='reset'){S=fresh();toast('Zurückgesetzt')}
   const keep=root.querySelector('.main')?.scrollTop||0;
@@ -467,7 +453,7 @@ root.addEventListener('click',e=>{
 });
 root.addEventListener('change',e=>{
   if(e.target.id==='certrole'){S.certRole=e.target.value;save()}
-  if(e.target.id==='cert'&&e.target.files[0]){const r=document.getElementById('certrole').value;S.certs[r]={file:e.target.files[0].name};save();render();toast('Zeugnis für '+r+' wird geprüft')}
+  if(e.target.id==='cert'&&e.target.files[0]){const r=document.getElementById('certrole').value;S.certs[r]={file:e.target.files[0].name};save();render();toast('Arbeitszeugnis für '+r+' wird geprüft')}
 });
 root.addEventListener('submit',e=>{
   e.preventDefault();
