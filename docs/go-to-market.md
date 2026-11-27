@@ -1,6 +1,26 @@
 # Go-to-Market
 
-Input für Folie 5 (Go-to-Market in 3 Phasen). Oben der Stand vom Miro-Board, darunter die ausführlichen Ideen für Phase 3 „Wachsen“.
+Input für Folie 5 (Go-to-Market in 3 Phasen). Ganz oben die Kernaussage für die Folie, darunter der Stand vom Miro-Board und die ausführlichen Ideen für Phase 3 „Wachsen“.
+
+## Folie 5: Kernaussage (Stand 27.11. abends, nach Feedback)
+
+Feedback aus der Probe: zu viel Inhalt. Nur das Kernprinzip zeigen. Kein Gratis-Angebot, sondern ein niedrigerer Preis, damit klar bleibt, dass wir Geld verdienen.
+
+**Wir starten bei den Betrieben.** Studis kommen von selbst, wenn es Schichten gibt.
+
+| Phase | Was | Ziel |
+|---|---|---|
+| 1 Vorbereiten | Uni-Jobs + 5–10 Cafés und Bars am Campus. Pilotpreis 3 Monate: 40 % statt 60 % Aufschlag. Nebenbei Warteliste für Studis. | 90 % der Schichten besetzt |
+| 2 Auffallen | Betriebe gezielt ansprechen, wenn sie suchen („Aushilfe gesucht“). Argumente: volle Warteliste und Zahlen aus dem Pilot. | 13 Schichten am Tag = Break-even (Folie 4) |
+| 3 Wachsen | Eigendynamik (mehr Studis → schneller besetzt → mehr Betriebe) + Empfehlungen (10 € für beide nach der ersten Schicht) | nächste Uni-Stadt |
+
+Weitere Ideen nur nennen: SEO und KI-Suche, BAföG-Rechner, Ersti-Wochen, Ketten.
+
+Pilotpreis rechnet sich noch: 4 h × 15 € = 60 € Lohn, mit 40 % Aufschlag zahlt der Betrieb 84 €. Kosten laut Folie 4: 80 €. Bleiben 4 € pro Schicht statt 16 €.
+
+Warum die Studi-Warteliste allein nicht als Beweis in Phase 1 reicht: Sie zeigt Nachfrage, aber Betriebe fragen „Kommt wirklich jemand?“. Das beweist nur der Pilot. Die Warteliste ist das Türöffner-Argument in Phase 2.
+
+Folie: `pitch/folie-5-go-to-market.html` / `.png`, Redetext: `pitch/folie-5-redetext.txt`.
 
 ## Stand Miro-Board (27.11., 13:50)
 
