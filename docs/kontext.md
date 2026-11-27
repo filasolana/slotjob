@@ -65,24 +65,27 @@
 
 ## Plan des Teams (docs/plan.txt)
 
-1. **Instant-Zusage**: Wer die Bedingungen des Slots erfüllt und den Score erreicht, bekommt die Schicht sofort, ohne Bewerbung. Die Score-Schwelle je Rolle legt der Betreiber des Slots fest (Richtwert 500). Wer darunter liegt, auch Neueinsteiger, bewirbt sich mit anderen.
-2. **Reputation**: Balken je Rolle ganz oben in Slots, -100 bis 1000, Start bei 0. Punktevorschlag:
+1. **Instant-Zusage**: Wer die Bedingungen des Slots erfüllt (Score über der Schwelle, nötige Qualifikation), bekommt die Schicht sofort, ohne Bewerbung. Die Score-Schwelle je Rolle legt der Betrieb fest. Entschieden 27.11.: Der Start-Score liegt über den Schwellen aller Slots, Neueinsteiger können also sofort buchen. Bewerben muss sich nur, wer durch schlechtes Verhalten darunter fällt. Startwert noch festlegen.
+2. **Reputation**: Balken je Rolle ganz oben in Slots, -100 bis 1000, Start über den Slot-Schwellen. Entschieden 27.11.: Der Score misst nur Verhalten (Zuverlässigkeit, Bewertungen, Pünktlichkeit). Ob man einen Job fachlich kann, zeigen hochgeladene Zertifikate und Kurse; sie schalten bestimmte Jobs frei (z. B. Kellner). Punktevorschlag:
    - Schicht erledigt +20
    - Bewertung 5 Sterne +15, 4 Sterne +5, 3 Sterne 0, 2 Sterne -10, 1 Stern -25
    - Spontan oder On-Duty eingesprungen +30
    - Wiederholungsjob beim selben Betrieb +10
-   - Unentschuldigt gefehlt -100, Absage unter 24 h -30 (beides in allen Rollen)
+   - Unentschuldigt gefehlt -100, Absage unter 24 h -30 (beides in allen Rollen); Krankmeldung: keine Minuspunkte
    - Zu spät über 15 Minuten -10
-   - Kurs oder Zeugnis +100; gleiche Qualifikation zählt nur einmal, höchstens +200 je Rolle
-   - Beispiel: Kurs plus 12 Schichten mit 5 Sternen = 520
+   - Kurs oder Zeugnis +100; gleiche Qualifikation zählt nur einmal, höchstens +200 je Rolle (offen, ob das bleibt, wenn Zertifikate Jobs freischalten)
    - Minuspunkte halbieren sich nach 3 Monaten
 3. **Rollen (5)**: Gastronomie (fest), Handel und Lager, Events und Aufbau, Campus, Büro und IT (Vorschläge). Kellner und Barista sind Qualifikationen in der Gastronomie.
 4. **Filter**: Für mich verfügbar, Nicht verfügbar (mit Grund).
-5. **Absagen**: mehr Geld für spontane Schichten (zahlt SlotJob, Absicherung für Betriebe). On-Duty: Leute auf Abruf springen bei Ausfall ein.
+5. **Absagen**: mehr Geld für spontane Schichten (zahlt SlotJob, Absicherung für Betriebe). On-Duty: Leute auf Abruf springen bei Ausfall ein, nur freiwillig (Abruf ist gesetzlich nur mit 4 Tagen Vorlauf verpflichtend, § 12 TzBfG). Entschieden 27.11.: Krankmeldung kostet keine Punkte, wie im normalen Job; SlotJob schreibt die Schicht als Spontan-Schicht mit höherem Lohn neu aus und trägt die Mehrkosten aus der Marge.
 6. **Einarbeitung**: Wiederholungsjobs belohnen, z. B. bessere Chancen beim selben Betrieb.
 7. **Betreuung**: Schichten-Manager bei SlotJob als Ansprechpartner für beide Seiten.
 8. **Geld** (entschieden 27.11.): Der Vertrag läuft über SlotJob. SlotJob ist Arbeitgeber der Studis (Zeitarbeit, Erlaubnis der Bundesagentur für Arbeit nötig) und verleiht sie pro Slot an Betriebe. Betriebe zahlen einen Stundensatz (Vorschlag ca. 25 €/h), SlotJob zahlt den Lohn; Einnahme ist die Marge pro Stunde, dazu eine Vermittlungsgebühr bei Festanstellung. Details: `docs/vertragsmodell.md`.
-9. **Vorteile für Betriebe**: Schichten sicherer besetzt (auch spontan), geringere Kosten durch unverbindliche Mitarbeiter, keine Recruiting-Kosten.
+9. **Vorteile für Betriebe**. Pitch-Satz: „Betriebe zahlen nur die Schichten, die sie brauchen.“
+   - Geringere Kosten (Hauptvorteil): keine festen Mitarbeiter, denen man jede Woche die gleichen Stunden geben muss
+   - Schichten sicherer besetzt: Spontan-Schichten und On-Duty fangen Krankheit auf
+   - Geprüfte Qualität: Score zeigt Zuverlässigkeit, Zertifikate zeigen Qualifikation
+   - Kein Papierkram, keine Recruiting-Kosten: SlotJob ist Arbeitgeber
 
 ## Gebaut und offen
 
@@ -98,6 +101,8 @@ Offen:
 - Minuspunkte verblassen nach 3 Monaten
 - On-Duty, Spontan-Bonus, Schichten-Manager
 - Provision (nur als Hinweis im Betriebsprofil; muss auf Stundensatz umgestellt werden, weil SlotJob jetzt Arbeitgeber ist)
+- Start-Score über den Slot-Schwellen (im Prototyp startet der Score noch bei 0)
+- Profil-Karte „BAföG-Freigrenze“ in „Minijob-Grenze“ umbenennen; BAföG-Grenze optional später als extra Balken
 
 ## Offene Fragen
 
@@ -106,7 +111,9 @@ Offen:
 - Sollen die vier vorgeschlagenen Rollen so bleiben?
 - Wie verhindern wir, dass Betriebe den Score unfair drücken (z. B. Einspruch, Mindestanzahl Bewertungen)?
 - Rechtlicher Rahmen für unverbindliche Mitarbeiter und Abruf (On-Duty).
-- Weitere kritische Punkte und offene Fragen (Score vs. Einsteiger, Absage-Strafe, Geschäftsmodell, BAföG-Beschriftung): `docs/plan.txt` unter OFFEN.
+- Welcher Score-Startwert, und dürfen Betriebe die Schwelle darüber setzen?
+- Keine Minuspunkte auch bei verlegter Prüfung, oder nur bei Krankheit?
+- Weitere offene Fragen (Ausfallgeld, Stundensatz, Auszahlung, Kurse, Konkurrenz, POV): `docs/plan.txt` unter OFFEN.
 
 ## Weitere Unterlagen (für die Folien)
 

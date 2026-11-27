@@ -3,15 +3,20 @@ Jeder schreibt einfach unter "Team:" mit Namen.
 
 
 1. INSTANT-ZUSAGE (neu)
-- Bedingungen erfüllt = Schicht sofort, ohne Bewerbung bei score größer gleich 500
-- Bedingungen je Slot: Score-Schwelle je Rolle, wird festgelegt vom betreiber des slots. 
-- Neueinsteiger: zählen zu score unter 500; man muss sich auf einen slot mit anderen bewerben. 
+- Bedingungen erfüllt (Score über der Schwelle + nötige Qualifikation) = Schicht sofort, ohne Bewerbung
+- Bedingungen je Slot: Score-Schwelle je Rolle, wird festgelegt vom Betreiber des Slots.
+- Neueinsteiger (entschieden 27.11.): Der Start-Score liegt so hoch, dass alle eingestellten Slots
+  darunter liegen. Neue können also sofort buchen. Bewerben muss sich nur, wer durch schlechtes
+  Verhalten unter die Schwelle fällt. Genauer Startwert: noch festlegen.
 Team:
 
 
 2. REPUTATION
 - Balken je Rolle ganz oben in Slots
-- Skala -100 bis +1000, Start bei 0
+- Skala -100 bis +1000, Start über den Slot-Schwellen (siehe 1)
+- Score misst nur Verhalten (entschieden 27.11.): Zuverlässigkeit, Bewertungen, Pünktlichkeit.
+  Ob man einen Job fachlich kann, zeigen Zertifikate und Kurse, die man hochlädt.
+  Sie schalten bestimmte Jobs frei (z. B. Kellner).
 - Plus: Schichten gut erledigt
 - Minus: unentschuldigt gefehlt, schlechte Arbeit
 - Vorschlag Punkte:
@@ -20,10 +25,10 @@ Team:
   Spontan / On-Duty eingesprungen +30
   Wiederholungsjob beim selben Betrieb +10
   Unentschuldigt gefehlt -100 (in allen Rollen)
-  Absage unter 24 h -30 (in allen Rollen)
+  Absage unter 24 h -30 (in allen Rollen), Krankmeldung: keine Minuspunkte (siehe 5)
   Zu spät über 15 Min -10
   Kurs oder Zeugnis +100 (gleiche Qualifikation zählt nur einmal, max. +200 je Rolle)
-- Beispiel: Kurs + 12 Schichten mit 5 Sternen = 520, also Instant-Zusage
+  (offen: bleibt das, wenn Zertifikate jetzt Jobs freischalten?)
 - Minuspunkte halbieren sich nach 3 Monaten
 Team:
 
@@ -45,7 +50,10 @@ Team:
 
 5. ABSAGEN
 - Mehr Geld für spontane Schichten (zahlen wir, Absicherung für Betriebe)
-- On-Duty: Leute auf Abruf springen bei Ausfall ein
+- On-Duty: Leute auf Abruf springen bei Ausfall ein (nur freiwillig: Abruf ist gesetzlich
+  nur mit 4 Tagen Vorlauf verpflichtend, § 12 TzBfG)
+- Krankmeldung (entschieden 27.11.): keine Minuspunkte, wie im normalen Job. SlotJob schreibt
+  die Schicht als Spontan-Schicht mit höherem Lohn neu aus und trägt die Mehrkosten aus der Marge.
 Team:
 
 
@@ -71,10 +79,12 @@ Team:
 Team:
 
 
-9. VORTEILE FÜR BETRIEBE
-- Schichten sicherer besetzt, auch spontan
-- Geringere Kosten durch unverbindliche Mitarbeiter
-- Keine Recruiting-Kosten
+9. VORTEILE FÜR BETRIEBE  (Pitch-Satz: "Betriebe zahlen nur die Schichten, die sie brauchen.")
+- Geringere Kosten (Hauptvorteil): keine festen Mitarbeiter, denen man jede Woche
+  die gleichen Stunden geben muss
+- Schichten sicherer besetzt: Spontan-Schichten und On-Duty fangen Krankheit auf
+- Geprüfte Qualität: Score zeigt Zuverlässigkeit, Zertifikate zeigen Qualifikation
+- Kein Papierkram, keine Recruiting-Kosten: SlotJob ist Arbeitgeber
 Team:
 
 
@@ -83,27 +93,22 @@ OFFEN
 - Reicht Kurs angemeldet oder erst abgeschlossen?
 - Kurse / Zertifikate / Joberfahrung: noch leer
 
-Kritische Punkte zum aktuellen Stand (Jesper, 27.11.):
-- Score baut die Erfahrungshürde wieder auf: Erstis starten bei 0, Sofort-Buchen ab 500
-  braucht ca. Kurs + 12 Schichten mit 5 Sternen. Unsere Zielgruppe "ohne Vorerfahrung"
-  bewirbt sich bis dahin gegen alle, die Funkstille bleibt. Demo zeigt nur den erfahrenen Rudolf.
-  Vorschlag: Slots mit "Auch ohne Erfahrung" haben automatisch Schwelle 0,
-  oder Betriebe halten ein Kontingent für Einsteiger frei.
-- Absage unter 24 h -30 gilt auch bei Krankheit oder verlegter Klausur. Widerspricht
-  "Studium hat Vorrang", Krankheit bestrafen ist arbeitsrechtlich heikel und fördert
-  Krankmelden statt ehrlich absagen (wie im Interview).
-  Vorschlag: Absage mit Nachweis (Attest, Prüfungstermin) ohne Minuspunkte.
-- "Geringere Kosten durch unverbindliche Mitarbeiter" klingt nach der unsicheren Arbeit,
-  die unsere Recherche kritisiert. Mindestlohn, Urlaub, Sozialversicherung gelten auch pro Schicht.
-  On-Duty: Abruf ist gesetzlich nur mit 4 Tagen Vorlauf verpflichtend (§ 12 TzBfG),
-  also nur freiwillig, Bereitschaft sollte bezahlt sein.
-  Pitch-Formulierung: "Betriebe zahlen nur die Schichten, die sie brauchen."
-- (erledigt) Geschäftsmodell Marktplatz vs. Zeitarbeit: entschieden, siehe 8. GELD.
-- Profil-Karte "BAföG-Freigrenze 603 €" ist falsch beschriftet: 603 € ist die Minijob-Grenze.
-  BAföG rechnet über den Bewilligungszeitraum, Ratgeber nennen 6.251 oder 7.236 €/Jahr
-  (siehe docs/recherche.md). Schnelle Lösung: Karte in "Minijob-Grenze" umbenennen.
+Kritische Punkte (Jesper, 27.11.), Stand nach Team-Absprache:
+- (erledigt) Score vs. Einsteiger: Start-Score über den Slot-Schwellen, Score misst nur
+  Verhalten, Zertifikate schalten Jobs frei. Siehe 1. und 2.
+- (erledigt) Absage bei Krankheit: Krankmeldung ohne Minuspunkte, SlotJob trägt die
+  Spontan-Schicht. Siehe 5.
+- (erledigt) Pitch für Betriebe: "Betriebe zahlen nur die Schichten, die sie brauchen." Siehe 9.
+- (erledigt) Geschäftsmodell: Zeitarbeit, siehe 8. Muss noch durchgerechnet werden (AUFGABEN).
+- (erledigt) Profil-Karte "BAföG-Freigrenze 603 €" wird in "Minijob-Grenze" umbenannt (AUFGABEN).
+  BAföG-Grenze kommt optional später als extra Balken dazu, einfach, weil alle Verdienstdaten
+  bei uns liegen. Achtung: BAföG rechnet über den Bewilligungszeitraum, nicht pro Monat,
+  Ratgeber nennen 6.251 oder 7.236 €/Jahr (siehe docs/recherche.md).
 
 Noch offene Fragen:
+- Score-Startwert: welcher Wert, und dürfen Betriebe die Schwelle über den Startwert setzen?
+- Geben Kurse und Zertifikate weiter +100 Score, oder schalten sie nur Jobs frei?
+- Keine Minuspunkte auch bei verlegter Prüfung, oder nur bei Krankheit?
 - Betrieb sagt kurzfristig ab: Zahlt SlotJob dem Studi Ausfallgeld und stellt es dem Betrieb
   in Rechnung? (Geht jetzt, weil SlotJob Arbeitgeber ist.)
 - Stundensatz für Betriebe: wie hoch genau? (Vorschlag ca. 25 €/h, siehe docs/vertragsmodell.md)
@@ -123,3 +128,7 @@ AUFGABEN (Name eintragen)
 - Instant-Zusage bauen:
 - Filter bauen:
 - Betriebsprofil: Hinweis "Provision" ersetzen durch "Stundensatz, SlotJob ist Arbeitgeber, kein Papierkram":
+- Prototyp: Start-Score über den Slot-Schwellen umsetzen (startet im Prototyp noch bei 0):
+- Prototyp: Profil-Karte "BAföG-Freigrenze" in "Minijob-Grenze" umbenennen:
+- Optional: BAföG-Grenze als extra Balken:
+- Geld durchrechnen für Folie 4 (Marge vs. Spontan-Bonus, Ausfälle, Schichten-Manager):
