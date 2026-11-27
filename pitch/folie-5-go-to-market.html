@@ -49,16 +49,27 @@
   .step{align-self:end;margin-bottom:44px;justify-self:center;width:52px;height:52px;border-radius:50%;background:var(--ink);display:grid;place-items:center}
   .step svg{width:26px;height:26px}
 
-  /* Phase 2: Zettel im Fenster -> SlotJob */
-  .scene{display:flex;align-items:center;justify-content:center;gap:18px;width:100%}
-  .sign{position:relative;background:#fff;width:214px;padding:30px 22px 22px;transform:rotate(-4deg);box-shadow:0 10px 24px rgba(22,24,27,.12)}
-  .sign::before{content:"";position:absolute;top:-12px;left:50%;width:84px;height:26px;margin-left:-42px;background:rgba(255,205,56,.85);transform:rotate(3deg)}
-  .sign p{margin:0;font-family:var(--display);font-weight:800;font-size:36px;line-height:1;letter-spacing:-.8px}
-  .sign i{display:block;height:7px;border-radius:4px;background:var(--line);margin-top:14px;width:80%}
-  .sign i + i{margin-top:9px;width:55%}
-  .scene .arrow{width:70px;flex:none}
-  .badge{width:124px;height:124px;border-radius:50%;background:var(--ink);display:grid;place-items:center;flex:none}
-  .badge svg{width:76px;height:76px}
+  /* Phase 2: Zettel im Fenster + Online-Anzeige -> SlotJob */
+  .scene{display:flex;align-items:center;justify-content:center;gap:10px;width:100%}
+  .sources{display:flex;flex-direction:column;align-items:center;gap:34px;width:244px;flex:none}
+  .sign{position:relative;background:#fff;width:200px;padding:26px 20px 18px;transform:rotate(-4deg);box-shadow:0 10px 24px rgba(22,24,27,.12)}
+  .sign::before{content:"";position:absolute;top:-12px;left:50%;width:80px;height:24px;margin-left:-40px;background:rgba(255,205,56,.85);transform:rotate(3deg)}
+  .sign p{margin:0;font-family:var(--display);font-weight:800;font-size:31px;line-height:1;letter-spacing:-.7px}
+  .sign i{display:block;height:7px;border-radius:4px;background:var(--line);margin-top:13px;width:80%}
+  .sign i + i{margin-top:8px;width:55%}
+  .web{width:240px;background:#fff;border-radius:16px;padding:12px 14px 16px;transform:rotate(2deg);box-shadow:0 10px 24px rgba(22,24,27,.12)}
+  .web .dots{display:flex;gap:6px}
+  .web .dots i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+  .web .search{margin-top:10px;display:flex;align-items:center;gap:8px;border:2px solid var(--line);border-radius:999px;padding:6px 12px;font-size:17px;font-weight:600;white-space:nowrap}
+  .web .search svg{width:18px;height:18px;flex:none}
+  .web .hit{margin-top:12px;display:flex;align-items:center;gap:10px}
+  .web .hit svg{width:34px;height:34px;flex:none}
+  .web .hit span{flex:1}
+  .web .hit i{display:block;height:7px;border-radius:4px;background:var(--line);width:90%}
+  .web .hit i + i{margin-top:7px;width:60%}
+  .visual .fan{width:64px;height:300px;flex:none}
+  .badge{width:112px;height:112px;border-radius:50%;background:var(--ink);display:grid;place-items:center;flex:none}
+  .badge svg{width:70px;height:70px}
 
 
 </style>
@@ -139,8 +150,30 @@
       <div class="head"><b>2</b><span>Auffallen</span></div>
       <div class="visual">
         <div class="scene">
-          <div class="sign"><p>Aushilfe gesucht!</p><i></i><i></i></div>
-          <svg class="arrow" viewBox="0 0 70 30" aria-hidden="true"><path d="M4 15h52" stroke="#16181b" stroke-width="5" stroke-linecap="round" marker-end="url(#ah)"/></svg>
+          <div class="sources">
+            <div class="sign"><p>Aushilfe gesucht!</p><i></i><i></i></div>
+            <div class="web">
+              <div class="dots"><i></i><i></i><i></i></div>
+              <div class="search">
+                <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="#16181b" stroke-width="2.6"/><path d="M13 13l4.5 4.5" stroke="#16181b" stroke-width="2.6" stroke-linecap="round"/></svg>
+                Nebenjob Potsdam
+              </div>
+              <div class="hit">
+                <svg viewBox="0 0 40 40" aria-hidden="true">
+                  <rect x="0" y="6" width="40" height="28" rx="7" fill="#ffcd38"/>
+                  <circle cx="0" cy="20" r="4.5" fill="#fff"/>
+                  <circle cx="40" cy="20" r="4.5" fill="#fff"/>
+                  <circle cx="20" cy="20" r="8" fill="none" stroke="#16181b" stroke-width="2.6"/>
+                  <path d="M20 15.4V20l3.2 2.2" stroke="#16181b" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+                </svg>
+                <span><i></i><i></i></span>
+              </div>
+            </div>
+          </div>
+          <svg class="fan" viewBox="0 0 64 300" aria-hidden="true">
+            <path d="M6 74L46 138" stroke="#16181b" stroke-width="5" stroke-linecap="round" marker-end="url(#ah)"/>
+            <path d="M6 232L46 164" stroke="#16181b" stroke-width="5" stroke-linecap="round" marker-end="url(#ah)"/>
+          </svg>
           <div class="badge">
             <svg viewBox="0 0 40 40" aria-hidden="true">
               <rect x="0" y="6" width="40" height="28" rx="7" fill="#ffcd38"/>
@@ -152,7 +185,7 @@
           </div>
         </div>
       </div>
-      <div class="what">Betriebe gezielt ansprechen</div>
+      <div class="what">Da sein, wo gesucht wird</div>
       <div class="goal"><small>Ziel · Break-even</small><span>13 Schichten am Tag</span></div>
     </div>
 

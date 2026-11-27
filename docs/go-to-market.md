@@ -11,12 +11,12 @@ Feedback aus der Probe: zu viel Inhalt. Nur das Kernprinzip zeigen. Kein Gratis-
 | Phase | Was | Ziel |
 |---|---|---|
 | 1 Vorbereiten | Uni-Jobs + 5–10 Cafés und Bars am Campus. Pilotpreis 3 Monate: 40 % statt 60 % Aufschlag. Nebenbei Warteliste für Studis. | 90 % der Schichten besetzt |
-| 2 Auffallen | Betriebe gezielt ansprechen, wenn sie suchen („Aushilfe gesucht“). Argumente: volle Warteliste und Zahlen aus dem Pilot. | 13 Schichten am Tag = Break-even (Folie 4) |
+| 2 Auffallen | Da sein, wo gesucht wird: Betriebe gezielt ansprechen, wenn sie suchen („Aushilfe gesucht“), und Anzeigen auf Indeed und der Uni-Jobbörse für Studis, die einen Job suchen. | 13 Schichten am Tag = Break-even (Folie 4) |
 | 3 Wachsen | Eigendynamik (mehr Studis → schneller besetzt → mehr Betriebe) + Referral-Boni auf beiden Seiten: Studis werben Studis, Betriebe werben Betriebe | nächste Uni-Stadt |
 
 Weitere Ideen nur nennen: SEO und KI-Suche, BAföG-Rechner, Ersti-Wochen, Ketten.
 
-Auf der Folie stehen nur Phase, Bild, eine Zeile und das Ziel. Pilotpreis, Warteliste und Bonushöhe kommen nur im Redetext vor.
+Auf der Folie stehen nur Phase, Bild, eine Zeile und das Ziel. Weitere Ideen (SEO und KI-Suche, BAföG-Rechner, Ersti-Events, Ketten) nicht auf der Folie und nicht im Redetext, nur für Rückfragen.
 
 Pilotpreis rechnet sich noch: 4 h × 15 € = 60 € Lohn, mit 40 % Aufschlag zahlt der Betrieb 84 €. Kosten laut Folie 4: 80 €. Bleiben 4 € pro Schicht statt 16 €.
 
