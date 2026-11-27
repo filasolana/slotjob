@@ -41,10 +41,6 @@
   .visual svg{width:100%;height:100%;display:block}
 
   .what{font-family:var(--display);font-weight:600;font-size:30px;letter-spacing:-.4px;line-height:1.15}
-  .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-  .tag{display:inline-flex;align-items:baseline;gap:10px;background:#fff;border-radius:999px;padding:9px 18px;font-size:19px;font-weight:600}
-  .tag s{color:var(--mute);text-decoration-color:var(--coral);text-decoration-thickness:3px}
-  .tag .lbl{color:var(--mute)}
 
   .goal{margin-top:20px;background:var(--ink);color:#fff;border-radius:16px;padding:13px 20px 14px}
   .goal small{display:block;font-size:14px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#b9bcc0}
@@ -69,7 +65,6 @@
   .chips{display:flex;gap:14px;flex:1}
   .chip{flex:1;text-align:center;border:2.5px solid var(--sun);border-radius:999px;padding:11px 14px;color:#fff;font-size:22px;font-weight:600;white-space:nowrap}
 
-  .foot{margin-top:auto;padding-top:14px;font-size:15px;color:var(--mute)}
 </style>
 </head>
 <body>
@@ -138,7 +133,6 @@
         </svg>
       </div>
       <div class="what">Uni + 5–10 Cafés &amp; Bars</div>
-      <div class="tags"><span class="tag"><span class="lbl">Pilotpreis</span><s>60 %</s> 40 % Aufschlag</span></div>
       <div class="goal"><small>Ziel</small><span>90 % besetzt</span></div>
     </div>
 
@@ -163,7 +157,6 @@
         </div>
       </div>
       <div class="what">Betriebe gezielt ansprechen</div>
-      <div class="tags"><span class="tag">Volle Warteliste</span><span class="tag">Zahlen aus dem Pilot</span></div>
       <div class="goal"><small>Ziel · Break-even</small><span>13 Schichten am Tag</span></div>
     </div>
 
@@ -173,29 +166,30 @@
     <div class="phase p3">
       <div class="head"><b>3</b><span>Wachsen</span></div>
       <div class="visual">
-        <svg viewBox="0 0 400 270" aria-hidden="true">
-          <!-- Kreislauf -->
-          <path d="M118 88C160 22 240 22 282 88" fill="none" stroke="#16181b" stroke-width="5" stroke-linecap="round" marker-end="url(#ah)"/>
-          <path d="M282 172C240 238 160 238 118 172" fill="none" stroke="#16181b" stroke-width="5" stroke-linecap="round" marker-end="url(#ah)"/>
+        <svg viewBox="0 40 440 222" aria-hidden="true">
+          <!-- Studis werben Studis, Betriebe werben Betriebe -->
+          <path d="M76 126C40 46 160 46 126 124" fill="none" stroke="#16181b" stroke-width="5" stroke-linecap="round" marker-end="url(#ah)"/>
+          <path d="M316 126C280 46 400 46 366 124" fill="none" stroke="#16181b" stroke-width="5" stroke-linecap="round" marker-end="url(#ah)"/>
+          <rect x="160" y="64" width="120" height="40" rx="20" fill="#fff" stroke="#ffcd38" stroke-width="4"/>
+          <text x="220" y="91" text-anchor="middle" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="22" fill="#16181b">Referral</text>
+          <!-- Studis und Betriebe ziehen sich gegenseitig an -->
+          <path d="M154 152Q220 132 282 152" fill="none" stroke="#16181b" stroke-width="5" stroke-linecap="round" marker-end="url(#ah)"/>
+          <path d="M286 190Q220 210 158 190" fill="none" stroke="#16181b" stroke-width="5" stroke-linecap="round" marker-end="url(#ah)"/>
           <!-- Studis -->
-          <circle cx="84" cy="130" r="48" fill="#16181b"/>
-          <circle cx="84" cy="116" r="13" fill="#ffcd38"/>
-          <path d="M60 154a24 22 0 0 1 48 0z" fill="#ffcd38"/>
-          <text x="84" y="210" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-weight="700" font-size="20" fill="#16181b">Studis</text>
+          <circle cx="100" cy="171" r="46" fill="#16181b"/>
+          <circle cx="100" cy="157" r="13" fill="#ffcd38"/>
+          <path d="M77 194a23 21 0 0 1 46 0z" fill="#ffcd38"/>
+          <text x="100" y="250" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-weight="700" font-size="20" fill="#16181b">Studis</text>
           <!-- Betriebe -->
-          <circle cx="316" cy="130" r="48" fill="#ffcd38"/>
-          <path d="M292 112l6-14h36l6 14z" fill="#16181b"/>
-          <path d="M292 112a6 6 0 0 0 12 0a6 6 0 0 0 12 0a6 6 0 0 0 12 0a6 6 0 0 0 12 0" fill="#16181b"/>
-          <path d="M296 122v30h40v-30" fill="none" stroke="#16181b" stroke-width="4.5" stroke-linejoin="round"/>
-          <rect x="309" y="134" width="14" height="18" fill="#16181b"/>
-          <text x="316" y="210" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-weight="700" font-size="20" fill="#16181b">Betriebe</text>
-          <!-- Empfehlung -->
-          <rect x="152" y="108" width="96" height="44" rx="22" fill="#fff" stroke="#ffcd38" stroke-width="4"/>
-          <text x="200" y="139" text-anchor="middle" font-family="'Bricolage Grotesque',system-ui,sans-serif" font-weight="800" font-size="26" fill="#16181b">+10 €</text>
+          <circle cx="340" cy="171" r="46" fill="#ffcd38"/>
+          <path d="M315 154l6-14h38l6 14z" fill="#16181b"/>
+          <path d="M315 154a6.25 6.25 0 0 0 12.5 0a6.25 6.25 0 0 0 12.5 0a6.25 6.25 0 0 0 12.5 0a6.25 6.25 0 0 0 12.5 0" fill="#16181b"/>
+          <path d="M320 163v30h40v-30" fill="none" stroke="#16181b" stroke-width="4.5" stroke-linejoin="round"/>
+          <rect x="333" y="175" width="14" height="18" fill="#16181b"/>
+          <text x="340" y="250" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-weight="700" font-size="20" fill="#16181b">Betriebe</text>
         </svg>
       </div>
-      <div class="what">Eigendynamik + Empfehlungen</div>
-      <div class="tags"><span class="tag">10 € für beide nach der ersten Schicht</span></div>
+      <div class="what">Eigendynamik + Referral-Boni</div>
       <div class="goal"><small>Ziel</small><span>Nächste Uni-Stadt</span></div>
     </div>
 
@@ -210,8 +204,6 @@
       <span class="chip">Ketten</span>
     </div>
   </div>
-
-  <div class="foot">Pilotpreis 3 Monate, danach 60 % Aufschlag · Break-even und Aufschlag siehe Folie 4</div>
 
 </div>
 </body>
