@@ -15,7 +15,7 @@
 - **Slots**
   - Oben "Dein Score" mit zwei Teilen. Verhalten: ein Balken für alle Rollen, 0 bis 100. Qualifikation: 5 Balken, einer je Rolle, 0 bis 1000. Tippen auf einen Balken zeigt, woraus der Wert besteht, und die Punkteregeln in zwei Spalten.
   - Darunter "Freie Schichten" mit der Zeile "An deinen freien Tagen: Mo, Mi, Fr, Sa · Ändern".
-  - Filter: "Verfügbar" (an freien Tagen) und "Nicht verfügbar" (mit Grund, z. B. "Di ist kein freier Tag").
+  - Filter: "Verfügbar" (an freien Tagen) und "Nicht verfügbar" (mit Grund, z. B. "Di ist kein freier Tag"). Darunter der Schalter "Nur passend zu Maschinenbau": zeigt nur Slots, die der Betrieb mit dem eigenen Studiengang markiert hat.
   - Slotkarte: Datum, Uhrzeit, Betrieb, Tätigkeit, Weg, Dauer, Rolle als Tag, Lohn, darunter "Sofort ab: Verhalten 70 ✓ · Gastronomie 300 ✓". Der Knopf:
     - "Sofort buchen", wenn beide Schwellen erreicht sind. Die Schicht steht dann direkt unter Zugesagt.
     - "Nicht verfügbar", wenn eine Schwelle fehlt ("Gastronomie 300 nötig, du hast 250", mit Link zu Kurs und Zeugnis) oder der Tag kein freier Tag ist.
@@ -39,12 +39,12 @@
 ### Demo-Daten
 
 - Rudolf, Verhalten 92: Start 80, 16 × pünktlich +32, spontan eingesprungen +5, 3 × zu spät −15, Absage unter 24 h −10.
-- Rudolf, Qualifikation: Gastronomie 250 (14 Schichten +140, 11 × 5 Sterne +110), Handel und Lager 70, Campus 100 (Studium Maschinenbau), Events und Aufbau 0, Büro und IT 0.
+- Rudolf, Qualifikation: Gastronomie 250 (14 Schichten +140, 11 × 5 Sterne +110), Handel und Lager 70, Events und Aufbau 0, Campus 0, Büro und IT 0.
 - 7 Slots: 3 verfügbar, 4 nicht verfügbar (Kellner wegen Qualifikation, Konzert wegen Verhalten, Di und Do keine freien Tage).
   - Service und Kasse (Gastronomie, Verhalten 70, Qualifikation 0): Sofort buchen.
   - Kellner:in Abendschicht (Gastronomie, 70, 300): nicht verfügbar (250), nach dem Kurs Sofort buchen.
   - Lager und Leergut (Handel und Lager, 70, 0): Sofort buchen.
-  - CAD-Modelle (Campus, 80, 100): Sofort buchen.
+  - CAD-Modelle (Campus, 80, 0, passt zu Maschinenbau): Sofort buchen.
   - Aufbau Konzert (Events und Aufbau, 95, 0): nicht verfügbar, weil Verhalten 92.
   - Helpdesk (Dienstag) und Inventur (Donnerstag): nicht verfügbar.
 
@@ -56,19 +56,19 @@
 
 ## Technik
 
-- Eine Datei `site/index.html` (HTML, CSS, JavaScript), kein Server. Der Zustand liegt im Browser (localStorage, Schlüssel `slotjob-v4`). "Zurücksetzen" im Profil stellt die Demo-Daten wieder her.
+- Eine Datei `site/index.html` (HTML, CSS, JavaScript), kein Server. Der Zustand liegt im Browser (localStorage, Schlüssel `slotjob-v5`). "Zurücksetzen" im Profil stellt die Demo-Daten wieder her.
 - Repo mit `site/index.html`, `docs/plan.txt`, `docs/kontext.md`, `ideen/`. Deploy mit `python3 deploy.py` auf Cloudflare Pages.
-- Beide Scores werden aus einer Ereignisliste berechnet (Rolle oder Verhalten, Text, Punkte). Verhalten 0 bis 100. Qualifikation 0 bis 1000: gleiche Qualifikation einmal, Schichten höchstens +400, passendes Studium +100.
+- Beide Scores werden aus einer Ereignisliste berechnet (Rolle oder Verhalten, Text, Punkte). Verhalten 0 bis 100. Qualifikation 0 bis 1000: gleiche Qualifikation einmal, Schichten höchstens +400. Der Studiengang zählt nicht.
 
 ## Plan des Teams (docs/plan.txt)
 
 1. **Instant-Zusage** (entschieden 27.11.): Der Betrieb setzt je Slot zwei Schwellen, Verhalten (Standard 70) und Qualifikation in der Rolle. Beide erreicht: sofort buchen. Eine fehlt: nicht verfügbar. Keine Bewerbung. Neue starten mit Verhalten 80 und Qualifikation 0.
 2. **Reputation, zwei Scores** (entschieden 27.11.):
    - Verhalten, einer pro Person, 0 bis 100, Start 80: pünktlich +2, spontan oder On-Duty +5, zu spät −5, Absage unter 24 h −10, gefehlt −30, Krankmeldung 0, Minuspunkte halbieren sich nach 3 Monaten.
-   - Qualifikation je Rolle, 0 bis 1000, Start 0: Kurs +200, Zeugnis +200 (gleiche Qualifikation einmal), Schicht in der Rolle +10 (höchstens +400), 5 Sterne +10, 1 bis 2 Sterne −10, passendes Studium +100.
+   - Qualifikation je Rolle, 0 bis 1000, Start 0: Kurs +200, Zeugnis +200 (gleiche Qualifikation einmal), Schicht in der Rolle +10 (höchstens +400), 5 Sterne +10, 1 bis 2 Sterne −10. Der Studiengang zählt nicht für den Score.
    - Nach der Schicht: "Pünktlich und zuverlässig?" zählt für Verhalten, Sterne für die Arbeit zählen für Qualifikation.
 3. **Rollen (5)**: Gastronomie (fest), Handel und Lager, Events und Aufbau, Campus, Büro und IT (Vorschläge). Kellner und Barista sind Qualifikationen in der Gastronomie.
-4. **Filter**: Verfügbar (Sofort buchen), Nicht verfügbar (mit Grund).
+4. **Filter**: Verfügbar (Sofort buchen), Nicht verfügbar (mit Grund). Dazu Studiengang als eigener Filter, kein Score (entschieden 27.11.).
 5. **Absagen**: mehr Geld für spontane Schichten (zahlt SlotJob, Absicherung für Betriebe). On-Duty: Leute auf Abruf springen bei Ausfall ein, nur freiwillig (Abruf ist gesetzlich nur mit 4 Tagen Vorlauf verpflichtend, § 12 TzBfG). Entschieden 27.11.: Krankmeldung kostet keine Punkte, wie im normalen Job; SlotJob schreibt die Schicht als Spontan-Schicht mit höherem Lohn neu aus und trägt die Mehrkosten aus der Marge.
 6. **Einarbeitung**: Wiederholungsjobs belohnen, z. B. bessere Chancen beim selben Betrieb.
 7. **Betreuung**: Schichten-Manager bei SlotJob als Ansprechpartner für beide Seiten.
@@ -85,7 +85,8 @@ Gebaut:
 - Zwei Scores: Verhalten (einer) und Qualifikation (je Rolle), Balken, Herkunft der Punkte
 - Zwei Schwellen je Slot, Sofort buchen nur wenn beide erreicht, sonst nicht verfügbar
 - Filter verfügbar / nicht verfügbar mit Grund
-- Kurs oder Zeugnis +200 Qualifikation, einmal je Qualifikation; passendes Studium +100
+- Kurs oder Zeugnis +200 Qualifikation, einmal je Qualifikation
+- Studiengang als Label auf dem Slot ("Passt zu Maschinenbau") und Filter "Nur passend zu Maschinenbau"; der Betrieb wählt den Studiengang beim neuen Slot
 - Betrieb bewertet Pünktlichkeit (Verhalten) und Arbeit (Qualifikation)
 - Minijob-Grenze im Profil, Stundensatz im Betriebsprofil
 

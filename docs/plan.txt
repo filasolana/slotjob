@@ -27,7 +27,6 @@ Team:
   Zeugnis / Zertifikat geprüft +200 (gleiche Qualifikation zählt nur einmal)
   Schicht in der Rolle +10 (aus Schichten höchstens +400)
   Arbeit 5 Sterne +10, 1 oder 2 Sterne -10
-  Passendes Studium +100 (z. B. Informatik für Büro und IT)
 - Nach der Schicht fragt der Betrieb zwei Dinge:
   Pünktlich und zuverlässig? Ja / Nein  -> Verhalten
   Wie gut war die Arbeit? 1 bis 5 Sterne -> Qualifikation
@@ -47,6 +46,8 @@ Team:
 4. FILTER
 - Verfügbar: beide Schwellen erreicht und freier Tag, Knopf "Sofort buchen"
 - Nicht verfügbar (mit Grund: Schwelle nicht erreicht oder kein freier Tag)
+- Studiengang (entschieden 27.11.): zählt nicht für den Score. Der Betrieb kann einen Slot
+  mit Studiengängen markieren, der Studi filtert mit "Nur passend zu <Studiengang>".
 Team:
 
 
