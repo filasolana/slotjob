@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SlotJob</title>
-<meta name="description" content="SlotJob: Studierende bewerben sich auf einzelne Schichten statt auf feste Stellen. Klickbarer Prototyp.">
+<meta name="description" content="SlotJob: Studierende buchen einzelne Schichten sofort, wenn Verhalten und Qualifikation reichen. Klickbarer Prototyp.">
 <meta name="theme-color" content="#ffcd38">
 <meta name="color-scheme" content="light only">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect x='0' y='6' width='40' height='28' rx='7' fill='%23ffcd38'/%3E%3Ccircle cx='0' cy='20' r='4.5' fill='%230e4f4a'/%3E%3Ccircle cx='40' cy='20' r='4.5' fill='%230e4f4a'/%3E%3Ccircle cx='20' cy='20' r='8' fill='none' stroke='%2310302d' stroke-width='2.6'/%3E%3Cpath d='M20 15.4V20l3.2 2.2' stroke='%2310302d' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
@@ -222,7 +222,7 @@ input[type=file]{font-size:13px;max-width:100%}
 </div>
 <script>
 {
-const KEY='slotjob-v3';
+const KEY='slotjob-v4';
 const DAYS=['Mo','Di','Mi','Do','Fr','Sa','So'];
 const FIELDS=['Maschinenbau','Informatik','BWL','Lehramt','Umweltwissenschaften','Anderes'];
 const LIMIT=603;
@@ -236,7 +236,7 @@ const RULES={v:[[['Start','80'],['Pünktlich','+2'],['Spontan','+5'],['Krank','0
  q:[[['Kurs/Zeugnis','+200'],['Studium','+100'],['Schicht','+10']],[['5 Sterne','+10'],['1–2 Sterne','−10']]]};
 const NOTE={v:'Minuspunkte halbieren sich nach 3 Monaten.',q:'Gleiche Qualifikation zählt einmal. Schichten zählen bis +400.'};
 const rulesBox=t=>`<div class="rules">${RULES[t].map(col=>`<div>${col.map(([l,v])=>`<p><span>${l}</span><b>${v}</b></p>`).join('')}</div>`).join('')}</div><p class="small" style="margin:6px 0 0">${NOTE[t]}</p>`;
-const fresh=()=>({role:null,onb:0,field:'Maschinenbau',noExp:true,avail:['Mo','Mi','Fr','Sa'],tab:'slots',filter:'ok',open:null,roles:[],booked:[],applied:[],instant:[],rated:{},cert:null,certRole:'Kellner',certs:{},biz:'Trattoria Lupo',etab:'mine',
+const fresh=()=>({role:null,onb:0,field:'Maschinenbau',noExp:true,avail:['Mo','Mi','Fr','Sa'],tab:'slots',filter:'ok',open:null,roles:[],booked:[],instant:[],rated:{},cert:null,certRole:'Kellner',certs:{},biz:'Trattoria Lupo',etab:'mine',
  ev:[
   {a:'v',t:'Start',p:80},
   {a:'v',t:'16 × pünktlich',p:32},
@@ -249,16 +249,16 @@ const fresh=()=>({role:null,onb:0,field:'Maschinenbau',noExp:true,avail:['Mo','M
   {a:'handel',t:'2 × 5 Sterne',p:20}
  ],
  slots:[
-  {id:1,emp:'Café Kantstein',title:'Service und Kasse',day:'Fr',date:'27.11.',s:'16:00',e:'20:00',pay:14.5,dist:'4 Min',noExp:true,fields:[],apps:2,area:'gastro',min:0,minV:70},
-  {id:2,emp:'Trattoria Lupo',title:'Kellner:in Abendschicht',day:'Sa',date:'28.11.',s:'18:00',e:'23:00',pay:15,dist:'9 Min',noExp:false,fields:[],apps:5,area:'gastro',min:300,minV:70,eid:102},
-  {id:3,emp:'Getränkemarkt Fass & Co',title:'Lager und Leergut',day:'Sa',date:'28.11.',s:'09:00',e:'13:00',pay:14,dist:'11 Min',noExp:true,fields:[],apps:1,area:'handel',min:0,minV:70},
-  {id:4,emp:'Lehrstuhl Konstruktion (HiWi)',title:'CAD-Modelle aufbereiten',day:'Mo',date:'30.11.',s:'10:00',e:'14:00',pay:14.2,dist:'Campus',noExp:false,fields:['Maschinenbau'],apps:1,area:'campus',min:100,minV:80},
-  {id:5,emp:'IT-Service Rechenzentrum',title:'Helpdesk für Erstis',day:'Di',date:'01.12.',s:'12:00',e:'16:00',pay:14.8,dist:'Campus',noExp:false,fields:['Informatik'],apps:3,area:'buero',min:100,minV:70},
-  {id:6,emp:'Eventhalle Nordufer',title:'Aufbau Konzert',day:'Mi',date:'02.12.',s:'14:00',e:'19:00',pay:15.5,dist:'15 Min',noExp:true,fields:[],apps:7,area:'events',min:0,minV:95},
-  {id:7,emp:'Buchladen Seitenwind',title:'Inventur',day:'Do',date:'03.12.',s:'17:00',e:'21:00',pay:14,dist:'6 Min',noExp:true,fields:[],apps:0,area:'handel',min:0,minV:70}
+  {id:1,emp:'Café Kantstein',title:'Service und Kasse',day:'Fr',date:'27.11.',s:'16:00',e:'20:00',pay:14.5,dist:'4 Min',noExp:true,fields:[],area:'gastro',min:0,minV:70},
+  {id:2,emp:'Trattoria Lupo',title:'Kellner:in Abendschicht',day:'Sa',date:'28.11.',s:'18:00',e:'23:00',pay:15,dist:'9 Min',noExp:false,fields:[],area:'gastro',min:300,minV:70,eid:102},
+  {id:3,emp:'Getränkemarkt Fass & Co',title:'Lager und Leergut',day:'Sa',date:'28.11.',s:'09:00',e:'13:00',pay:14,dist:'11 Min',noExp:true,fields:[],area:'handel',min:0,minV:70},
+  {id:4,emp:'Lehrstuhl Konstruktion (HiWi)',title:'CAD-Modelle aufbereiten',day:'Mo',date:'30.11.',s:'10:00',e:'14:00',pay:14.2,dist:'Campus',noExp:false,fields:['Maschinenbau'],area:'campus',min:100,minV:80},
+  {id:5,emp:'IT-Service Rechenzentrum',title:'Helpdesk für Erstis',day:'Di',date:'01.12.',s:'12:00',e:'16:00',pay:14.8,dist:'Campus',noExp:false,fields:['Informatik'],area:'buero',min:100,minV:70},
+  {id:6,emp:'Eventhalle Nordufer',title:'Aufbau Konzert',day:'Mi',date:'02.12.',s:'14:00',e:'19:00',pay:15.5,dist:'15 Min',noExp:true,fields:[],area:'events',min:0,minV:95},
+  {id:7,emp:'Buchladen Seitenwind',title:'Inventur',day:'Do',date:'03.12.',s:'17:00',e:'21:00',pay:14,dist:'6 Min',noExp:true,fields:[],area:'handel',min:0,minV:70}
  ],
  shifts:[
-  {id:'a1',emp:'Café Kantstein',title:'Frühstücksservice',day:'So',date:'29.11.',s:'09:00',e:'13:00',pay:14.5,status:'Angenommen'},
+  {id:'a1',emp:'Café Kantstein',title:'Frühstücksservice',day:'So',date:'29.11.',s:'09:00',e:'13:00',pay:14.5,status:'Gebucht'},
   {id:'p1',emp:'Buchladen Seitenwind',title:'Regale einräumen',day:'Sa',date:'21.11.',s:'10:00',e:'14:00',pay:14,status:'Abgeschlossen'}
  ],
  courses:[
@@ -266,8 +266,8 @@ const fresh=()=>({role:null,onb:0,field:'Maschinenbau',noExp:true,avail:['Mo','M
   {id:'k2',name:'Barista-Basics',role:'Barista',when:'Mi 09.12., 17:00 bis 19:00',seats:6}
  ],
  eslots:[
-  {id:101,title:'Service Mittag',day:'Fr',date:'27.11.',s:'11:30',e:'15:00',pay:14.5,noExp:true,area:'gastro',min:500,minV:80,apps:[{n:'Rudolf M.',r:'4,8'},{n:'Lena K.',r:'4,6',v:88,q:310},{n:'Tom B.',r:'neu',v:80,q:0}],chosen:null,rating:0},
-  {id:102,title:'Kellner:in Abendschicht',day:'Sa',date:'28.11.',s:'18:00',e:'23:00',pay:15,noExp:false,area:'gastro',min:300,minV:70,apps:[{n:'Aylin S.',r:'4,9',v:68,q:460},{n:'Jonas W.',r:'4,4',v:90,q:280}],chosen:null,rating:0}
+  {id:101,title:'Service Mittag',day:'Fr',date:'27.11.',s:'11:30',e:'15:00',pay:14.5,noExp:true,area:'gastro',min:500,minV:80,by:{n:'Lena K.',v:88,q:520},rating:0},
+  {id:102,title:'Kellner:in Abendschicht',day:'Sa',date:'28.11.',s:'18:00',e:'23:00',pay:15,noExp:false,area:'gastro',min:300,minV:70,by:null,rating:0}
  ]});
 let S;
 try{S=JSON.parse(localStorage.getItem(KEY))||fresh()}catch(e){S=fresh()}
@@ -313,8 +313,8 @@ function onboarding(){
   const bar=`<div class="steps">${Array.from({length:steps},(_,i)=>`<i class="${i<=st?'on':''}"></i>`).join('')}</div>`;
   let body='';
   if(st===0) body=`<div class="onb-hero">${logo()}<div class="big">Schichten statt Stellen.</div></div><p class="sub" style="font-weight:600;color:var(--ink)">Wie willst du SlotJob nutzen?</p>
-   <button class="pick" data-act="pickrole" data-v="studi"><span class="ico">${ICON.studi}</span><span><strong>Ich studiere</strong><span>Schichten finden und mich pro Slot bewerben</span></span></button>
-   <button class="pick" data-act="pickrole" data-v="emp"><span class="ico">${ICON.shop}</span><span><strong>Ich biete Schichten an</strong><span>Slots einstellen und Studis auswählen</span></span></button>`;
+   <button class="pick" data-act="pickrole" data-v="studi"><span class="ico">${ICON.studi}</span><span><strong>Ich studiere</strong><span>Schichten finden und sofort buchen</span></span></button>
+   <button class="pick" data-act="pickrole" data-v="emp"><span class="ico">${ICON.shop}</span><span><strong>Ich biete Schichten an</strong><span>Slots einstellen, Studis buchen sofort</span></span></button>`;
   else if(S.role==='emp') body=`<div class="big">Dein Betrieb</div><p class="sub">So erscheinst du bei den Studis.</p>
    <label for="biz">Name des Betriebs</label><input id="biz" type="text" value="${esc(S.biz)}"><div class="spacer"></div>
    <button class="btn wide" data-act="finish">Los geht's</button>`;
@@ -330,18 +330,19 @@ function onboarding(){
 
 function why(x){
   if(!S.avail.includes(x.day))return [`${x.day} ist kein freier Tag`,`<button class="link" data-act="availgo">Freie Tage ändern</button>`];
+  const v=vScore(),q=qScore(x.area);
+  if(q<x.min)return [`${AN(x.area)} ${x.min} nötig, du hast ${q}`,x.area==='gastro'?`<button class="link" data-act="tab" data-v="kurse">Kurs ansehen</button><span class="small">oder</span><button class="link" data-act="certgo" data-v="Kellner">Zeugnis hochladen</button>`:''];
+  if(v<x.minV)return [`Verhalten ${x.minV} nötig, du hast ${v}`,''];
   return null;
 }
 
 function slotCard(x){
-  const w=why(x),v=vScore(),q=qScore(x.area),okV=v>=x.minV,okQ=q>=x.min,inst=!w&&okV&&okQ,booked=S.instant.includes(x.id),applied=S.applied.includes(x.id);
-  const h=hrs(x.s,x.e),apps=x.apps+(applied?1:0);
-  const btn=booked?`<button class="btn done" data-act="instant" data-v="${x.id}">Gebucht ✓</button>`:applied?`<button class="btn done" data-act="apply" data-v="${x.id}">Beworben ✓</button>`:w?`<button class="btn" disabled>Nicht verfügbar</button>`:inst?`<button class="btn" data-act="instant" data-v="${x.id}">Sofort buchen</button>`:`<button class="btn dark" data-act="apply" data-v="${x.id}">Bewerben</button>`;
+  const w=why(x),booked=S.instant.includes(x.id),h=hrs(x.s,x.e);
+  const btn=booked?`<button class="btn done" data-act="instant" data-v="${x.id}">Gebucht ✓</button>`:w?`<button class="btn" disabled>Nicht verfügbar</button>`:`<button class="btn" data-act="instant" data-v="${x.id}">Sofort buchen</button>`;
   const tags=[`<span class="tag">${AN(x.area)}</span>`,x.min===0?'<span class="tag sun">Ohne Erfahrung</span>':''].join('');
-  const ck=(ok,l,need,have)=>`<span class="${ok?'ok':'no'}">${l} ${need} ${ok?'✓':'✗ (du '+have+')'}</span>`;
-  const note=w?`<div class="why">${esc(w[0])}</div>${w[1]?`<div class="ways">${w[1]}</div>`:''}`:booked||applied?'':`<div class="hint">Sofort ab: ${ck(okV,'Verhalten',x.minV,v)} · ${ck(okQ,AN(x.area),x.min,q)}</div>`;
+  const note=w?`<div class="why">${esc(w[0])}</div>${w[1]?`<div class="ways">${w[1]}</div>`:''}`:booked?'':`<div class="hint">Sofort ab: <span class="ok">Verhalten ${x.minV} ✓</span> · <span class="ok">${AN(x.area)} ${x.min} ✓</span></div>`;
   return `<article class="ticket"><div class="tk-top"><div class="when"><div class="d">${x.day} ${esc(x.date)}</div><div class="t">${esc(x.s)}</div><div class="e">bis ${esc(x.e)}</div></div>
-   <div class="what"><div class="emp"><span>${esc(x.emp)}</span></div><h3>${esc(x.title)}</h3><div class="where">${esc(x.dist)} · ${String(h).replace('.',',')} h · ${apps} ${apps===1?'Bewerbung':'Bewerbungen'}</div><div class="meta">${tags}</div>${note}</div></div>
+   <div class="what"><div class="emp"><span>${esc(x.emp)}</span></div><h3>${esc(x.title)}</h3><div class="where">${esc(x.dist)} · ${String(h).replace('.',',')} h</div><div class="meta">${tags}</div>${note}</div></div>
    <div class="tk-bot"><span class="earn"><b>${eur(h*x.pay)}</b>${eur(x.pay)}/h</span>${btn}</div></article>`;
 }
 
@@ -376,12 +377,11 @@ function kurseView(){
 }
 
 function shiftsView(){
-  const mine=S.slots.filter(x=>S.applied.includes(x.id)),inst=S.slots.filter(x=>S.instant.includes(x.id));
+  const inst=S.slots.filter(x=>S.instant.includes(x.id));
   const acc=S.shifts.filter(x=>x.status!=='Abgeschlossen'),done=S.shifts.filter(x=>x.status==='Abgeschlossen');
   const row=(x,pill,extra='')=>`<div class="card"><div class="row"><h3>${esc(x.title)}</h3>${pill}</div><p class="small" style="margin:4px 0 0">${esc(x.emp)} · ${x.day} ${esc(x.date)}, ${esc(x.s)} bis ${esc(x.e)} · ${eur(hrs(x.s,x.e)*x.pay)}</p>${extra}</div>`;
-  return `<h2>Meine Schichten</h2><p class="sub">Bewerbungen, Zusagen und Bewertungen</p>
-  ${acc.length||inst.length?`<div class="sec">Zugesagt</div>${inst.map(x=>row(x,'<span class="status-pill ok">Sofort gebucht</span>')).join('')}${acc.map(x=>row(x,'<span class="status-pill ok">Angenommen</span>')).join('')}`:''}
-  ${mine.length?`<div class="sec">Beworben</div>${mine.map(x=>row(x,'<span class="status-pill">Wartet</span>')).join('')}`:''}
+  return `<h2>Meine Schichten</h2><p class="sub">Gebuchte Schichten und Bewertungen</p>
+  ${acc.length||inst.length?`<div class="sec">Gebucht</div>${inst.map(x=>row(x,'<span class="status-pill ok">Sofort gebucht</span>')).join('')}${acc.map(x=>row(x,'<span class="status-pill ok">Gebucht</span>')).join('')}`:''}
   ${done.length?`<div class="sec">Abgeschlossen</div>${done.map(x=>row(x,'',`<p class="small" style="margin:12px 0 0">Wie war die Schicht bei ${esc(x.emp)}?</p>${stars(x.id,S.rated[x.id]||0)}${S.rated[x.id]?'<p class="small" style="margin:2px 0 0">Danke für deine Bewertung.</p>':''}`)).join('')}`:''}`;
 }
 
@@ -401,21 +401,23 @@ function profilView(){
 
 // A Betrieb slot that Rudolf booked instantly on the Studi side.
 const instantFor=x=>{const st=S.slots.find(y=>y.eid===x.id);return !!st&&S.instant.includes(st.id)};
-const appV=a=>a.n==='Rudolf M.'?vScore():a.v;
-const appQ=(a,x)=>a.n==='Rudolf M.'?qScore(x.area):a.q;
+// Who booked a Betrieb slot: Rudolf when he booked it on the Studi side, otherwise the demo booker.
+const booker=x=>instantFor(x)?{n:'Rudolf M.'}:x.by||null;
+const bV=a=>a.n==='Rudolf M.'?vScore():a.v;
+const bQ=(a,x)=>a.n==='Rudolf M.'?qScore(x.area):a.q;
 function empMine(){
-  return `<h2>${esc(S.biz)}</h2><p class="sub">Deine Slots und wer sich beworben hat.</p>
-  ${S.eslots.map(x=>{const inst=instantFor(x),a=inst?{n:'Rudolf M.'}:x.chosen!==null?x.apps[x.chosen]:null;
+  return `<h2>${esc(S.biz)}</h2><p class="sub">Deine Slots und wer sie gebucht hat.</p>
+  ${S.eslots.map(x=>{const a=booker(x);
    return `<article class="ticket"><div class="tk-top"><div class="when"><div class="d">${x.day} ${esc(x.date)}</div><div class="t">${esc(x.s)}</div><div class="e">bis ${esc(x.e)}</div></div>
-   <div class="what"><div class="emp"><span>${x.apps.length} Bewerbungen</span></div><h3>${esc(x.title)}</h3><div class="meta"><span class="tag pay">${eur(x.pay)}/h</span><span class="tag">${AN(x.area)}</span></div><div class="hint">Sofort ab: Verhalten ${x.minV} · Qualifikation ${x.min}</div></div></div>
-   <div style="padding:6px 14px 12px">${a?`<p class="small" style="margin:8px 0 0">${inst?'Sofort gebucht':'Ausgewählt'}: <b>${esc(a.n)}</b> · Verhalten ${appV(a)} · Qualifikation ${appQ(a,x)}</p>
+   <div class="what"><div class="emp"><span>${a?'Gebucht':'Noch frei'}</span></div><h3>${esc(x.title)}</h3><div class="meta"><span class="tag pay">${eur(x.pay)}/h</span><span class="tag">${AN(x.area)}</span></div><div class="hint">Sofort ab: Verhalten ${x.minV} · Qualifikation ${x.min}</div></div></div>
+   <div style="padding:6px 14px 12px">${a?`<p class="small" style="margin:8px 0 0">Sofort gebucht: <b>${esc(a.n)}</b> · Verhalten ${bV(a)} · Qualifikation ${bQ(a,x)}</p>
    <div class="yn"><span class="small">Pünktlich und zuverlässig?</span><button class="${x.punct===1?'on':''}" data-act="punct" data-v="1" data-k="e${x.id}">Ja</button><button class="${x.punct===0?'on':''}" data-act="punct" data-v="0" data-k="e${x.id}">Nein</button></div>
    <p class="small" style="margin:8px 0 0">Wie gut war die Arbeit?</p>${stars('e'+x.id,x.rating)}`:
-   x.apps.length?x.apps.map((p,i)=>`<div class="app"><span style="display:flex;align-items:center"><span class="av">${esc(ini(p.n))}</span><span>${esc(p.n)}${p.r==='neu'?' · neu':''}<span class="sub">Verhalten ${appV(p)} · Qualifikation ${appQ(p,x)}</span></span></span><button class="btn dark" data-act="choose" data-v="${x.id}" data-i="${i}">Wählen</button></div>`).join(''):'<p class="small">Noch keine Bewerbungen.</p>'}</div></article>`}).join('')}`;
+   `<p class="small" style="margin:8px 0 0">Noch frei. Wer beide Schwellen erreicht, kann sofort buchen.</p>`}</div></article>`}).join('')}`;
 }
 
 function empNew(){
-  return `<h2>Neuer Slot</h2><p class="sub">Wer beide Schwellen erreicht, bucht sofort. Alle anderen bewerben sich.</p>
+  return `<h2>Neuer Slot</h2><p class="sub">Wer beide Schwellen erreicht, bucht sofort. Für alle anderen ist der Slot nicht verfügbar.</p>
   <form id="nf"><label for="nt">Tätigkeit</label><input id="nt" type="text" value="Service Abend" required>
   <div class="two"><div><label for="nd">Tag</label><select id="nd">${DAYS.map(d=>`<option>${d}</option>`).join('')}</select></div><div><label for="np">Lohn €/h</label><input id="np" type="number" step="0.1" min="13.9" value="14.5"></div></div>
   <div class="two"><div><label for="ns">Beginn</label><input id="ns" type="time" value="17:00"></div><div><label for="ne">Ende</label><input id="ne" type="time" value="21:00"></div></div>
@@ -435,13 +437,13 @@ function render(){
   if(!S.role||S.onb>=0&&S.onb<99){root.innerHTML=onboarding();return}
   let body,items;
   if(S.role==='emp'){body=S.etab==='new'?empNew():S.etab==='prof'?empProf():empMine();items=[['mine','Meine Slots'],['new','Neuer Slot'],['prof','Profil']]}
-  else{body={slots:slotsView,kurse:kurseView,schichten:shiftsView,profil:profilView}[S.tab]();const n=S.applied.length+S.instant.length;items=[['slots','Slots'],['kurse','Kurse'],['schichten','Schichten',n||''],['profil','Profil']]}
+  else{body={slots:slotsView,kurse:kurseView,schichten:shiftsView,profil:profilView}[S.tab]();const n=S.instant.length;items=[['slots','Slots'],['kurse','Kurse'],['schichten','Schichten',n||''],['profil','Profil']]}
   root.innerHTML=top()+`<div class="main">${body}</div>`+nav(items);
 }
 
 // Course or certificate: +200 qualification in its role, counted once per qualification.
 function qualify(r,t){const k=QUAL[r]||'gastro',b0=qScore(k);if(!S.roles.includes(r))S.roles.push(r);S.ev.push({a:k,t,p:200,q:r});const d=qScore(k)-b0;toast(r+' erhalten'+(d?`, +${d} Qualifikation in ${AN(k)}`:'')+'.')}
-const ratedWho=x=>instantFor(x)?'Rudolf M.':x.apps[x.chosen]?.n;
+const ratedWho=x=>booker(x)?.n;
 root.addEventListener('click',e=>{
   const b=e.target.closest('[data-act]');if(!b)return;
   const v=b.dataset.v,a=b.dataset.act;
@@ -452,7 +454,6 @@ root.addEventListener('click',e=>{
   else if(a==='day'){S.avail=S.avail.includes(v)?S.avail.filter(d=>d!==v):[...S.avail,v]}
   else if(a==='tab'){if(S.role==='emp')S.etab=v;else S.tab=v;const m=root.querySelector('.main');if(m)m.scrollTop=0}
   else if(a==='filter'){S.filter=v}
-  else if(a==='apply'){const id=+v;if(S.applied.includes(id)){S.applied=S.applied.filter(x=>x!==id);toast('Bewerbung zurückgezogen')}else{S.applied.push(id);toast('Beworben. Der Betrieb sieht jetzt dein Profil.')}}
   else if(a==='instant'){const id=+v;if(S.instant.includes(id)){S.instant=S.instant.filter(x=>x!==id);toast('Buchung storniert')}else{S.instant.push(id);toast('Gebucht. Die Schicht steht unter Meine Schichten.')}}
   else if(a==='scopen'){S.open=S.open===v?null:v}
   else if(a==='book'){S.booked.push(v);toast('Angemeldet. Du bekommst eine Erinnerung.')}
@@ -462,7 +463,6 @@ root.addEventListener('click',e=>{
      else toast('Bewertung gespeichert')}else{S.rated[k]=+v;toast('Bewertung gespeichert')}}
   else if(a==='punct'){const k=b.dataset.k,x=S.eslots.find(y=>'e'+y.id===k);x.punct=+v;
      if(ratedWho(x)==='Rudolf M.'){S.ev=S.ev.filter(e=>e.k!=='p'+k);S.ev.push({a:'v',t:(+v?'Pünktlich bei ':'Zu spät bei ')+S.biz,p:+v?2:-5,k:'p'+k});toast('Rudolf M.: Verhalten '+(+v?'+2':'−5'))}else toast('Gespeichert')}
-  else if(a==='choose'){const x=S.eslots.find(y=>y.id===+v);x.chosen=+b.dataset.i;toast(x.apps[x.chosen].n+' ausgewählt und benachrichtigt')}
   else if(a==='setrole'){if(S.role!==v){S.role=v;if(S.onb<99)S.onb=99}}
   else if(a==='switch'){S.role=S.role==='emp'?'studi':'emp';if(S.onb<99)S.onb=99}
   else if(a==='certok'){qualify(v,'Zeugnis '+v)}
@@ -482,8 +482,8 @@ root.addEventListener('submit',e=>{
   const g=id=>document.getElementById(id);
   const t=g('nt').value.trim()||'Schicht',d=g('nd').value,s=g('ns').value||'17:00',en=g('ne').value||'21:00',p=Math.max(13.9,parseFloat(g('np').value)||13.9);
   const id=Date.now(),area=g('na').value,min=Math.max(0,Math.min(1000,parseInt(g('nm').value,10)||0)),minV=Math.max(0,Math.min(100,parseInt(g('nv').value,10)||0));
-  S.eslots.unshift({id,title:t,day:d,date:'',s,e:en,pay:p,noExp:min===0,area,min,minV,apps:[],chosen:null,rating:0});
-  S.slots.push({id:id+1,emp:S.biz,title:t,day:d,date:'',s,e:en,pay:p,dist:'neu',noExp:min===0,fields:[],apps:0,area,min,minV,eid:id});
+  S.eslots.unshift({id,title:t,day:d,date:'',s,e:en,pay:p,noExp:min===0,area,min,minV,by:null,rating:0});
+  S.slots.push({id:id+1,emp:S.biz,title:t,day:d,date:'',s,e:en,pay:p,dist:'neu',noExp:min===0,fields:[],area,min,minV,eid:id});
   S.etab='mine';save();render();toast('Slot veröffentlicht. Studis sehen ihn ab sofort.');
 });
 render();

@@ -5,10 +5,10 @@ Jeder schreibt einfach unter "Team:" mit Namen.
 1. INSTANT-ZUSAGE  (entschieden 27.11.: zwei Scores, siehe 2)
 - Der Betrieb setzt je Slot zwei Schwellen: Verhalten (Standard 70) und Qualifikation in der
   Rolle (z. B. 0 für Lager, 300 für Kellner:in).
-- Beide erreicht = Schicht sofort, ohne Bewerbung.
-- Eine nicht erreicht = bewerben, mit anderen zusammen, der Betrieb wählt aus. Nichts wird gesperrt.
+- Beide erreicht = sofort buchen. Es gibt keine Bewerbung mehr (entschieden 27.11.).
+- Eine nicht erreicht = Slot nicht verfügbar, mit Grund (z. B. "Gastronomie 300 nötig, du hast 250").
 - Neueinsteiger: Verhalten startet bei 80, also über dem Standard. Qualifikation startet bei 0:
-  Slots mit Qualifikation 0 sofort, sonst bewerben oder erst Kurs machen.
+  Slots mit Qualifikation 0 sind sofort buchbar, für die anderen erst Kurs oder Zeugnis.
 Team:
 
 
@@ -45,8 +45,8 @@ Team:
 
 
 4. FILTER
-- Verfügbar: Sofort buchen oder Bewerben, je nach den zwei Schwellen
-- Nicht verfügbar (mit Grund, z. B. kein freier Tag)
+- Verfügbar: beide Schwellen erreicht und freier Tag, Knopf "Sofort buchen"
+- Nicht verfügbar (mit Grund: Schwelle nicht erreicht oder kein freier Tag)
 Team:
 
 
@@ -100,7 +100,7 @@ OFFEN
 
 Kritische Punkte (Jesper, 27.11.), Stand nach Team-Absprache:
 - (erledigt) Score vs. Einsteiger: zwei Scores. Verhalten startet bei 80 über dem Standard 70,
-  Kurse und Zeugnisse geben Qualifikation, nichts wird gesperrt. Siehe 1. und 2.
+  Kurse und Zeugnisse geben Qualifikation. Siehe 1. und 2.
 - (erledigt) Absage bei Krankheit: Krankmeldung ohne Minuspunkte, SlotJob trägt die
   Spontan-Schicht. Siehe 5.
 - (erledigt) Pitch für Betriebe: "Betriebe zahlen nur die Schichten, die sie brauchen." Siehe 9.
@@ -111,7 +111,7 @@ Kritische Punkte (Jesper, 27.11.), Stand nach Team-Absprache:
   Ratgeber nennen 6.251 oder 7.236 €/Jahr (siehe docs/recherche.md).
 
 Noch offene Fragen:
-- Verhalten: bleibt Start 80? Dürfen Betriebe die Schwelle über 80 setzen (dann bewerben sich Neue dort)?
+- Verhalten: bleibt Start 80? Dürfen Betriebe die Schwelle über 80 setzen (dann können Neue dort nicht buchen)?
 - Keine Minuspunkte auch bei verlegter Prüfung, oder nur bei Krankheit?
 - Betrieb sagt kurzfristig ab: Zahlt SlotJob dem Studi Ausfallgeld und stellt es dem Betrieb
   in Rechnung? (Geht jetzt, weil SlotJob Arbeitgeber ist.)
