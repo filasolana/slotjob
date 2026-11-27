@@ -1,6 +1,66 @@
-# Go-to-Market: Ideen für Phase 3 „Wachsen“
+# Go-to-Market
 
-Input für Folie 5 (Go-to-Market in 3 Phasen). Phase 1 „Vorbereitung“ und Phase 2 „Auffallen“ legt das Team fest; hier geht es darum, wie SlotJob danach wächst.
+Input für Folie 5 (Go-to-Market in 3 Phasen). Oben der Stand vom Miro-Board, darunter die ausführlichen Ideen für Phase 3 „Wachsen“.
+
+## Stand Miro-Board (27.11., 13:50)
+
+Übertragen aus dem Frame „Go-To-Market Strategy“. Gelb = vom Team, grau = Vorschlag (noch nicht entschieden).
+
+### Phase 1: Vorbereiten
+
+Engpass sind die Betriebe: Ohne Slots kommen keine Studis wieder.
+
+- **Pilotslots** (gelb): 5 Cafés/Restaurants in Potsdam, Ziel ab Tag 1 mindestens 20 Slots pro Woche
+- Kurzes Onboarding für Studis und Arbeitgeber (gelb)
+- Engelsystem (CCC) als Vorbild für die Schichtlogik (gelb)
+- Erste Service-Kurse anbieten, danach Rolle Kellner (gelb)
+- Slot per WhatsApp: Foto vom Schichtplan reicht, wir tragen ein (gelb)
+- Pilot mit 5–10 Restaurants und Cafés am Campus
+- Verkaufsargument: hohe Flexibilität, keine Recruiting-Kosten, Einsicht in die Qualität des Personals
+- Ohne Risiko für Betriebe:
+  - Erste 3 Vermittlungen ohne Provision
+  - Zahlung nur bei Erfolg: Provision erst, wenn die Schicht angetreten wurde
+  - Gründer-Preis: die ersten 10 Betriebe zahlen dauerhaft weniger Provision
+  - Kein Vertrag, keine Grundgebühr: nur pro Vermittlung zahlen
+- Uni als erster Kunde: Event- und HiWi-Schichten
+- Gastro-Verband ansprechen (z. B. DEHOGA)
+- Feste Ansprechperson pro Betrieb im Pilot
+
+### Phase 2: Auffallen
+
+- **BAföG-Rechner als eigenständiges Tool** (gelb)
+  - bringt über Suchmaschinen Traffic
+  - Ziel: Mythos „jeder Euro wird vom BAföG abgezogen“ widerlegen
+  - sammelt Kontakte
+- **Betriebe im Moment der Suche erreichen** (gelb)
+  - Zettel „Aushilfe gesucht“, Insta-Stories
+  - jeden Fund direkt ansprechen
+  - erster Slot kostenlos einstellen (ca. 70 € pro B-Kunde)
+- Betriebe: „Krankmeldung um 7, Ersatz um 9“ (gelb)
+- Organisation von Ersti-Wochen mit der Plattform durchführen (gelb); FSRs werden zu einem der ersten Betriebe
+- Fenster-Sticker mit QR-Code bei Betrieben: „Wir nutzen SlotJob“ (gelb)
+- Erste Nutzer mit Erfolgsgeschichte
+- Stand in der Ersti-Woche
+- Fachschaften und Wohnheim-WhatsApp-Gruppen
+- Instagram/TikTok: Studi-Geschichten
+- Flyer und QR-Codes in Mensa und Wohnheimen
+
+### Phase 3: Wachsen
+
+Steht ausführlich unten. Zusätzlich auf dem Board:
+
+- Referral-Programm: 10 € an beide, die geworbene Person muss eine Schicht gearbeitet haben
+- Arbeitgeber-Referral: niedrigere Provision für bestimmte Zeit
+- Partner: Studierendenwerke, Werbung auf Events (Erstitage, Partys)
+- Bewertungen ziehen weitere Arbeitgeber an
+- Kreisläufe, die sich selbst verstärken; Studis: Schicht → schnelle Bezahlung → Weitererzählen
+- SEO, GEO, AEO
+- Expansion in weitere Städte mit ähnlichem Go-to-Market
+- Eventuell: SlotJob als Tool für normale Arbeitgeber, einfache Integration von Schichtarbeitern
+
+---
+
+# Phase 3 „Wachsen“ ausführlich
 
 ## Grundidee
 
