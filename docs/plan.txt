@@ -2,34 +2,36 @@ SLOTJOB PLAN  (Stand 27.11.)
 Jeder schreibt einfach unter "Team:" mit Namen.
 
 
-1. INSTANT-ZUSAGE (neu)
-- Bedingungen erfüllt (Score über der Schwelle + nötige Qualifikation) = Schicht sofort, ohne Bewerbung
-- Bedingungen je Slot: Score-Schwelle je Rolle, wird festgelegt vom Betreiber des Slots.
-- Neueinsteiger (entschieden 27.11.): Der Start-Score liegt so hoch, dass alle eingestellten Slots
-  darunter liegen. Neue können also sofort buchen. Bewerben muss sich nur, wer durch schlechtes
-  Verhalten unter die Schwelle fällt. Genauer Startwert: noch festlegen.
+1. INSTANT-ZUSAGE  (entschieden 27.11.: zwei Scores, siehe 2)
+- Der Betrieb setzt je Slot zwei Schwellen: Verhalten (Standard 70) und Qualifikation in der
+  Rolle (z. B. 0 für Lager, 300 für Kellner:in).
+- Beide erreicht = Schicht sofort, ohne Bewerbung.
+- Eine nicht erreicht = bewerben, mit anderen zusammen, der Betrieb wählt aus. Nichts wird gesperrt.
+- Neueinsteiger: Verhalten startet bei 80, also über dem Standard. Qualifikation startet bei 0:
+  Slots mit Qualifikation 0 sofort, sonst bewerben oder erst Kurs machen.
 Team:
 
 
-2. REPUTATION
-- Balken je Rolle ganz oben in Slots
-- Skala -100 bis +1000, Start über den Slot-Schwellen (siehe 1)
-- Score misst nur Verhalten (entschieden 27.11.): Zuverlässigkeit, Bewertungen, Pünktlichkeit.
-  Ob man einen Job fachlich kann, zeigen Zertifikate und Kurse, die man hochlädt.
-  Sie schalten bestimmte Jobs frei (z. B. Kellner).
-- Plus: Schichten gut erledigt
-- Minus: unentschuldigt gefehlt, schlechte Arbeit
-- Vorschlag Punkte:
-  Schicht erledigt +20
-  Bewertung 5 Sterne +15, 4 Sterne +5, 3 Sterne 0, 2 Sterne -10, 1 Stern -25
-  Spontan / On-Duty eingesprungen +30
-  Wiederholungsjob beim selben Betrieb +10
-  Unentschuldigt gefehlt -100 (in allen Rollen)
-  Absage unter 24 h -30 (in allen Rollen), Krankmeldung: keine Minuspunkte (siehe 5)
-  Zu spät über 15 Min -10
-  Kurs oder Zeugnis +100 (gleiche Qualifikation zählt nur einmal, max. +200 je Rolle)
-  (offen: bleibt das, wenn Zertifikate jetzt Jobs freischalten?)
-- Minuspunkte halbieren sich nach 3 Monaten
+2. REPUTATION  (zwei Scores, entschieden 27.11.)
+- Ganz oben in Slots: ein Balken Verhalten, darunter je Rolle ein Balken Qualifikation
+- VERHALTEN: einer pro Person, gilt für alle Rollen, 0 bis 100, Start 80
+  Schicht pünktlich erledigt +2
+  Spontan / On-Duty eingesprungen +5
+  Zu spät über 15 Min -5
+  Absage unter 24 h -10
+  Unentschuldigt gefehlt -30
+  Krankmeldung 0 (siehe 5)
+  Minuspunkte halbieren sich nach 3 Monaten
+- QUALIFIKATION: je Rolle, 0 bis 1000, Start 0
+  Kurs abgeschlossen +200
+  Zeugnis / Zertifikat geprüft +200 (gleiche Qualifikation zählt nur einmal)
+  Schicht in der Rolle +10 (aus Schichten höchstens +400)
+  Arbeit 5 Sterne +10, 1 oder 2 Sterne -10
+  Passendes Studium +100 (z. B. Informatik für Büro und IT)
+- Nach der Schicht fragt der Betrieb zwei Dinge:
+  Pünktlich und zuverlässig? Ja / Nein  -> Verhalten
+  Wie gut war die Arbeit? 1 bis 5 Sterne -> Qualifikation
+- Beispiel Rudolf: Verhalten 92. Gastronomie 250, nach dem Service-Grundkurs 450.
 Team:
 
 
@@ -43,8 +45,8 @@ Team:
 
 
 4. FILTER
-- Für mich verfügbar
-- Nicht verfügbar (mit Grund)
+- Verfügbar: Sofort buchen oder Bewerben, je nach den zwei Schwellen
+- Nicht verfügbar (mit Grund, z. B. kein freier Tag)
 Team:
 
 
@@ -86,7 +88,7 @@ Team:
 - Geringere Kosten (Hauptvorteil): keine festen Mitarbeiter, denen man jede Woche
   die gleichen Stunden geben muss
 - Schichten sicherer besetzt: Spontan-Schichten und On-Duty fangen Krankheit auf
-- Geprüfte Qualität: Score zeigt Zuverlässigkeit, Zertifikate zeigen Qualifikation
+- Geprüfte Qualität: Verhalten zeigt Zuverlässigkeit, Qualifikation zeigt, ob jemand den Job kann
 - Kein Papierkram, keine Recruiting-Kosten: SlotJob ist Arbeitgeber
 Team:
 
@@ -97,8 +99,8 @@ OFFEN
 - Kurse / Zertifikate / Joberfahrung: noch leer
 
 Kritische Punkte (Jesper, 27.11.), Stand nach Team-Absprache:
-- (erledigt) Score vs. Einsteiger: Start-Score über den Slot-Schwellen, Score misst nur
-  Verhalten, Zertifikate schalten Jobs frei. Siehe 1. und 2.
+- (erledigt) Score vs. Einsteiger: zwei Scores. Verhalten startet bei 80 über dem Standard 70,
+  Kurse und Zeugnisse geben Qualifikation, nichts wird gesperrt. Siehe 1. und 2.
 - (erledigt) Absage bei Krankheit: Krankmeldung ohne Minuspunkte, SlotJob trägt die
   Spontan-Schicht. Siehe 5.
 - (erledigt) Pitch für Betriebe: "Betriebe zahlen nur die Schichten, die sie brauchen." Siehe 9.
@@ -109,8 +111,7 @@ Kritische Punkte (Jesper, 27.11.), Stand nach Team-Absprache:
   Ratgeber nennen 6.251 oder 7.236 €/Jahr (siehe docs/recherche.md).
 
 Noch offene Fragen:
-- Score-Startwert: welcher Wert, und dürfen Betriebe die Schwelle über den Startwert setzen?
-- Geben Kurse und Zertifikate weiter +100 Score, oder schalten sie nur Jobs frei?
+- Verhalten: bleibt Start 80? Dürfen Betriebe die Schwelle über 80 setzen (dann bewerben sich Neue dort)?
 - Keine Minuspunkte auch bei verlegter Prüfung, oder nur bei Krankheit?
 - Betrieb sagt kurzfristig ab: Zahlt SlotJob dem Studi Ausfallgeld und stellt es dem Betrieb
   in Rechnung? (Geht jetzt, weil SlotJob Arbeitgeber ist.)
@@ -127,11 +128,11 @@ Team:
 AUFGABEN (Name eintragen)
 - Rollen festlegen:
 - Punkte festlegen:
-- Balken bauen:
-- Instant-Zusage bauen:
-- Filter bauen:
+- Balken bauen: Claude, erledigt 27.11.
+- Instant-Zusage bauen: Claude, erledigt 27.11.
+- Filter bauen: Claude, erledigt 27.11.
 - Betriebsprofil: Hinweis "Provision" ersetzen durch "Stundensatz, SlotJob ist Arbeitgeber, kein Papierkram": Claude, erledigt 27.11.
-- Prototyp: Start-Score über den Slot-Schwellen umsetzen (startet im Prototyp noch bei 0):
+- Prototyp: zwei Scores, zwei Schwellen je Slot, Verhalten startet bei 80: Claude, erledigt 27.11.
 - Prototyp: Profil-Karte "BAföG-Freigrenze" in "Minijob-Grenze" umbenennen: Claude, erledigt 27.11.
 - Optional: BAföG-Grenze als extra Balken:
 - Geld durchrechnen für Folie 4 (Marge vs. Spontan-Bonus, Ausfälle, Schichten-Manager):
