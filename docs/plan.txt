@@ -47,8 +47,7 @@ Team:
 - Verfügbar: beide Schwellen erreicht, Knopf "Sofort buchen". Man sieht immer alle offenen
   Schichten und bucht spontan, wann es passt. Keine festen Tage, kein Wochenplan (entschieden 27.11.).
 - Nicht verfügbar (mit Grund: welche Schwelle fehlt)
-- Studiengang (entschieden 27.11.): zählt nicht für den Score. Der Betrieb kann einen Slot
-  mit Studiengängen markieren, der Studi filtert mit "Nur passend zu <Studiengang>".
+- Kein Studiengang (entschieden 27.11.): weder Score noch Filter noch Label, die App fragt ihn nicht ab.
 Team:
 
 

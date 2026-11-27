@@ -34,7 +34,7 @@ STUDIS
    Lösung: nur geprüfte Betriebe, SlotJob ist der Vertragspartner [Konzept].
 
 6. Fachnahe Jobs und HiWi-Stellen schwer zu finden
-   Lösung: Filter "Nur passend zu Maschinenbau", Uni stellt HiWi-Slots ein (Rolle Campus) [App].
+   Lösung: Uni stellt HiWi-Slots ein (Rolle Campus) [App]. Kein Studiengang-Filter (entschieden 27.11.).
 
 7. Kurze Wege
    Lösung: Weg auf jedem Slot, z. B. "9 Min" [App].

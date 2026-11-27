@@ -221,9 +221,8 @@ input[type=file]{font-size:13px;max-width:100%}
 </div>
 <script>
 {
-const KEY='slotjob-v8';
+const KEY='slotjob-v9';
 const DAYS=['Mo','Di','Mi','Do','Fr','Sa','So'];
-const FIELDS=['Maschinenbau','Informatik','BWL','Lehramt','Umweltwissenschaften','Anderes'];
 const LIMIT=603;
 const AREAS=[['gastro','Gastronomie'],['handel','Handel und Lager'],['events','Events und Aufbau'],['campus','Campus'],['buero','Büro und IT']];
 const AN=k=>(AREAS.find(a=>a[0]===k)||AREAS[0])[1];
@@ -233,7 +232,7 @@ const RULES={v:[[['Start','80'],['Pünktlich','+2'],['Spontan','+5'],['Krank','0
  q:[[['Arbeitszeugnis','+100'],['Schicht','+10']],[['5 Sterne','+10'],['1–2 Sterne','−10']]]};
 const NOTE={v:'Minuspunkte halbieren sich nach 3 Monaten.',q:'Gleiche Qualifikation zählt einmal. Schichten zählen bis +400.'};
 const rulesBox=t=>`<div class="rules">${RULES[t].map(col=>`<div>${col.map(([l,v])=>`<p><span>${l}</span><b>${v}</b></p>`).join('')}</div>`).join('')}</div><p class="small" style="margin:6px 0 0">${NOTE[t]}</p>`;
-const fresh=()=>({role:null,onb:0,field:'Maschinenbau',noExp:true,tab:'slots',filter:'ok',open:null,roles:[],instant:[],rated:{},cert:null,certRole:'Kellner',certs:{},biz:'Pizzeria Mamma Mia',etab:'mine',
+const fresh=()=>({role:null,onb:0,tab:'slots',filter:'ok',open:null,roles:[],instant:[],rated:{},cert:null,certRole:'Kellner',certs:{},biz:'Pizzeria Mamma Mia',etab:'mine',
  ev:[
   {a:'v',t:'Start',p:80},
   {a:'v',t:'16 × pünktlich',p:32},
@@ -246,13 +245,13 @@ const fresh=()=>({role:null,onb:0,field:'Maschinenbau',noExp:true,tab:'slots',fi
   {a:'handel',t:'2 × 5 Sterne',p:20}
  ],
  slots:[
-  {id:1,emp:'Café Kantstein',title:'Service und Kasse',day:'Fr',date:'27.11.',s:'16:00',e:'20:00',pay:14.5,dist:'4 Min',noExp:true,fields:[],area:'gastro',min:0,minV:70},
-  {id:2,emp:'Pizzeria Mamma Mia',title:'Kellner:in Abendschicht',day:'Sa',date:'28.11.',s:'18:00',e:'23:00',pay:15,dist:'9 Min',noExp:false,fields:[],area:'gastro',min:300,minV:70,eid:102},
-  {id:3,emp:'Getränkemarkt Fass & Co',title:'Lager und Leergut',day:'Sa',date:'28.11.',s:'09:00',e:'13:00',pay:14,dist:'11 Min',noExp:true,fields:[],area:'handel',min:0,minV:70},
-  {id:4,emp:'Lehrstuhl Konstruktion (HiWi)',title:'CAD-Modelle aufbereiten',day:'Mo',date:'30.11.',s:'10:00',e:'14:00',pay:14.2,dist:'Campus',noExp:false,fields:['Maschinenbau'],area:'campus',min:0,minV:80},
-  {id:5,emp:'IT-Service Rechenzentrum',title:'Helpdesk für Erstis',day:'Di',date:'01.12.',s:'12:00',e:'16:00',pay:14.8,dist:'Campus',noExp:false,fields:['Informatik'],area:'buero',min:100,minV:70},
-  {id:6,emp:'Eventhalle Nordufer',title:'Aufbau Konzert',day:'Mi',date:'02.12.',s:'14:00',e:'19:00',pay:15.5,dist:'15 Min',noExp:true,fields:[],area:'events',min:0,minV:95},
-  {id:7,emp:'Buchladen Seitenwind',title:'Inventur',day:'Do',date:'03.12.',s:'17:00',e:'21:00',pay:14,dist:'6 Min',noExp:true,fields:[],area:'handel',min:0,minV:70}
+  {id:1,emp:'Café Kantstein',title:'Service und Kasse',day:'Fr',date:'27.11.',s:'16:00',e:'20:00',pay:14.5,dist:'4 Min',noExp:true,area:'gastro',min:0,minV:70},
+  {id:2,emp:'Pizzeria Mamma Mia',title:'Kellner:in Abendschicht',day:'Sa',date:'28.11.',s:'18:00',e:'23:00',pay:15,dist:'9 Min',noExp:false,area:'gastro',min:300,minV:70,eid:102},
+  {id:3,emp:'Getränkemarkt Fass & Co',title:'Lager und Leergut',day:'Sa',date:'28.11.',s:'09:00',e:'13:00',pay:14,dist:'11 Min',noExp:true,area:'handel',min:0,minV:70},
+  {id:4,emp:'Lehrstuhl Konstruktion (HiWi)',title:'CAD-Modelle aufbereiten',day:'Mo',date:'30.11.',s:'10:00',e:'14:00',pay:14.2,dist:'Campus',noExp:false,area:'campus',min:0,minV:80},
+  {id:5,emp:'IT-Service Rechenzentrum',title:'Helpdesk für Erstis',day:'Di',date:'01.12.',s:'12:00',e:'16:00',pay:14.8,dist:'Campus',noExp:false,area:'buero',min:100,minV:70},
+  {id:6,emp:'Eventhalle Nordufer',title:'Aufbau Konzert',day:'Mi',date:'02.12.',s:'14:00',e:'19:00',pay:15.5,dist:'15 Min',noExp:true,area:'events',min:0,minV:95},
+  {id:7,emp:'Buchladen Seitenwind',title:'Inventur',day:'Do',date:'03.12.',s:'17:00',e:'21:00',pay:14,dist:'6 Min',noExp:true,area:'handel',min:0,minV:70}
  ],
  shifts:[
   {id:'a1',emp:'Café Kantstein',title:'Frühstücksservice',day:'So',date:'29.11.',s:'09:00',e:'13:00',pay:14.5,status:'Gebucht'},
@@ -310,10 +309,6 @@ function onboarding(){
   else if(S.role==='emp') body=`<div class="big">Dein Betrieb</div><p class="sub">So erscheinst du bei den Studis.</p>
    <label for="biz">Name des Betriebs</label><input id="biz" type="text" value="${esc(S.biz)}"><div class="spacer"></div>
    <button class="btn wide" data-act="finish">Los geht's</button>`;
-  else if(st===1) body=`<div class="big">Was studierst du?</div><p class="sub">Damit zeigen wir dir auch Slots, die zu deinem Fach passen.</p>
-   <label for="field">Studiengang</label><select id="field">${FIELDS.map(f=>`<option ${f===S.field?'selected':''}>${f}</option>`).join('')}</select>
-   <label class="check"><input id="noexp" type="checkbox" ${S.noExp?'checked':''}> Ich habe noch keine Joberfahrung</label><div class="spacer"></div>
-   <button class="btn wide" data-act="finish">Schichten zeigen</button>`;
   return `<div class="main"><div class="onb">${st===0?'':bar}${body}${st>0?'<button class="link" data-act="back">Zurück</button>':''}</div></div>`;
 }
 
@@ -327,7 +322,7 @@ function why(x){
 function slotCard(x){
   const w=why(x),booked=S.instant.includes(x.id),h=hrs(x.s,x.e);
   const btn=booked?`<button class="btn done" data-act="instant" data-v="${x.id}">Gebucht ✓</button>`:w?`<button class="btn" disabled>Nicht verfügbar</button>`:`<button class="btn" data-act="instant" data-v="${x.id}">Sofort buchen</button>`;
-  const tags=[`<span class="tag">${AN(x.area)}</span>`,x.fields.includes(S.field)?`<span class="tag">Passt zu ${esc(S.field)}</span>`:x.fields.length?`<span class="tag">${esc(x.fields.join(', '))}</span>`:'',x.min===0?'<span class="tag sun">Ohne Erfahrung</span>':''].join('');
+  const tags=[`<span class="tag">${AN(x.area)}</span>`,x.min===0?'<span class="tag sun">Ohne Erfahrung</span>':''].join('');
   const note=w?`<div class="why">${esc(w[0])}</div>${w[1]?`<div class="ways">${w[1]}</div>`:''}`:booked?'':`<div class="hint">Sofort ab: <span class="ok">Verhalten ${x.minV} ✓</span> · <span class="ok">${AN(x.area)} ${x.min} ✓</span></div>`;
   return `<article class="ticket"><div class="tk-top"><div class="when"><div class="d">${x.day} ${esc(x.date)}</div><div class="t">${esc(x.s)}</div><div class="e">bis ${esc(x.e)}</div></div>
    <div class="what"><div class="emp"><span>${esc(x.emp)}</span></div><h3>${esc(x.title)}</h3><div class="where">${esc(x.dist)} · ${String(h).replace('.',',')} h</div><div class="meta">${tags}</div>${note}</div></div>
@@ -348,13 +343,11 @@ const ROLES=['Kellner','Barista'];
 const FILTERS=[['ok','Verfügbar',x=>!why(x)],['no','Nicht verfügbar',x=>!!why(x)]];
 function slotsView(){
   const cur=FILTERS.find(f=>f[0]===S.filter)||FILTERS[0];
-  // Study subject: a separate filter on the slots that name the student's subject; it is no score input.
-  const fieldOn=!!S.fieldOnly&&S.field!=='Anderes',base=fieldOn?S.slots.filter(x=>x.fields.includes(S.field)):S.slots;
+  const base=S.slots;
   const list=base.filter(cur[2]);
   const f=([k,l,fn])=>`<button class="f ${cur[0]===k?'on':''}" data-act="filter" data-v="${k}" aria-pressed="${cur[0]===k}">${l}<span class="n">${base.filter(fn).length}</span></button>`;
   return `${scoreCard()}<h2>Freie Schichten</h2><p class="sub">Alle offenen Schichten. Buchen, wann es passt.</p>
    <div class="filters" role="group" aria-label="Filter">${FILTERS.map(f).join('')}</div>
-   ${S.field!=='Anderes'?`<button class="chip ${fieldOn?'on':''}" data-act="fieldf" aria-pressed="${fieldOn}">Nur passend zu ${esc(S.field)}</button>`:''}
    ${list.length?list.map(slotCard).join(''):`<div class="empty">${cur[0]==='ok'?'Gerade ist nichts für dich verfügbar.<br><button class="link" data-act="filter" data-v="no">Warum? Nicht verfügbare ansehen</button>':'Alle Slots sind für dich verfügbar.'}</div>`}`;
 }
 
@@ -369,7 +362,7 @@ function shiftsView(){
 
 function profilView(){
   const earned=S.shifts.reduce((a,x)=>a+hrs(x.s,x.e)*x.pay,0),pct=Math.min(100,earned/LIMIT*100);
-  return `<div style="margin-bottom:14px"><div><h2 style="margin:0">Rudolf M.</h2><p class="sub" style="margin:0">${esc(S.field)} · ★ 4,8 aus 19 Schichten</p></div></div>
+  return `<div style="margin-bottom:14px"><div><h2 style="margin:0">Rudolf M.</h2><p class="sub" style="margin:0">★ 4,8 aus 19 Schichten</p></div></div>
   <div class="card"><h3>Minijob-Grenze</h3><div class="row" style="margin-top:6px"><span class="big-num">${eur(earned)}</span><span class="small">von ${LIMIT} € im November</span></div><div class="bar"><i style="width:${pct}%"></i></div><p class="small" style="margin:0">Noch ${eur(Math.max(0,LIMIT-earned))} bis zur Grenze.</p></div>
   <div class="card"><h3>Qualifikationen</h3><div class="meta">${S.roles.length?S.roles.map(r=>`<span class="tag sun">${esc(r)}</span>`).join(''):'<span class="small">Noch keine. Lade unten ein Arbeitszeugnis hoch.</span>'}</div></div>
   <div class="card" id="certcard"><h3>Arbeitszeugnis hochladen</h3><p class="small" style="margin:4px 0 12px">Deckt das Zeugnis eine Rolle ab, gibt es +100 Qualifikation in dieser Rolle. Die gleiche Qualifikation zählt nur einmal.</p>
@@ -405,7 +398,6 @@ function empNew(){
   <label for="na">Rolle</label><select id="na">${AREAS.map(([k,n])=>`<option value="${k}">${n}</option>`).join('')}</select>
   <div class="two"><div><label for="nv">Sofort ab Verhalten</label><input id="nv" type="number" min="0" max="100" step="5" value="70"></div><div><label for="nm">Sofort ab Qualifikation</label><input id="nm" type="number" min="0" max="1000" step="50" value="200"></div></div>
   <p class="small" style="margin:6px 0 0">Qualifikation 0 heißt: auch ohne Erfahrung.</p>
-  <label for="nfd">Passt zu Studiengang</label><select id="nfd"><option value="">Alle</option>${FIELDS.filter(f=>f!=='Anderes').map(f=>`<option>${f}</option>`).join('')}</select>
   <button class="btn wide" style="margin-top:20px" type="submit">Slot veröffentlichen</button></form>`;
 }
 
@@ -429,12 +421,11 @@ const ratedWho=x=>booker(x)?.n;
 root.addEventListener('click',e=>{
   const b=e.target.closest('[data-act]');if(!b)return;
   const v=b.dataset.v,a=b.dataset.act;
-  if(a==='pickrole'){S.role=v;S.onb=1}
+  if(a==='pickrole'){S.role=v;if(v==='emp')S.onb=1;else{S.onb=99;toast('Fertig. Hier sind Schichten für dich.')}}
   else if(a==='back'){S.onb--;if(S.onb===0)S.role=null}
-  else if(a==='finish'){if(S.role==='emp'){const n=document.getElementById('biz').value.trim();if(n)S.biz=n}else{S.field=document.getElementById('field').value;S.noExp=document.getElementById('noexp').checked}S.onb=99;toast(S.role==='emp'?'Fertig. Hier sind deine Slots.':'Fertig. Hier sind Schichten für dich.')}
+  else if(a==='finish'){if(S.role==='emp'){const n=document.getElementById('biz').value.trim();if(n)S.biz=n}S.onb=99;toast(S.role==='emp'?'Fertig. Hier sind deine Slots.':'Fertig. Hier sind Schichten für dich.')}
   else if(a==='tab'){if(S.role==='emp')S.etab=v;else S.tab=v;const m=root.querySelector('.main');if(m)m.scrollTop=0}
   else if(a==='filter'){S.filter=v}
-  else if(a==='fieldf'){S.fieldOnly=!S.fieldOnly}
   else if(a==='instant'){const id=+v;if(S.instant.includes(id)){S.instant=S.instant.filter(x=>x!==id);toast('Buchung storniert')}else{S.instant.push(id);toast('Gebucht. Die Schicht steht unter Meine Schichten.')}}
   else if(a==='scopen'){S.open=S.open===v?null:v}
   else if(a==='rate'){const k=b.dataset.k;if(k[0]==='e'){const x=S.eslots.find(y=>'e'+y.id===k);x.rating=+v;
@@ -461,7 +452,7 @@ root.addEventListener('submit',e=>{
   const t=g('nt').value.trim()||'Schicht',d=g('nd').value,s=g('ns').value||'17:00',en=g('ne').value||'21:00',p=Math.max(13.9,parseFloat(g('np').value)||13.9);
   const id=Date.now(),area=g('na').value,min=Math.max(0,Math.min(1000,parseInt(g('nm').value,10)||0)),minV=Math.max(0,Math.min(100,parseInt(g('nv').value,10)||0));
   S.eslots.unshift({id,title:t,day:d,date:'',s,e:en,pay:p,noExp:min===0,area,min,minV,by:null,rating:0});
-  S.slots.push({id:id+1,emp:S.biz,title:t,day:d,date:'',s,e:en,pay:p,dist:'neu',noExp:min===0,fields:g('nfd').value?[g('nfd').value]:[],area,min,minV,eid:id});
+  S.slots.push({id:id+1,emp:S.biz,title:t,day:d,date:'',s,e:en,pay:p,dist:'neu',noExp:min===0,area,min,minV,eid:id});
   S.etab='mine';save();render();toast('Slot veröffentlicht. Studis sehen ihn ab sofort.');
 });
 render();
