@@ -16,7 +16,7 @@
   - Oben "Dein Score" mit zwei Teilen. Verhalten: ein Balken für alle Rollen, 0 bis 100. Qualifikation: 5 Balken, einer je Rolle, 0 bis 1000. Tippen auf einen Balken zeigt, woraus der Wert besteht, und die Punkteregeln in zwei Spalten.
   - Darunter "Freie Schichten": alle offenen Schichten, jederzeit buchbar, sobald beide Schwellen erreicht sind. Es gibt keine festen Tage und keinen Wochenplan.
   - Filter: "Verfügbar" (beide Schwellen erreicht) und "Nicht verfügbar" (mit Grund, z. B. "Gastronomie 300 nötig, du hast 250").
-  - Slotkarte: Datum, Uhrzeit, Betrieb, Tätigkeit, Weg, Dauer, Rolle als Tag, Lohn, darunter "Sofort ab: Verhalten 70 ✓ · Gastronomie 300 ✓". Der Knopf:
+  - Slotkarte: Datum, Uhrzeit, Betrieb, Tätigkeit, Weg, Dauer, Rolle als Tag, Lohn, darunter "Sofort ab: Verhalten 90 ✓ · Gastronomie 300 ✓". Der Knopf:
     - "Sofort buchen", wenn beide Schwellen erreicht sind. Die Schicht steht dann direkt unter Zugesagt.
     - "Nicht verfügbar", wenn eine Schwelle fehlt ("Gastronomie 300 nötig, du hast 250", mit Link "Arbeitszeugnis hochladen").
 - **Schichten**: Zugesagt (sofort gebucht oder angenommen), Beworben, Abgeschlossen mit Sternebewertung des Betriebs.
@@ -41,7 +41,7 @@
 - Rudolf, Qualifikation: Gastronomie 250 (14 Schichten +140, 11 × 5 Sterne +110), Handel und Lager 70, Events und Aufbau 0, Campus 0, Büro und IT 0.
 - 7 Slots: 4 verfügbar, 3 nicht verfügbar (Kellner und Helpdesk wegen Qualifikation, Konzert wegen Verhalten).
   - Service und Kasse (Gastronomie, Verhalten 70, Qualifikation 0): Sofort buchen.
-  - Kellner:in Abendschicht (Gastronomie, 70, 300): nicht verfügbar (250), mit Arbeitszeugnis (350) Sofort buchen.
+  - Kellner:in Abendschicht (Gastronomie, Verhalten 90, Qualifikation 300): nicht verfügbar (250), mit Arbeitszeugnis (350) Sofort buchen.
   - Lager und Leergut (Handel und Lager, 70, 0): Sofort buchen.
   - CAD-Modelle (Campus, 80, 0): Sofort buchen.
   - Aufbau Konzert (Events und Aufbau, 95, 0): nicht verfügbar, weil Verhalten 92.
@@ -55,7 +55,7 @@
 
 ## Technik
 
-- Eine Datei `site/index.html` (HTML, CSS, JavaScript), kein Server. Der Zustand liegt im Browser (localStorage, Schlüssel `slotjob-v10`). "Zurücksetzen" im Profil stellt die Demo-Daten wieder her.
+- Eine Datei `site/index.html` (HTML, CSS, JavaScript), kein Server. Der Zustand liegt im Browser (localStorage, Schlüssel `slotjob-v11`). "Zurücksetzen" im Profil stellt die Demo-Daten wieder her.
 - Repo mit `site/index.html`, `docs/plan.txt`, `docs/kontext.md`, `ideen/`. Deploy mit `python3 deploy.py` auf Cloudflare Pages.
 - Beide Scores werden aus einer Ereignisliste berechnet (Rolle oder Verhalten, Text, Punkte). Verhalten 0 bis 100. Qualifikation 0 bis 1000: ein Arbeitszeugnis je Rolle, Schichten höchstens +400.
 

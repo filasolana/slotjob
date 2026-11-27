@@ -221,7 +221,7 @@ input[type=file]{font-size:13px;max-width:100%}
 </div>
 <script>
 {
-const KEY='slotjob-v10';
+const KEY='slotjob-v11';
 const DAYS=['Mo','Di','Mi','Do','Fr','Sa','So'];
 const LIMIT=603;
 const AREAS=[['gastro','Gastronomie'],['handel','Handel und Lager'],['events','Events und Aufbau'],['campus','Campus'],['buero','Büro und IT']];
@@ -245,7 +245,7 @@ const fresh=()=>({role:null,onb:0,tab:'slots',filter:'ok',open:null,roles:[],ins
  ],
  slots:[
   {id:1,emp:'Café Kantstein',title:'Service und Kasse',day:'Fr',date:'27.11.',s:'16:00',e:'20:00',pay:14.5,dist:'4 Min',noExp:true,area:'gastro',min:0,minV:70},
-  {id:2,emp:'Pizzeria Mamma Mia',title:'Kellner:in Abendschicht',day:'Sa',date:'28.11.',s:'18:00',e:'23:00',pay:15,dist:'9 Min',noExp:false,area:'gastro',min:300,minV:70,eid:102},
+  {id:2,emp:'Pizzeria Mamma Mia',title:'Kellner:in Abendschicht',day:'Sa',date:'28.11.',s:'18:00',e:'23:00',pay:15,dist:'9 Min',noExp:false,area:'gastro',min:300,minV:90,eid:102},
   {id:3,emp:'Getränkemarkt Fass & Co',title:'Lager und Leergut',day:'Sa',date:'28.11.',s:'09:00',e:'13:00',pay:14,dist:'11 Min',noExp:true,area:'handel',min:0,minV:70},
   {id:4,emp:'Lehrstuhl Konstruktion (HiWi)',title:'CAD-Modelle aufbereiten',day:'Mo',date:'30.11.',s:'10:00',e:'14:00',pay:14.2,dist:'Campus',noExp:false,area:'campus',min:0,minV:80},
   {id:5,emp:'IT-Service Rechenzentrum',title:'Helpdesk für Erstis',day:'Di',date:'01.12.',s:'12:00',e:'16:00',pay:14.8,dist:'Campus',noExp:false,area:'buero',min:100,minV:70},
@@ -258,7 +258,7 @@ const fresh=()=>({role:null,onb:0,tab:'slots',filter:'ok',open:null,roles:[],ins
  ],
  eslots:[
   {id:101,title:'Service Mittag',day:'Fr',date:'27.11.',s:'11:30',e:'15:00',pay:14.5,noExp:true,area:'gastro',min:500,minV:80,by:{n:'Lena K.',v:88,q:520},rating:0},
-  {id:102,title:'Kellner:in Abendschicht',day:'Sa',date:'28.11.',s:'18:00',e:'23:00',pay:15,noExp:false,area:'gastro',min:300,minV:70,by:null,rating:0}
+  {id:102,title:'Kellner:in Abendschicht',day:'Sa',date:'28.11.',s:'18:00',e:'23:00',pay:15,noExp:false,area:'gastro',min:300,minV:90,by:null,rating:0}
  ]});
 let S;
 try{S=JSON.parse(localStorage.getItem(KEY))||fresh()}catch(e){S=fresh()}
