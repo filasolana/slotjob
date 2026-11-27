@@ -39,23 +39,25 @@
 
   /* Rechte Seite: Inhalt */
   .content{padding:60px 80px 44px 80px;display:flex;flex-direction:column}
-  .eyebrow{display:inline-flex;align-self:flex-start;align-items:center;gap:12px;font-weight:600;font-size:22px;color:var(--mute)}
+  .toprow{display:flex;justify-content:space-between;align-items:center;gap:20px}
+  .eyebrow{display:inline-flex;align-items:center;gap:12px;font-weight:600;font-size:22px;color:var(--mute)}
   .eyebrow b{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--ink);color:var(--sun);font-size:20px}
-  h1{font-family:var(--display);font-weight:800;font-size:92px;line-height:1;letter-spacing:-2.5px;margin:18px 0 0}
+  h1{font-family:var(--display);font-weight:800;font-size:82px;line-height:1;letter-spacing:-2.5px;margin:20px 0 0}
   h1 em{font-style:normal;background:linear-gradient(transparent 58%,var(--sun) 58%,var(--sun) 92%,transparent 92%)}
-  .method{display:flex;gap:14px;margin-top:30px}
-  .chip{border:2px solid var(--ink);border-radius:999px;padding:8px 20px;font-size:20px;font-weight:600}
-  .voices{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
-  .voice{background:var(--soft);border-radius:28px;padding:34px 30px 30px;display:flex;flex-direction:column}
-  .who{display:flex;align-items:center;gap:12px;font-weight:700;font-size:26px}
-  .who i{width:16px;height:16px;border-radius:50%;background:var(--ink);display:inline-block}
-  .voice.biz .who i{background:var(--coral)}
+  .method{display:flex;gap:10px}
+  .chip{border:2px solid var(--ink);border-radius:999px;padding:6px 16px;font-size:17px;font-weight:600}
+  .voices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:40px}
+  .voice{background:var(--soft);border-radius:28px;padding:32px 30px 30px;display:flex;flex-direction:column}
+  .who{display:flex;align-items:center;gap:12px;font-weight:700;font-size:28px}
+  .who i{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--sun);font-style:normal;font-size:18px}
   .tag{align-self:flex-start;margin-top:14px;background:#fff;border-radius:10px;padding:6px 12px;font-size:17px;white-space:nowrap;font-weight:600;color:var(--mute)}
-  .quote{font-family:var(--display);font-weight:600;font-size:32px;line-height:1.2;letter-spacing:-.3px;margin-top:24px;flex:1}
-    .src{font-size:17px;color:var(--mute);margin-top:18px}
-  .insight{margin-top:40px;background:var(--ink);color:#fff;border-radius:28px;padding:34px 40px;display:flex;align-items:center;gap:28px}
-  .insight svg{flex:none;width:58px;height:58px}
+  .lbl{margin-top:22px;font-size:15px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--mute)}
+  .quote{font-family:var(--display);font-weight:600;font-size:28px;line-height:1.2;letter-spacing:-.3px;margin-top:8px;min-height:136px}
+  .meant{margin-top:8px;font-size:20px;line-height:1.35;font-weight:600;background:#fff;border-left:6px solid var(--sun);border-radius:10px;padding:12px 16px}
+  .insight{margin-top:32px;background:var(--ink);color:#fff;border-radius:28px;padding:28px 40px;display:flex;align-items:center;gap:28px}
+  .insight .bang{flex:none;display:grid;place-items:center;width:62px;height:62px;border-radius:50%;background:var(--sun);color:var(--ink);font-family:var(--display);font-weight:800;font-size:40px}
   .insight p{margin:0;font-family:var(--display);font-weight:600;font-size:36px;line-height:1.15;letter-spacing:-.5px}
+  .insight p small{display:block;font-family:var(--text);font-size:19px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#b9bcc0;margin-bottom:8px}
   .insight p b{color:var(--sun);font-weight:800}
   .foot{margin-top:auto;padding-top:18px;font-size:15px;color:var(--mute);display:flex;justify-content:space-between;gap:24px}
 </style>
@@ -101,47 +103,50 @@
   </section>
 
   <section class="content">
-    <div class="eyebrow"><b>1</b> Recherche + Analyse</div>
-    <h1>Viele Stimmen.<br><em>Ein Muster.</em></h1>
-
-    <div class="method">
-      <span class="chip">Interviews mit Studis</span>
-      <span class="chip">Studien &amp; Umfragen</span>
-      <span class="chip">Foren</span>
+    <div class="toprow">
+      <div class="eyebrow"><b>1</b> Recherche + Analyse</div>
+      <div class="method">
+        <span class="chip">Interviews mit Studis</span>
+        <span class="chip">Studien &amp; Umfragen</span>
+        <span class="chip">Foren</span>
+      </div>
     </div>
+    <h1>Viele Stimmen.<br><em>Drei Probleme.</em></h1>
 
     <div class="voices">
       <div class="voice">
-        <div class="who"><i></i>Die jobben</div>
+        <div class="who"><i>1</i>Feste Zeiten</div>
         <span class="tag">Jede:r Dritte: Studium leidet</span>
+        <div class="lbl">Gesagt</div>
         <div class="quote">„Der Schichtplan steht vier Wochen vorher. Mein Stundenplan nicht.“</div>
-        <div class="src">Interview, Studi</div>
+        <div class="lbl">Gemeint</div>
+        <div class="meant">Studium und Job streiten um dieselbe Zeit.</div>
       </div>
       <div class="voice">
-        <div class="who"><i></i>Die nicht jobben</div>
-        <span class="tag">Passt zeitlich nicht</span>
-        <div class="quote">„Ich will Geld. Aber ich will mich nicht jede Woche festlegen.“</div>
-        <div class="src">Interview, Studi</div>
+        <div class="who"><i>2</i>Kein Einstieg</div>
+        <span class="tag">Erstis jobben am seltensten</span>
+        <div class="lbl">Gesagt</div>
+        <div class="quote">„Fünfzehn Bewerbungen. Fast nur Funkstille.“</div>
+        <div class="lbl">Gemeint</div>
+        <div class="meant">Ohne Erfahrung keine Chance, ohne Chance keine Erfahrung.</div>
       </div>
-      <div class="voice biz">
-        <div class="who"><i></i>Die Betriebe</div>
-        <span class="tag">Ausfälle kommen kurzfristig</span>
-        <div class="quote">„Samstag, 7 Uhr. Mein Kellner ist krank. Keiner kann.“</div>
-        <div class="src">Gastro am Campus*</div>
+      <div class="voice">
+        <div class="who"><i>3</i>Regel-Chaos</div>
+        <span class="tag">Ratgeber widersprechen sich</span>
+        <div class="lbl">Gesagt</div>
+        <div class="quote">„Ich dachte, jeder Euro wird vom BAföG abgezogen.“</div>
+        <div class="lbl">Gemeint</div>
+        <div class="meant">Unsicherheit hält davon ab, überhaupt anzufangen.</div>
       </div>
     </div>
 
     <div class="insight">
-      <svg viewBox="0 0 40 40" aria-hidden="true">
-        <circle cx="13" cy="20" r="10" fill="none" stroke="#ffcd38" stroke-width="3"/>
-        <circle cx="27" cy="20" r="10" fill="none" stroke="#fff" stroke-width="3"/>
-      </svg>
-      <p>Beide Seiten suchen dasselbe: einzelne Schichten.<br><b>Sie finden sich nur nicht.</b></p>
+      <span class="bang">!</span>
+      <p><small>Was uns überrascht hat</small>Nicht die Suche blockiert, <b>sondern die Verpflichtung.</b></p>
     </div>
 
     <div class="foot">
-      <span>Quellen: eigene Interviews · 22. Sozialerhebung (DZHW/DSW 2023) · Studierendenbefragung Uni Gießen 2025 · Forsa/Minijob-Zentrale 2020</span>
-      <span>* Szene, Gespräche mit Betrieben folgen</span>
+      <span>Quellen: eigene Interviews · 22. Sozialerhebung (DZHW/DSW 2023) · Studierendenbefragung Uni Gießen 2025 · Forsa/Minijob-Zentrale 2020 · Forenauswertung (gutefrage, Studis Online)</span>
     </div>
   </section>
 
