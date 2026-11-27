@@ -25,4 +25,4 @@ Im Profil setzt "Zurücksetzen" die Demo-Daten zurück.
 - Für Änderungen am Prototyp: eigener Branch `name/thema` (z. B. `erik/filter`), dann Pull Request auf `main`. Eine andere Person schaut kurz drüber.
 - Text in `docs/` und `ideen/` darf jeder direkt auf `main` ändern.
 - Aufgaben stehen in `docs/plan.txt` unter AUFGABEN: Namen eintragen, wer es macht.
-- Nach dem Merge auf `main` wird slotjob.app aktualisiert.
+- Jede Änderung auf `main` ist nach etwa 1 Minute auf slotjob.app live.
