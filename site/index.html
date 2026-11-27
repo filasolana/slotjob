@@ -221,18 +221,17 @@ input[type=file]{font-size:13px;max-width:100%}
 </div>
 <script>
 {
-const KEY='slotjob-v9';
+const KEY='slotjob-v10';
 const DAYS=['Mo','Di','Mi','Do','Fr','Sa','So'];
 const LIMIT=603;
 const AREAS=[['gastro','Gastronomie'],['handel','Handel und Lager'],['events','Events und Aufbau'],['campus','Campus'],['buero','Büro und IT']];
 const AN=k=>(AREAS.find(a=>a[0]===k)||AREAS[0])[1];
-const QUAL={Kellner:'gastro',Barista:'gastro'};
 const STARQ={5:10,4:0,3:0,2:-10,1:-10};
 const RULES={v:[[['Start','80'],['Pünktlich','+2'],['Spontan','+5'],['Krank','0']],[['Zu spät','−5'],['Absage <24 h','−10'],['Fehlen','−30']]],
  q:[[['Arbeitszeugnis','+100'],['Schicht','+10']],[['5 Sterne','+10'],['1–2 Sterne','−10']]]};
-const NOTE={v:'Minuspunkte halbieren sich nach 3 Monaten.',q:'Gleiche Qualifikation zählt einmal. Schichten zählen bis +400.'};
+const NOTE={v:'Minuspunkte halbieren sich nach 3 Monaten.',q:'Ein Arbeitszeugnis je Rolle. Schichten zählen bis +400.'};
 const rulesBox=t=>`<div class="rules">${RULES[t].map(col=>`<div>${col.map(([l,v])=>`<p><span>${l}</span><b>${v}</b></p>`).join('')}</div>`).join('')}</div><p class="small" style="margin:6px 0 0">${NOTE[t]}</p>`;
-const fresh=()=>({role:null,onb:0,tab:'slots',filter:'ok',open:null,roles:[],instant:[],rated:{},cert:null,certRole:'Kellner',certs:{},biz:'Pizzeria Mamma Mia',etab:'mine',
+const fresh=()=>({role:null,onb:0,tab:'slots',filter:'ok',open:null,roles:[],instant:[],rated:{},cert:null,certRole:'gastro',certs:{},biz:'Pizzeria Mamma Mia',etab:'mine',
  ev:[
   {a:'v',t:'Start',p:80},
   {a:'v',t:'16 × pünktlich',p:32},
@@ -264,7 +263,7 @@ const fresh=()=>({role:null,onb:0,tab:'slots',filter:'ok',open:null,roles:[],ins
 let S;
 try{S=JSON.parse(localStorage.getItem(KEY))||fresh()}catch(e){S=fresh()}
 if(!['ok','no'].includes(S.filter))S.filter='ok';
-if(!S.certs)S.certs={};if(!S.certRole)S.certRole='Kellner';
+if(!S.certs)S.certs={};if(!S.certRole||!AREAS.some(a=>a[0]===S.certRole))S.certRole='gastro';
 if(!['slots','schichten','profil'].includes(S.tab))S.tab='slots';
 S.slots=S.slots.filter(x=>!(x.id>=8&&x.id<=13&&x.dist===''));S.slots.forEach(x=>{if(x.dist==='4 Min vom Wohnheim')x.dist='4 Min';delete x.lat;delete x.lng});delete S.mapDay;delete S.mapSel;
 // Behaviour: one score per person for all roles, 0 to 100, start 80.
@@ -314,7 +313,7 @@ function onboarding(){
 
 function why(x){
   const v=vScore(),q=qScore(x.area);
-  if(q<x.min)return [`${AN(x.area)} ${x.min} nötig, du hast ${q}`,x.area==='gastro'?`<button class="link" data-act="certgo" data-v="Kellner">Arbeitszeugnis hochladen</button>`:''];
+  if(q<x.min)return [`${AN(x.area)} ${x.min} nötig, du hast ${q}`,S.roles.includes(x.area)?'':`<button class="link" data-act="certgo" data-v="${x.area}">Arbeitszeugnis hochladen</button>`];
   if(v<x.minV)return [`Verhalten ${x.minV} nötig, du hast ${v}`,''];
   return null;
 }
@@ -339,7 +338,6 @@ function scoreCard(){
   <div class="sc-sec">Qualifikation</div>${AREAS.map(([k,n])=>row(k,n,qScore(k),QMAX,qEvents(k),'q')).join('')}</section>`;
 }
 
-const ROLES=['Kellner','Barista'];
 const FILTERS=[['ok','Verfügbar',x=>!why(x)],['no','Nicht verfügbar',x=>!!why(x)]];
 function slotsView(){
   const cur=FILTERS.find(f=>f[0]===S.filter)||FILTERS[0];
@@ -364,11 +362,11 @@ function profilView(){
   const earned=S.shifts.reduce((a,x)=>a+hrs(x.s,x.e)*x.pay,0),pct=Math.min(100,earned/LIMIT*100);
   return `<div style="margin-bottom:14px"><div><h2 style="margin:0">Rudolf M.</h2><p class="sub" style="margin:0">★ 4,8 aus 19 Schichten</p></div></div>
   <div class="card"><h3>Minijob-Grenze</h3><div class="row" style="margin-top:6px"><span class="big-num">${eur(earned)}</span><span class="small">von ${LIMIT} € im November</span></div><div class="bar"><i style="width:${pct}%"></i></div><p class="small" style="margin:0">Noch ${eur(Math.max(0,LIMIT-earned))} bis zur Grenze.</p></div>
-  <div class="card"><h3>Qualifikationen</h3><div class="meta">${S.roles.length?S.roles.map(r=>`<span class="tag sun">${esc(r)}</span>`).join(''):'<span class="small">Noch keine. Lade unten ein Arbeitszeugnis hoch.</span>'}</div></div>
-  <div class="card" id="certcard"><h3>Arbeitszeugnis hochladen</h3><p class="small" style="margin:4px 0 12px">Deckt das Zeugnis eine Rolle ab, gibt es +100 Qualifikation in dieser Rolle. Die gleiche Qualifikation zählt nur einmal.</p>
-   ${Object.entries(S.certs).map(([r,c])=>`<div class="app"><span>${esc(r)} · <span class="small">${esc(c.file)}</span></span>${S.roles.includes(r)?'<span class="tag sun">Erhalten</span>':`<button class="btn dark" data-act="certok" data-v="${esc(r)}">Anerkennen</button>`}</div>`).join('')}
-   ${ROLES.filter(r=>!S.roles.includes(r)&&!S.certs[r]).length?`<label for="certrole">Welche Qualifikation?</label><select id="certrole">${ROLES.filter(r=>!S.roles.includes(r)&&!S.certs[r]).map(r=>`<option ${r===S.certRole?'selected':''}>${esc(r)}</option>`).join('')}</select>
-   <label class="btn ghost wide upload" for="cert">Arbeitszeugnis hochladen</label><input id="cert" class="vh" type="file" accept=".pdf,.jpg,.jpeg,.png">`:'<p class="small" style="margin:8px 0 0">Du hast alle Qualifikationen.</p>'}</div>
+  <div class="card"><h3>Anerkannte Arbeitszeugnisse</h3><div class="meta">${S.roles.length?S.roles.map(r=>`<span class="tag sun">${esc(AN(r))}</span>`).join(''):'<span class="small">Noch keine. Lade unten ein Arbeitszeugnis hoch.</span>'}</div></div>
+  <div class="card" id="certcard"><h3>Arbeitszeugnis hochladen</h3><p class="small" style="margin:4px 0 12px">Deckt das Zeugnis eine Rolle ab, gibt es +100 Qualifikation in dieser Rolle. Je Rolle zählt ein Zeugnis.</p>
+   ${Object.entries(S.certs).map(([r,c])=>`<div class="app"><span>${esc(AN(r))} · <span class="small">${esc(c.file)}</span></span>${S.roles.includes(r)?'<span class="tag sun">Erhalten</span>':`<button class="btn dark" data-act="certok" data-v="${esc(r)}">Anerkennen</button>`}</div>`).join('')}
+   ${AREAS.filter(([r])=>!S.roles.includes(r)&&!S.certs[r]).length?`<label for="certrole">Welche Rolle deckt es ab?</label><select id="certrole">${AREAS.filter(([r])=>!S.roles.includes(r)&&!S.certs[r]).map(([r,n])=>`<option value="${r}" ${r===S.certRole?'selected':''}>${esc(n)}</option>`).join('')}</select>
+   <label class="btn ghost wide upload" for="cert">Arbeitszeugnis hochladen</label><input id="cert" class="vh" type="file" accept=".pdf,.jpg,.jpeg,.png">`:'<p class="small" style="margin:8px 0 0">Für alle 5 Rollen ist ein Zeugnis anerkannt.</p>'}</div>
   <button class="btn ghost wide" data-act="switch">Zur Ansicht für Betriebe</button>
   <button class="link" data-act="reset">Zurücksetzen</button>`;
 }
@@ -415,8 +413,8 @@ function render(){
   root.innerHTML=top()+`<div class="main">${body}</div>`+nav(items);
 }
 
-// Work certificate: +100 qualification in the role it covers, counted once per qualification.
-function qualify(r,t){const k=QUAL[r]||'gastro',b0=qScore(k);if(!S.roles.includes(r))S.roles.push(r);S.ev.push({a:k,t,p:100,q:r});const d=qScore(k)-b0;toast(r+' erhalten'+(d?`, +${d} Qualifikation in ${AN(k)}`:'')+'.')}
+// Work certificate: +100 qualification in the role it covers, one certificate per role.
+function qualify(k){const b0=qScore(k);if(!S.roles.includes(k))S.roles.push(k);S.ev.push({a:k,t:'Arbeitszeugnis',p:100,q:'zeugnis'});const d=qScore(k)-b0;toast('Arbeitszeugnis '+AN(k)+' anerkannt'+(d?`, +${d} Qualifikation`:'')+'.')}
 const ratedWho=x=>booker(x)?.n;
 root.addEventListener('click',e=>{
   const b=e.target.closest('[data-act]');if(!b)return;
@@ -435,7 +433,7 @@ root.addEventListener('click',e=>{
      if(ratedWho(x)==='Rudolf M.'){S.ev=S.ev.filter(e=>e.k!=='p'+k);S.ev.push({a:'v',t:(+v?'Pünktlich bei ':'Zu spät bei ')+S.biz,p:+v?2:-5,k:'p'+k});toast('Rudolf M.: Verhalten '+(+v?'+2':'−5'))}else toast('Gespeichert')}
   else if(a==='setrole'){if(S.role!==v){S.role=v;if(S.onb<99)S.onb=99}}
   else if(a==='switch'){S.role=S.role==='emp'?'studi':'emp';if(S.onb<99)S.onb=99}
-  else if(a==='certok'){qualify(v,'Arbeitszeugnis '+v)}
+  else if(a==='certok'){qualify(v)}
   else if(a==='certgo'){S.tab='profil';S.certRole=v;save();render();const c=document.getElementById('certcard'),m=root.querySelector('.main');if(c&&m)m.scrollTop=c.offsetTop-m.offsetTop-12;return}
   else if(a==='reset'){S=fresh();toast('Zurückgesetzt')}
   const keep=root.querySelector('.main')?.scrollTop||0;
@@ -444,7 +442,7 @@ root.addEventListener('click',e=>{
 });
 root.addEventListener('change',e=>{
   if(e.target.id==='certrole'){S.certRole=e.target.value;save()}
-  if(e.target.id==='cert'&&e.target.files[0]){const r=document.getElementById('certrole').value;S.certs[r]={file:e.target.files[0].name};save();render();toast('Arbeitszeugnis für '+r+' wird geprüft')}
+  if(e.target.id==='cert'&&e.target.files[0]){const r=document.getElementById('certrole').value;S.certs[r]={file:e.target.files[0].name};save();render();toast('Arbeitszeugnis für '+AN(r)+' wird geprüft')}
 });
 root.addEventListener('submit',e=>{
   e.preventDefault();

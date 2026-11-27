@@ -23,7 +23,7 @@ Team:
   Krankmeldung 0 (siehe 5)
   Minuspunkte halbieren sich nach 3 Monaten
 - QUALIFIKATION: je Rolle, 0 bis 1000, Start 0
-  Arbeitszeugnis +100, wenn es die Rolle abdeckt (gleiche Qualifikation zählt nur einmal)
+  Arbeitszeugnis +100 in der Rolle, die es abdeckt (eine der 5 Rollen, ein Zeugnis je Rolle)
   Keine Kurse (entschieden 27.11.)
   Schicht in der Rolle +10 (aus Schichten höchstens +400)
   Arbeit 5 Sterne +10, 1 oder 2 Sterne -10

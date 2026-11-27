@@ -38,12 +38,12 @@ Verhalten: einer pro Person, 0 bis 100, Start 80
 
 Qualifikation: je Rolle, 0 bis 1000, Start 0, keine Kurse
 - Rudolf, Gastronomie 350 = 140 (14 Schichten) + 110 (11 x 5 Sterne)
-  + 100 (Arbeitszeugnis vom Café, deckt Kellner ab)
+  + 100 (Arbeitszeugnis vom Café, deckt Gastronomie ab)
   Ohne Zeugnis hätte er 250, dann wäre die Kellner-Schicht (Schwelle 300) nicht verfügbar.
 - Lena, Gastronomie 520 = 300 (30 Schichten) + 120 (12 x 5 Sterne)
-  + 100 (Arbeitszeugnis als Kellnerin)
-  Ein zweites Kellner-Zeugnis zählt nicht doppelt: gleiche Qualifikation nur einmal.
-  Ein Barista-Zeugnis zählt dagegen: +100.
+  + 100 (Arbeitszeugnis als Kellnerin, deckt Gastronomie ab)
+  Ein zweites Gastronomie-Zeugnis zählt nicht doppelt: ein Zeugnis je Rolle.
+  Ein Zeugnis für Events und Aufbau zählt dagegen dort: +100.
 
 Probleme, die der Pitch abdeckt (Folie 1: Schichtplan 4 Wochen vorher, nicht jede Woche
 festlegen, Ausfälle am Samstag um 7): Planbarkeit, Bewerbungen ohne Antwort, Betrug,

@@ -20,7 +20,7 @@
     - "Sofort buchen", wenn beide Schwellen erreicht sind. Die Schicht steht dann direkt unter Zugesagt.
     - "Nicht verfügbar", wenn eine Schwelle fehlt ("Gastronomie 300 nötig, du hast 250", mit Link "Arbeitszeugnis hochladen").
 - **Schichten**: Zugesagt (sofort gebucht oder angenommen), Beworben, Abgeschlossen mit Sternebewertung des Betriebs.
-- **Profil**: Minijob-Grenze (Verdienst im Monat gegen 603 €), Qualifikationen, Arbeitszeugnis hochladen (+100 in der Rolle, die es abdeckt, gleiche Qualifikation einmal). Es gibt keine Kurse und keinen Kurse-Tab.
+- **Profil**: Minijob-Grenze (Verdienst im Monat gegen 603 €), anerkannte Arbeitszeugnisse, Arbeitszeugnis hochladen: man wählt eine der 5 Rollen, +100 in dieser Rolle, ein Zeugnis je Rolle. Es gibt keine Kurse und keinen Kurse-Tab.
 
 ### Betriebs-Ansicht (Pizzeria Mamma Mia)
 
@@ -55,18 +55,18 @@
 
 ## Technik
 
-- Eine Datei `site/index.html` (HTML, CSS, JavaScript), kein Server. Der Zustand liegt im Browser (localStorage, Schlüssel `slotjob-v9`). "Zurücksetzen" im Profil stellt die Demo-Daten wieder her.
+- Eine Datei `site/index.html` (HTML, CSS, JavaScript), kein Server. Der Zustand liegt im Browser (localStorage, Schlüssel `slotjob-v10`). "Zurücksetzen" im Profil stellt die Demo-Daten wieder her.
 - Repo mit `site/index.html`, `docs/plan.txt`, `docs/kontext.md`, `ideen/`. Deploy mit `python3 deploy.py` auf Cloudflare Pages.
-- Beide Scores werden aus einer Ereignisliste berechnet (Rolle oder Verhalten, Text, Punkte). Verhalten 0 bis 100. Qualifikation 0 bis 1000: gleiche Qualifikation einmal, Schichten höchstens +400.
+- Beide Scores werden aus einer Ereignisliste berechnet (Rolle oder Verhalten, Text, Punkte). Verhalten 0 bis 100. Qualifikation 0 bis 1000: ein Arbeitszeugnis je Rolle, Schichten höchstens +400.
 
 ## Plan des Teams (docs/plan.txt)
 
 1. **Instant-Zusage** (entschieden 27.11.): Der Betrieb setzt je Slot zwei Schwellen, Verhalten (Standard 70) und Qualifikation in der Rolle. Beide erreicht: sofort buchen. Eine fehlt: nicht verfügbar. Keine Bewerbung. Neue starten mit Verhalten 80 und Qualifikation 0.
 2. **Reputation, zwei Scores** (entschieden 27.11.):
    - Verhalten, einer pro Person, 0 bis 100, Start 80: pünktlich +2, spontan oder On-Duty +5, zu spät −5, Absage unter 24 h −10, gefehlt −30, Krankmeldung 0, Minuspunkte halbieren sich nach 3 Monaten.
-   - Qualifikation je Rolle, 0 bis 1000, Start 0: Arbeitszeugnis +100 für die Rolle, die es abdeckt (gleiche Qualifikation einmal), keine Kurse, Schicht in der Rolle +10 (höchstens +400), 5 Sterne +10, 1 bis 2 Sterne −10.
+   - Qualifikation je Rolle, 0 bis 1000, Start 0: Arbeitszeugnis +100 für die Rolle, die es abdeckt (ein Zeugnis je Rolle), keine Kurse, Schicht in der Rolle +10 (höchstens +400), 5 Sterne +10, 1 bis 2 Sterne −10.
    - Nach der Schicht: "Pünktlich und zuverlässig?" zählt für Verhalten, Sterne für die Arbeit zählen für Qualifikation.
-3. **Rollen (5)**: Gastronomie (fest), Handel und Lager, Events und Aufbau, Campus, Büro und IT (Vorschläge). Kellner und Barista sind Qualifikationen in der Gastronomie.
+3. **Rollen (5)**: Gastronomie (fest), Handel und Lager, Events und Aufbau, Campus, Büro und IT (Vorschläge).
 4. **Filter**: Verfügbar (Sofort buchen), Nicht verfügbar (mit Grund). Kein Studiengang, weder im Score noch als Filter (entschieden 27.11.).
 5. **Absagen**: mehr Geld für spontane Schichten (zahlt SlotJob, Absicherung für Betriebe). On-Duty: Leute auf Abruf springen bei Ausfall ein, nur freiwillig (Abruf ist gesetzlich nur mit 4 Tagen Vorlauf verpflichtend, § 12 TzBfG). Entschieden 27.11.: Krankmeldung kostet keine Punkte, wie im normalen Job; SlotJob schreibt die Schicht als Spontan-Schicht mit höherem Lohn neu aus und trägt die Mehrkosten aus der Marge.
 6. **Einarbeitung**: Wiederholungsjobs belohnen, z. B. bessere Chancen beim selben Betrieb.
@@ -84,7 +84,7 @@ Gebaut:
 - Zwei Scores: Verhalten (einer) und Qualifikation (je Rolle), Balken, Herkunft der Punkte
 - Zwei Schwellen je Slot, Sofort buchen nur wenn beide erreicht, sonst nicht verfügbar
 - Filter verfügbar / nicht verfügbar mit Grund
-- Arbeitszeugnis +100 Qualifikation in der abgedeckten Rolle, einmal je Qualifikation
+- Arbeitszeugnis +100 Qualifikation in der abgedeckten Rolle, ein Zeugnis je Rolle (Auswahl: die 5 Rollen)
 - Betrieb bewertet Pünktlichkeit (Verhalten) und Arbeit (Qualifikation)
 - Minijob-Grenze im Profil, Stundensatz im Betriebsprofil
 
