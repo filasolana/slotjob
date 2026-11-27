@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SlotJob</title>
+<meta name="description" content="SlotJob: Studierende bewerben sich auf einzelne Schichten statt auf feste Stellen. Klickbarer Prototyp.">
+<meta name="theme-color" content="#ffcd38">
+<meta name="color-scheme" content="light only">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect x='0' y='6' width='40' height='28' rx='7' fill='%23ffcd38'/%3E%3Ccircle cx='0' cy='20' r='4.5' fill='%230e4f4a'/%3E%3Ccircle cx='40' cy='20' r='4.5' fill='%230e4f4a'/%3E%3Ccircle cx='20' cy='20' r='8' fill='none' stroke='%2310302d' stroke-width='2.6'/%3E%3Cpath d='M20 15.4V20l3.2 2.2' stroke='%2310302d' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+/* LAYOUT the working app in a phone frame on a plain teal stage; on a phone the app fills the screen.
+   IDEA every slot is a shift ticket: a perforated stub with the start time printed large, a ticket number, a punch-out. */
+:root{
+  --stage:#ffcd38; --stage-ink:#16181b; --stage-mute:#4a3d00; --stage-line:#e0b21f;
+  --canvas:#eeeeea; --card:#ffffff; --ink:#16181b; --mute:#575c62; --line:#dcddd7; --soft:#e7e7e2; --head:#ffcd38; --head-ink:#16181b;
+  --sun:#ffcd38; --sun-ink:#1a1500; --coral:#ff5a45; --ok:#15803d; --brand:#16181b;
+  --display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --text:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  color-scheme:light;
+}
+
+*{box-sizing:border-box;min-width:0}
+html,body{height:100%}
+body{margin:0;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%;background:var(--stage);color:var(--ink);font:16px/1.5 var(--text);overflow-x:clip;-webkit-font-smoothing:antialiased}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px;border-radius:8px}
+
+/* stage */
+.stage{min-height:100%;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:40px clamp(40px,7vw,112px);max-width:1280px;margin:0 auto;padding-block:40px;padding-left:max(24px,5vw,env(safe-area-inset-left,0px));padding-right:max(24px,5vw,env(safe-area-inset-right,0px));position:relative}
+/* phone */
+.phone{width:390px;height:min(844px,calc(100vh - 48px));min-height:660px;background:var(--canvas);border-radius:52px;border:12px solid #141414;box-shadow:0 0 0 2px rgba(0,0,0,.25),0 40px 80px -30px rgba(0,0,0,.65);overflow:hidden;display:flex;flex-direction:column;position:relative}
+#root{display:flex;flex-direction:column;flex:1;min-height:0}
+.top,.nav{flex:none}
+.top{display:flex;align-items:center;justify-content:space-between;padding:12px 18px 12px;background:var(--head);color:var(--head-ink)}
+.logo{display:flex;align-items:center;gap:8px;font:800 21px/1 var(--display);letter-spacing:-.03em;color:var(--ink)}
+.logo svg{width:30px;height:22px}
+.logo .j{color:inherit}
+.seg{display:flex;padding:3px;border-radius:999px;background:rgba(0,0,0,.09)}
+.seg button{border:0;background:none;border-radius:999px;padding:5px 12px;font-size:13px;font-weight:700;color:rgba(22,24,27,.7)}
+.seg button.on{background:var(--ink);color:var(--card)}
+.chip{border:1.5px solid var(--line);border-radius:999px;padding:5px 11px;font-size:13px;font-weight:600;color:var(--mute);background:var(--card)}
+.chip:hover{border-color:var(--brand);color:var(--ink)}
+.main{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:18px 16px 28px;scrollbar-width:none}
+.main::-webkit-scrollbar{display:none}
+.nav{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;border-top:1px solid var(--line);background:var(--card);padding-bottom:max(6px,env(safe-area-inset-bottom,0px))}
+.nav button{background:none;border:0;padding:8px 4px 10px;font-size:12px;font-weight:600;color:var(--mute);min-height:58px;display:grid;justify-items:center;gap:3px}
+.nav button svg{width:52px;height:30px;padding:4px 15px;border-radius:999px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:background .15s ease}
+.nav button.on{color:var(--brand)}
+.nav button.on svg{stroke-width:2.3;background:color-mix(in srgb,var(--brand) 15%,transparent)}
+.nav button{padding-top:6px}
+.badge{background:var(--coral);color:#fff;border-radius:999px;font-size:10px;font-weight:700;padding:0 5px;margin-left:2px}
+
+h2{font:800 28px/1.05 var(--display);letter-spacing:-.03em;margin:2px 0 6px;text-wrap:balance}
+h3{font:700 16.5px/1.3 var(--text);margin:0}
+.sub{color:var(--mute);font-size:14px;margin:0 0 16px}
+.filters{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4px;margin:0 0 16px;padding:4px;background:var(--soft);border-radius:14px}
+.myday{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:-6px 0 14px;font-size:13.5px;color:var(--mute)}
+.myday b{color:var(--ink);font-weight:600}
+.myday .link{padding:0}
+.f{border:0;background:none;border-radius:10px;padding:8px 10px;font-size:14px;text-wrap:balance;line-height:1.2;font-weight:600;min-height:40px;color:var(--mute);text-align:center}
+.f.on{background:var(--card);color:var(--ink);box-shadow:0 1px 0 var(--line),0 2px 8px -4px rgba(0,0,0,.18)}
+.f .n{font-weight:500;color:var(--mute);margin-left:4px;font-variant-numeric:tabular-nums}
+
+/* ticket */
+.ticket{background:var(--card);border-radius:18px;margin-bottom:14px;box-shadow:0 1px 0 var(--line),0 8px 22px -18px rgba(0,0,0,.35);position:relative;animation:rise .35s ease both}
+.tk-top{display:grid;grid-template-columns:88px minmax(0,1fr);}
+.when{position:relative;padding:16px 10px 14px;text-align:center;border-right:2px dashed var(--line)}
+.when .d{font:600 12px var(--text);color:var(--mute);letter-spacing:.04em;text-transform:uppercase}
+.when .t{font:800 27px/1.05 var(--display);letter-spacing:-.03em;margin:3px 0 2px;font-variant-numeric:tabular-nums}
+.when .e{font-size:12px;color:var(--mute);font-variant-numeric:tabular-nums}
+.what{padding:14px 14px 12px}
+.emp{font-size:13px;color:var(--mute);display:flex;align-items:center;gap:7px}
+.where{font-size:13px;color:var(--mute);margin-top:2px}
+.earn{font-size:13.5px;color:var(--mute);font-variant-numeric:tabular-nums}
+.earn b{font:800 19px var(--display);color:var(--ink);letter-spacing:-.02em;margin-right:4px}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.tag{font-size:12.5px;font-weight:600;background:var(--soft);border-radius:7px;padding:3px 8px;white-space:nowrap}
+.tag.sun{background:var(--sun);color:var(--sun-ink)}
+.tag.lock{background:color-mix(in srgb,var(--coral) 18%,transparent);color:var(--ink)}
+.tag.pay{font-variant-numeric:tabular-nums}
+.tk-bot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;border-top:1px solid var(--line)}
+.cnt{font-size:13.5px;color:var(--mute)}
+.cnt b{font:800 18px var(--display);color:var(--ink);margin-right:3px}
+.btn{border:0;border-radius:12px;padding:10px 16px;min-height:44px;font-weight:700;background:var(--sun);color:var(--sun-ink);transition:transform .12s ease}
+.btn:active{transform:scale(.97)}
+.btn.dark{background:var(--ink);color:var(--card)}
+.btn.ghost{background:none;border:1.5px solid var(--line);color:var(--ink)}
+.btn.done{background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok)}
+.btn[disabled]{background:var(--soft);color:var(--mute);cursor:not-allowed}
+.btn.wide{width:100%}
+.link{background:none;border:0;color:var(--brand);text-decoration:underline;text-underline-offset:3px;padding:6px 0 0;font-size:13.5px;font-weight:600}
+
+.card{background:var(--card);border-radius:16px;padding:15px;margin-bottom:12px;box-shadow:0 1px 0 var(--line),0 6px 18px -14px rgba(0,0,0,.35)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.sec{font:700 13px var(--text);color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin:20px 0 8px}
+.sec:first-of-type{margin-top:6px}
+.status-pill{font-size:12px;font-weight:700;border-radius:999px;padding:3px 9px;background:var(--soft);color:var(--brand)}
+.status-pill.ok{background:color-mix(in srgb,var(--ok) 15%,transparent);color:var(--ok)}
+.stars{display:flex;gap:2px;margin-top:6px}
+.stars button{background:none;border:0;font-size:30px;line-height:1;color:var(--line);min-width:38px;min-height:42px}
+.stars button.on{color:#f2a900}
+label{display:block;font-size:14px;font-weight:600;margin:14px 0 6px}
+input[type=text],input[type=number],input[type=time],select{width:100%;font-size:16px;padding:10px 12px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);min-height:46px}
+input[type=file]{font-size:13px;max-width:100%}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.check{display:flex;align-items:center;gap:10px;font-weight:500;margin:16px 0}
+.check input{width:22px;height:22px;accent-color:var(--brand)}
+.days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin:10px 0 20px}
+.days button{min-height:50px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);font-weight:700}
+.days button.on{background:var(--brand);color:var(--card);border-color:var(--brand)}
+.onb{display:flex;flex-direction:column;min-height:100%}
+.onb-hero{margin:-18px -16px 22px;padding:22px 18px 26px;background:var(--ink);color:var(--card);border-radius:0 0 28px 28px}
+.onb-hero .logo{color:var(--card);margin-bottom:26px}
+.onb-hero .big{color:var(--card);margin:0}
+.onb .big{font:800 34px/1.02 var(--display);letter-spacing:-.035em;margin:28px 0 10px;text-wrap:balance}
+.steps{display:flex;gap:6px;margin-top:4px}
+.steps i{flex:1;height:5px;border-radius:5px;background:var(--line)}
+.steps i.on{background:var(--brand)}
+.pick{color:var(--ink);display:grid;grid-template-columns:48px minmax(0,1fr);gap:14px;align-items:center;width:100%;text-align:left;border:1.5px solid var(--line);border-radius:18px;padding:16px;margin-bottom:12px;background:var(--card)}
+.pick:hover{border-color:var(--brand)}
+.pick .ico{width:48px;height:48px;border-radius:14px;background:var(--sun);display:grid;place-items:center;color:var(--sun-ink)}
+.pick .ico svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pick strong{display:block;font:800 19px var(--display);letter-spacing:-.02em;color:var(--ink)}
+.pick span{color:var(--mute);font-size:14px}
+.spacer{flex:1}
+.bar{height:12px;background:var(--soft);border-radius:6px;overflow:hidden;margin:10px 0 6px}
+.bar i{display:block;height:100%;background:var(--brand);border-radius:6px;transition:width .4s ease}
+.small{font-size:13px;color:var(--mute)}
+.ways{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 8px}
+.vh{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.upload{display:flex;align-items:center;justify-content:center;margin-top:12px;font-size:15px}
+.upload:focus-within{outline:3px solid var(--sun);outline-offset:2px}
+.big-num{font:800 30px/1 var(--display);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.app{font-size:14px;padding:9px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:8px;align-items:center}
+.av{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--soft);font:700 12px var(--text);margin-right:8px;color:var(--brand)}
+.empty{text-align:center;color:var(--mute);padding:34px 10px}
+.score{padding:12px 14px 8px;margin-bottom:18px}
+.score h3{margin-bottom:4px}
+.sc-row{display:grid;grid-template-columns:132px minmax(0,1fr) 36px;align-items:center;gap:10px;width:100%;border:0;background:none;padding:5px 0;color:var(--ink);text-align:left;font:inherit;cursor:pointer}
+.sc-name{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sc-bar{position:relative;height:8px;border-radius:99px;background:var(--soft)}
+.sc-bar::before{content:"";position:absolute;left:9.09%;top:-3px;bottom:-3px;width:1.5px;background:var(--mute);opacity:.45}
+.sc-bar i{position:absolute;top:0;bottom:0;border-radius:99px;background:var(--ink)}
+.sc-bar i.neg{background:var(--coral)}
+.sc-val{font-size:13px;font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.sc-ev{margin:2px 0 8px;padding:10px 12px;border-radius:12px;background:var(--canvas);font-size:13px}
+.sc-ev div{display:flex;justify-content:space-between;gap:10px;padding:3px 0}
+.sc-ev b{font-variant-numeric:tabular-nums}
+.sc-ev .rules{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 18px;margin-top:8px;padding-top:8px;border-top:1px solid var(--line);font-size:12.5px;color:var(--mute)}
+.sc-ev .rules>div{display:block;padding:0}
+.sc-ev .rules p{display:flex;justify-content:space-between;gap:6px;margin:0;padding:1px 0}
+.sc-ev .rules b{color:var(--ink);font-weight:600}
+.why{margin-top:8px;font-size:13px;font-weight:700;color:#c2321f}
+.hint{margin-top:6px;font-size:12.5px;color:var(--mute)}
+.toast{position:absolute;left:16px;right:16px;bottom:80px;background:var(--ink);color:var(--card);border-radius:14px;padding:12px 14px;font-size:14px;font-weight:500;opacity:0;transform:translateY(10px);transition:.22s ease;pointer-events:none;z-index:5;display:flex;gap:10px;align-items:center}
+.toast.show{opacity:1;transform:none}
+@keyframes rise{from{opacity:.001;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.credits{color:var(--stage-ink);min-width:200px}
+.credits .ev{font:800 40px/1 var(--display);letter-spacing:-.03em;margin:0}
+.credits .grp{font:600 18px var(--text);color:var(--stage-mute);margin:10px 0 22px}
+.credits ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:18px;line-height:1.35}
+@media (max-width:600px),(max-height:560px) and (pointer:coarse){
+  .credits{display:none}
+  .stage{padding:0;display:block}
+  html,body{overflow:hidden;overscroll-behavior:none}
+  body{background:var(--canvas)}
+  .phone{position:fixed;inset:0;width:auto;height:auto;min-height:0;border:0;border-radius:0;box-shadow:none}
+  .top{padding-top:max(12px,env(safe-area-inset-top,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .toast{bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <mask id="tkmask"><rect width="40" height="28" rx="7" fill="#fff"/><circle cx="0" cy="14" r="4.5" fill="#000"/><circle cx="40" cy="14" r="4.5" fill="#000"/></mask>
+    <symbol id="mark" viewBox="0 0 40 28">
+      <rect width="40" height="28" rx="7" fill="#ffcd38" mask="url(#tkmask)"/>
+      <circle cx="20" cy="14" r="8" fill="none" stroke="#10302d" stroke-width="2.6"/>
+      <path d="M20 9.4V14l3.2 2.2" stroke="#10302d" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="mark-on-sun" viewBox="0 0 40 28">
+      <rect width="40" height="28" rx="7" fill="#16181b" mask="url(#tkmask)"/>
+      <circle cx="20" cy="14" r="8" fill="none" stroke="#ffcd38" stroke-width="2.6"/>
+      <path d="M20 9.4V14l3.2 2.2" stroke="#ffcd38" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+<div class="stage">
+  <aside class="credits" aria-label="Team">
+    <p class="ev">HackWG 26</p>
+    <p class="grp">Gruppe 24</p>
+    <ul>
+      <li>Filip Neufeld</li>
+      <li>Filip Zelinskyi</li>
+      <li>Erik Dames</li>
+      <li>Jesper Feyerabend</li>
+      <li>Carl Tiegges</li>
+    </ul>
+  </aside>
+  <div class="phone">
+    <div id="root"></div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </div>
+</div>
+<script>
+{
+const KEY='slotjob-v2';
+const DAYS=['Mo','Di','Mi','Do','Fr','Sa','So'];
+const FIELDS=['Maschinenbau','Informatik','BWL','Lehramt','Umweltwissenschaften','Anderes'];
+const LIMIT=603;
+const AREAS=[['gastro','Gastronomie'],['handel','Handel und Lager'],['events','Events und Aufbau'],['campus','Campus'],['buero','Büro und IT']];
+const AN=k=>(AREAS.find(a=>a[0]===k)||AREAS[0])[1];
+const QUAL={Kellner:'gastro',Barista:'gastro'};
+const STARPTS={5:15,4:5,3:0,2:-10,1:-25};
+const RULES=[[['Schicht','+20'],['5 Sterne','+15'],['4 Sterne','+5'],['Spontan','+30'],['Wiederholung','+10'],['Kurs/Zeugnis','+100']],[['2 Sterne','−10'],['1 Stern','−25'],['Absage <24 h','−30'],['Fehlen','−100']]];
+const rulesBox=()=>`<div class="rules">${RULES.map(col=>`<div>${col.map(([l,v])=>`<p><span>${l}</span><b>${v}</b></p>`).join('')}</div>`).join('')}</div>`;
+const fresh=()=>({role:null,onb:0,field:'Maschinenbau',noExp:true,avail:['Mo','Mi','Fr','Sa'],tab:'slots',filter:'ok',open:null,roles:[],booked:[],applied:[],instant:[],rated:{},cert:null,certRole:'Kellner',certs:{},biz:'Trattoria Lupo',etab:'mine',
+ ev:[
+  {a:'gastro',t:'14 Schichten erledigt',p:280},
+  {a:'gastro',t:'11 × 5 Sterne',p:165},
+  {a:'gastro',t:'3 × 4 Sterne',p:15},
+  {a:'gastro',t:'Spontan eingesprungen',p:30},
+  {a:'gastro',t:'3 × Wiederholungsjob',p:30},
+  {a:'handel',t:'5 Schichten erledigt',p:100},
+  {a:'handel',t:'2 × 5 Sterne',p:30},
+  {a:'handel',t:'Wiederholungsjob',p:10}
+ ],
+ slots:[
+  {id:1,emp:'Café Kantstein',title:'Service und Kasse',day:'Fr',date:'27.11.',s:'16:00',e:'20:00',pay:14.5,dist:'4 Min',noExp:true,req:null,fields:[],apps:2,area:'gastro',min:500},
+  {id:2,emp:'Trattoria Lupo',title:'Kellner:in Abendschicht',day:'Sa',date:'28.11.',s:'18:00',e:'23:00',pay:15,dist:'9 Min',noExp:false,req:'Kellner',fields:[],apps:5,area:'gastro',min:500,eid:102},
+  {id:3,emp:'Getränkemarkt Fass & Co',title:'Lager und Leergut',day:'Sa',date:'28.11.',s:'09:00',e:'13:00',pay:14,dist:'11 Min',noExp:true,req:null,fields:[],apps:1,area:'handel',min:500},
+  {id:4,emp:'Lehrstuhl Konstruktion (HiWi)',title:'CAD-Modelle aufbereiten',day:'Mo',date:'30.11.',s:'10:00',e:'14:00',pay:14.2,dist:'Campus',noExp:false,req:null,fields:['Maschinenbau'],apps:1,area:'campus',min:300},
+  {id:5,emp:'IT-Service Rechenzentrum',title:'Helpdesk für Erstis',day:'Di',date:'01.12.',s:'12:00',e:'16:00',pay:14.8,dist:'Campus',noExp:false,req:null,fields:['Informatik'],apps:3,area:'buero',min:500},
+  {id:6,emp:'Eventhalle Nordufer',title:'Aufbau Konzert',day:'Mi',date:'02.12.',s:'14:00',e:'19:00',pay:15.5,dist:'15 Min',noExp:true,req:null,fields:[],apps:7,area:'events',min:500},
+  {id:7,emp:'Buchladen Seitenwind',title:'Inventur',day:'Do',date:'03.12.',s:'17:00',e:'21:00',pay:14,dist:'6 Min',noExp:true,req:null,fields:[],apps:0,area:'handel',min:500}
+ ],
+ shifts:[
+  {id:'a1',emp:'Café Kantstein',title:'Frühstücksservice',day:'So',date:'29.11.',s:'09:00',e:'13:00',pay:14.5,status:'Angenommen'},
+  {id:'p1',emp:'Buchladen Seitenwind',title:'Regale einräumen',day:'Sa',date:'21.11.',s:'10:00',e:'14:00',pay:14,status:'Abgeschlossen'}
+ ],
+ courses:[
+  {id:'k1',name:'Service-Grundkurs',role:'Kellner',when:'Mi 02.12., 17:00 bis 19:00',seats:4},
+  {id:'k2',name:'Barista-Basics',role:'Barista',when:'Mi 09.12., 17:00 bis 19:00',seats:6}
+ ],
+ eslots:[
+  {id:101,title:'Service Mittag',day:'Fr',date:'27.11.',s:'11:30',e:'15:00',pay:14.5,noExp:true,req:null,area:'gastro',min:600,apps:[{n:'Rudolf M.',r:'4,8'},{n:'Lena K.',r:'4,6',sc:310},{n:'Tom B.',r:'neu',sc:0}],chosen:null,rating:0},
+  {id:102,title:'Kellner:in Abendschicht',day:'Sa',date:'28.11.',s:'18:00',e:'23:00',pay:15,noExp:false,req:'Kellner',area:'gastro',min:500,apps:[{n:'Aylin S.',r:'4,9',sc:460},{n:'Jonas W.',r:'4,4',sc:280}],chosen:null,rating:0}
+ ]});
+let S;
+try{S=JSON.parse(localStorage.getItem(KEY))||fresh()}catch(e){S=fresh()}
+if(!['ok','no'].includes(S.filter))S.filter='ok';
+if(!S.certs)S.certs={};if(!S.certRole)S.certRole='Kellner';
+if(!['slots','kurse','schichten','profil'].includes(S.tab))S.tab='slots';
+S.slots=S.slots.filter(x=>!(x.id>=8&&x.id<=13&&x.dist===''));S.slots.forEach(x=>{if(x.dist==='4 Min vom Wohnheim')x.dist='4 Min';delete x.lat;delete x.lng});delete S.mapDay;delete S.mapSel;
+// Score of one role: its events plus events for all roles ('*'); a qualification counts once, at most +200 per role; -100 to 1000.
+const counted=k=>{let qs=0;const seen={};return S.ev.filter(e=>e.a===k||e.a==='*').map(e=>{if(!e.q)return [e,e.p];if(seen[e.q])return [e,0];seen[e.q]=1;const add=Math.min(e.p,200-qs);qs+=add;return [e,add]})};
+const score=k=>Math.max(-100,Math.min(1000,counted(k).reduce((a,[,p])=>a+p,0)));
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const esc=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const eur=n=>n.toFixed(2).replace('.',',')+' €';
+const hrs=(s,e)=>{const[a,b]=s.split(':').map(Number),[c,d]=e.split(':').map(Number);return(c*60+d-a*60-b)/60};
+const ini=n=>n.split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase();
+const root=document.getElementById('root'),toastEl=document.getElementById('toast');
+let tt;const toast=m=>{toastEl.textContent=m;toastEl.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>toastEl.classList.remove('show'),2400)};
+
+const ICON={
+ slots:'<svg viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 0 2-2h14a2 2 0 0 0 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 0-2 2H5a2 2 0 0 0-2-2v-2a2 2 0 0 0 0-4z"/><path d="M9 6v12" stroke-dasharray="2 2.5"/></svg>',
+ kurse:'<svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/></svg>',
+ schichten:'<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',
+ profil:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>',
+ mine:'<svg viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 0 2-2h14a2 2 0 0 0 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 0-2 2H5a2 2 0 0 0-2-2v-2a2 2 0 0 0 0-4z"/></svg>',
+ new:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>',
+ prof:'<svg viewBox="0 0 24 24"><path d="M4 21V9l8-5 8 5v12"/><path d="M9 21v-6h6v6"/></svg>',
+ studi:'<svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/></svg>',
+ shop:'<svg viewBox="0 0 24 24"><path d="M4 10v10h16V10"/><path d="M3 10l2-6h14l2 6c0 1.7-1.3 3-3 3s-3-1.3-3-3c0 1.7-1.3 3-3 3s-3-1.3-3-3c0 1.7-1.3 3-3 3s-3-1.3-3-3"/></svg>'
+};
+const logo=(m='mark')=>`<span class="logo"><svg aria-hidden="true"><use href="#${m}"/></svg><span>Slot<span class="j">Job</span></span></span>`;
+const top=()=>`<div class="top">${logo('mark-on-sun')}<div class="seg" role="group" aria-label="Ansicht"><button class="${S.role!=='emp'?'on':''}" data-act="setrole" data-v="studi" aria-pressed="${S.role!=='emp'}">Studi</button><button class="${S.role==='emp'?'on':''}" data-act="setrole" data-v="emp" aria-pressed="${S.role==='emp'}">Betrieb</button></div></div>`;
+const nav=items=>`<nav class="nav">${items.map(([k,l,b])=>`<button data-act="tab" data-v="${k}" class="${(S.role==='emp'?S.etab:S.tab)===k?'on':''}">${ICON[k]}<span>${l}${b?`<span class="badge">${b}</span>`:''}</span></button>`).join('')}</nav>`;
+const stars=(key,val)=>`<div class="stars">${[1,2,3,4,5].map(i=>`<button data-act="rate" data-k="${key}" data-v="${i}" class="${i<=val?'on':''}" aria-label="${i} Sterne">★</button>`).join('')}</div>`;
+
+function onboarding(){
+  const st=S.onb;
+  const steps=S.role==='emp'?2:3;
+  const bar=`<div class="steps">${Array.from({length:steps},(_,i)=>`<i class="${i<=st?'on':''}"></i>`).join('')}</div>`;
+  let body='';
+  if(st===0) body=`<div class="onb-hero">${logo()}<div class="big">Schichten statt Stellen.</div></div><p class="sub" style="font-weight:600;color:var(--ink)">Wie willst du SlotJob nutzen?</p>
+   <button class="pick" data-act="pickrole" data-v="studi"><span class="ico">${ICON.studi}</span><span><strong>Ich studiere</strong><span>Schichten finden und mich pro Slot bewerben</span></span></button>
+   <button class="pick" data-act="pickrole" data-v="emp"><span class="ico">${ICON.shop}</span><span><strong>Ich biete Schichten an</strong><span>Slots einstellen und Studis auswählen</span></span></button>`;
+  else if(S.role==='emp') body=`<div class="big">Dein Betrieb</div><p class="sub">So erscheinst du bei den Studis.</p>
+   <label for="biz">Name des Betriebs</label><input id="biz" type="text" value="${esc(S.biz)}"><div class="spacer"></div>
+   <button class="btn wide" data-act="finish">Los geht's</button>`;
+  else if(st===1) body=`<div class="big">Was studierst du?</div><p class="sub">Damit zeigen wir dir auch Slots, die zu deinem Fach passen.</p>
+   <label for="field">Studiengang</label><select id="field">${FIELDS.map(f=>`<option ${f===S.field?'selected':''}>${f}</option>`).join('')}</select>
+   <label class="check"><input id="noexp" type="checkbox" ${S.noExp?'checked':''}> Ich habe noch keine Joberfahrung</label><div class="spacer"></div>
+   <button class="btn wide" data-act="next">Weiter</button>`;
+  else body=`<div class="big">Wann hast du diese Woche Zeit?</div><p class="sub">Du legst das jede Woche neu fest, z.B. weniger in der Prüfungsphase.</p>
+   <div class="days">${DAYS.map(d=>`<button data-act="day" data-v="${d}" class="${S.avail.includes(d)?'on':''}" aria-pressed="${S.avail.includes(d)}">${d}</button>`).join('')}</div><div class="spacer"></div>
+   <button class="btn wide" data-act="finish">Passende Schichten zeigen</button>`;
+  return `<div class="main"><div class="onb">${st===0?'':bar}${body}${st>0?'<button class="link" data-act="back">Zurück</button>':''}</div></div>`;
+}
+
+function why(x){
+  if(!S.avail.includes(x.day))return [`${x.day} ist kein freier Tag`,`<button class="link" data-act="availgo">Freie Tage ändern</button>`];
+  if(x.req&&!S.roles.includes(x.req))return [`Kurs ${x.req} nötig`,`<button class="link" data-act="tab" data-v="kurse">Kurs ansehen</button><span class="small">oder</span><button class="link" data-act="certgo" data-v="${esc(x.req)}">Zeugnis hochladen</button>`];
+  if(x.fields.length&&!x.fields.includes(S.field))return [`Nur für ${x.fields.join(', ')}`,''];
+  return null;
+}
+
+function slotCard(x){
+  const w=why(x),sc=score(x.area),inst=!w&&sc>=x.min,booked=S.instant.includes(x.id),applied=S.applied.includes(x.id);
+  const h=hrs(x.s,x.e),apps=x.apps+(applied?1:0);
+  const btn=booked?`<button class="btn done" data-act="instant" data-v="${x.id}">Gebucht ✓</button>`:applied?`<button class="btn done" data-act="apply" data-v="${x.id}">Beworben ✓</button>`:w?`<button class="btn" disabled>Nicht verfügbar</button>`:inst?`<button class="btn" data-act="instant" data-v="${x.id}">Sofort buchen</button>`:`<button class="btn dark" data-act="apply" data-v="${x.id}">Bewerben</button>`;
+  const tags=[`<span class="tag">${AN(x.area)}</span>`,x.req&&S.roles.includes(x.req)?`<span class="tag">Kurs: ${esc(x.req)}</span>`:'',x.noExp?'<span class="tag sun">Ohne Erfahrung</span>':''].join('');
+  const note=w?`<div class="why">${esc(w[0])}</div>${w[1]?`<div class="ways">${w[1]}</div>`:''}`:booked||applied?'':`<div class="hint">Sofort ab ${x.min} · dein Score ${sc}</div>`;
+  return `<article class="ticket"><div class="tk-top"><div class="when"><div class="d">${x.day} ${esc(x.date)}</div><div class="t">${esc(x.s)}</div><div class="e">bis ${esc(x.e)}</div></div>
+   <div class="what"><div class="emp"><span>${esc(x.emp)}</span></div><h3>${esc(x.title)}</h3><div class="where">${esc(x.dist)} · ${String(h).replace('.',',')} h · ${apps} ${apps===1?'Bewerbung':'Bewerbungen'}</div><div class="meta">${tags}</div>${note}</div></div>
+   <div class="tk-bot"><span class="earn"><b>${eur(h*x.pay)}</b>${eur(x.pay)}/h</span>${btn}</div></article>`;
+}
+
+function scoreCard(){
+  const pos=v=>(v+100)/11,z=pos(0);
+  return `<section class="card score"><h3>Dein Score</h3>
+  ${AREAS.map(([k,n])=>{const v=score(k),p=pos(v),open=S.open===k;
+   const rows=counted(k).map(([e,c])=>`<div><span>${esc(e.t)}${e.q&&!c?' <span class="small">(zählt schon)</span>':''}</span><b>${c>0?'+':c<0?'−':''}${Math.abs(c)}</b></div>`).join('');
+   return `<button class="sc-row" data-act="scopen" data-v="${k}" aria-expanded="${open}"><span class="sc-name">${n}</span><span class="sc-bar"><i class="${v<0?'neg':''}" style="left:${Math.min(z,p)}%;width:${Math.abs(p-z)}%"></i></span><span class="sc-val">${v}</span></button>
+   ${open?`<div class="sc-ev">${rows||'<p class="small" style="margin:0">Noch keine Punkte.</p>'}${rulesBox()}</div>`:''}`}).join('')}</section>`;
+}
+
+const ROLES=['Kellner','Barista'];
+const FILTERS=[['ok','Verfügbar',x=>!why(x)],['no','Nicht verfügbar',x=>!!why(x)]];
+function slotsView(){
+  const cur=FILTERS.find(f=>f[0]===S.filter)||FILTERS[0];
+  const list=S.slots.filter(cur[2]);
+  const f=([k,l,fn])=>`<button class="f ${cur[0]===k?'on':''}" data-act="filter" data-v="${k}" aria-pressed="${cur[0]===k}">${l}<span class="n">${S.slots.filter(fn).length}</span></button>`;
+  const days=DAYS.filter(d=>S.avail.includes(d));
+  return `${scoreCard()}<h2>Freie Schichten</h2><p class="sub">Diese Woche in Potsdam</p>
+   <div class="myday"><span>${days.length?`An deinen freien Tagen: <b>${days.join(', ')}</b>`:'Du hast noch keine freien Tage gewählt.'}</span><button class="link" data-act="availgo">Ändern</button></div>
+   <div class="filters" role="group" aria-label="Filter">${FILTERS.map(f).join('')}</div>
+   ${list.length?list.map(slotCard).join(''):`<div class="empty">${cur[0]==='ok'?'Gerade ist nichts für dich verfügbar.<br><button class="link" data-act="filter" data-v="no">Warum? Nicht verfügbare ansehen</button>':'Alle Slots sind für dich verfügbar.'}</div>`}`;
+}
+
+function kurseView(){
+  return `<h2>Kurse</h2><p class="sub">Einmal pro Woche. Nach dem Kurs hast du die Qualifikation und +100 Score in der Rolle.</p>
+  ${S.courses.map(c=>{const has=S.roles.includes(c.role),bk=S.booked.includes(c.id);return `<div class="card"><div class="row"><h3>${esc(c.name)}</h3>${has?'<span class="tag sun">Erhalten</span>':''}</div>
+   <p class="small" style="margin:4px 0 12px">${esc(c.role)} · ${AN(QUAL[c.role])} +100 · ${esc(c.when)} · ${c.seats} Plätze frei</p>
+   ${has?'':bk?`<div class="row"><span class="status-pill">Angemeldet</span><button class="btn dark" data-act="complete" data-v="${c.id}">Kurs abschließen</button></div>`:`<button class="btn" data-act="book" data-v="${c.id}">Anmelden</button>`}</div>`}).join('')}`;
+}
+
+function shiftsView(){
+  const mine=S.slots.filter(x=>S.applied.includes(x.id)),inst=S.slots.filter(x=>S.instant.includes(x.id));
+  const acc=S.shifts.filter(x=>x.status!=='Abgeschlossen'),done=S.shifts.filter(x=>x.status==='Abgeschlossen');
+  const row=(x,pill,extra='')=>`<div class="card"><div class="row"><h3>${esc(x.title)}</h3>${pill}</div><p class="small" style="margin:4px 0 0">${esc(x.emp)} · ${x.day} ${esc(x.date)}, ${esc(x.s)} bis ${esc(x.e)} · ${eur(hrs(x.s,x.e)*x.pay)}</p>${extra}</div>`;
+  return `<h2>Meine Schichten</h2><p class="sub">Bewerbungen, Zusagen und Bewertungen</p>
+  ${acc.length||inst.length?`<div class="sec">Zugesagt</div>${inst.map(x=>row(x,'<span class="status-pill ok">Sofort gebucht</span>')).join('')}${acc.map(x=>row(x,'<span class="status-pill ok">Angenommen</span>')).join('')}`:''}
+  ${mine.length?`<div class="sec">Beworben</div>${mine.map(x=>row(x,'<span class="status-pill">Wartet</span>')).join('')}`:''}
+  ${done.length?`<div class="sec">Abgeschlossen</div>${done.map(x=>row(x,'',`<p class="small" style="margin:12px 0 0">Wie war die Schicht bei ${esc(x.emp)}?</p>${stars(x.id,S.rated[x.id]||0)}${S.rated[x.id]?'<p class="small" style="margin:2px 0 0">Danke für deine Bewertung.</p>':''}`)).join('')}`:''}`;
+}
+
+function profilView(){
+  const earned=S.shifts.reduce((a,x)=>a+hrs(x.s,x.e)*x.pay,0),pct=Math.min(100,earned/LIMIT*100);
+  return `<div style="margin-bottom:14px"><div><h2 style="margin:0">Rudolf M.</h2><p class="sub" style="margin:0">${esc(S.field)} · ★ 4,8 aus 19 Schichten</p></div></div>
+  <div class="card" id="availcard"><h3>Meine freien Tage</h3><p class="small" style="margin:4px 0 0">Slots an anderen Tagen stehen unter Nicht verfügbar.</p><div class="days" style="margin:12px 0 0">${DAYS.map(d=>`<button data-act="day" data-v="${d}" class="${S.avail.includes(d)?'on':''}" aria-pressed="${S.avail.includes(d)}">${d}</button>`).join('')}</div></div>
+  <div class="card"><h3>BAföG-Freigrenze</h3><div class="row" style="margin-top:6px"><span class="big-num">${eur(earned)}</span><span class="small">von ${LIMIT} € im November</span></div><div class="bar"><i style="width:${pct}%"></i></div><p class="small" style="margin:0">Noch ${eur(Math.max(0,LIMIT-earned))} bis zur Grenze.</p></div>
+  <div class="card"><h3>Qualifikationen</h3><div class="meta">${S.roles.length?S.roles.map(r=>`<span class="tag sun">${esc(r)}</span>`).join(''):'<span class="small">Noch keine. Mach einen Kurs unter Kurse.</span>'}</div></div>
+  <div class="card" id="certcard"><h3>Mit Zeugnis freischalten</h3><p class="small" style="margin:4px 0 12px">Ein Zeugnis aus dem Job zählt wie der Kurs: Qualifikation und +100 Score, aber nur einmal.</p>
+   ${Object.entries(S.certs).map(([r,c])=>`<div class="app"><span>${esc(r)} · <span class="small">${esc(c.file)}</span></span>${S.roles.includes(r)?'<span class="tag sun">Erhalten</span>':`<button class="btn dark" data-act="certok" data-v="${esc(r)}">Freischalten</button>`}</div>`).join('')}
+   ${ROLES.filter(r=>!S.roles.includes(r)&&!S.certs[r]).length?`<label for="certrole">Welche Qualifikation?</label><select id="certrole">${ROLES.filter(r=>!S.roles.includes(r)&&!S.certs[r]).map(r=>`<option ${r===S.certRole?'selected':''}>${esc(r)}</option>`).join('')}</select>
+   <label class="btn ghost wide upload" for="cert">Zeugnis hochladen</label><input id="cert" class="vh" type="file" accept=".pdf,.jpg,.jpeg,.png">`:'<p class="small" style="margin:8px 0 0">Du hast alle Qualifikationen.</p>'}</div>
+  <button class="btn ghost wide" data-act="switch">Zur Ansicht für Betriebe</button>
+  <button class="link" data-act="reset">Zurücksetzen</button>`;
+}
+
+// A Betrieb slot that Rudolf booked instantly on the Studi side.
+const instantFor=x=>{const st=S.slots.find(y=>y.eid===x.id);return !!st&&S.instant.includes(st.id)};
+const appScore=(a,x)=>a.n==='Rudolf M.'?score(x.area):a.sc;
+function empMine(){
+  return `<h2>${esc(S.biz)}</h2><p class="sub">Deine Slots und wer sich beworben hat.</p>
+  ${S.eslots.map(x=>{const inst=instantFor(x),who=inst?'Rudolf M.':x.chosen!==null?x.apps[x.chosen].n:null;
+   return `<article class="ticket"><div class="tk-top"><div class="when"><div class="d">${x.day} ${esc(x.date)}</div><div class="t">${esc(x.s)}</div><div class="e">bis ${esc(x.e)}</div></div>
+   <div class="what"><div class="emp"><span>${x.apps.length} Bewerbungen</span></div><h3>${esc(x.title)}</h3><div class="meta"><span class="tag pay">${eur(x.pay)}/h</span><span class="tag">${AN(x.area)}</span><span class="tag sun">Sofort ab ${x.min}</span>${x.req?`<span class="tag">Kurs: ${esc(x.req)}</span>`:''}</div></div></div>
+   <div style="padding:6px 14px 12px">${who?`<p class="small" style="margin:8px 0 0">${inst?'Sofort gebucht':'Ausgewählt'}: <b>${esc(who)}</b> · Score ${inst?score(x.area):appScore(x.apps[x.chosen],x)}. Nach der Schicht bewerten:</p>${stars('e'+x.id,x.rating)}`:
+   x.apps.length?x.apps.map((a,i)=>`<div class="app"><span><span class="av">${esc(ini(a.n))}</span>${esc(a.n)} · Score ${appScore(a,x)}${a.r==='neu'?' · neu':''}</span><button class="btn dark" data-act="choose" data-v="${x.id}" data-i="${i}">Auswählen</button></div>`).join(''):'<p class="small">Noch keine Bewerbungen.</p>'}</div></article>`}).join('')}`;
+}
+
+function empNew(){
+  return `<h2>Neuer Slot</h2><p class="sub">Studis mit genug Score buchen sofort, alle anderen bewerben sich.</p>
+  <form id="nf"><label for="nt">Tätigkeit</label><input id="nt" type="text" value="Service Abend" required>
+  <div class="two"><div><label for="nd">Tag</label><select id="nd">${DAYS.map(d=>`<option>${d}</option>`).join('')}</select></div><div><label for="np">Lohn €/h</label><input id="np" type="number" step="0.1" min="13.9" value="14.5"></div></div>
+  <div class="two"><div><label for="ns">Beginn</label><input id="ns" type="time" value="17:00"></div><div><label for="ne">Ende</label><input id="ne" type="time" value="21:00"></div></div>
+  <div class="two"><div><label for="na">Rolle</label><select id="na">${AREAS.map(([k,n])=>`<option value="${k}">${n}</option>`).join('')}</select></div><div><label for="nm">Sofort ab Score</label><input id="nm" type="number" min="0" max="1000" step="50" value="500"></div></div>
+  <label class="check"><input id="nx" type="checkbox" checked> Auch ohne Erfahrung möglich</label>
+  <label for="nr">Kurs nötig</label><select id="nr"><option value="">Kein Kurs nötig</option><option>Kellner</option><option>Barista</option></select>
+  <button class="btn wide" style="margin-top:20px" type="submit">Slot veröffentlichen</button></form>`;
+}
+
+function empProf(){
+  return `<h2>${esc(S.biz)}</h2><p class="sub">★ 4,7 von Studis</p>
+  <div class="card"><h3>Provision</h3><p class="small" style="margin:4px 0 0">SlotJob verdient eine Provision, wenn du Studis über die Plattform einstellst.</p></div>
+  <button class="btn ghost wide" data-act="switch">Zur Ansicht für Studis</button><button class="link" data-act="reset">Zurücksetzen</button>`;
+}
+
+function render(){
+  if(!S.role||S.onb>=0&&S.onb<99){root.innerHTML=onboarding();return}
+  let body,items;
+  if(S.role==='emp'){body=S.etab==='new'?empNew():S.etab==='prof'?empProf():empMine();items=[['mine','Meine Slots'],['new','Neuer Slot'],['prof','Profil']]}
+  else{body={slots:slotsView,kurse:kurseView,schichten:shiftsView,profil:profilView}[S.tab]();const n=S.applied.length+S.instant.length;items=[['slots','Slots'],['kurse','Kurse'],['schichten','Schichten',n||''],['profil','Profil']]}
+  root.innerHTML=top()+`<div class="main">${body}</div>`+nav(items);
+}
+
+// Course or certificate: the qualification and +100 in its role, counted once per qualification.
+function qualify(r,t){const k=QUAL[r]||'gastro',b0=score(k);if(!S.roles.includes(r))S.roles.push(r);S.ev.push({a:k,t,p:100,q:r});const d=score(k)-b0;toast(r+' erhalten'+(d?`, +${d} Score in ${AN(k)}`:'')+'.')}
+root.addEventListener('click',e=>{
+  const b=e.target.closest('[data-act]');if(!b)return;
+  const v=b.dataset.v,a=b.dataset.act;
+  if(a==='pickrole'){S.role=v;S.onb=1}
+  else if(a==='next'){S.field=document.getElementById('field').value;S.noExp=document.getElementById('noexp').checked;S.onb=2}
+  else if(a==='back'){S.onb--;if(S.onb===0)S.role=null}
+  else if(a==='finish'){if(S.role==='emp'){const n=document.getElementById('biz').value.trim();if(n)S.biz=n}S.onb=99;toast(S.role==='emp'?'Fertig. Hier sind deine Slots.':'Fertig. Hier sind Schichten für dich.')}
+  else if(a==='day'){S.avail=S.avail.includes(v)?S.avail.filter(d=>d!==v):[...S.avail,v]}
+  else if(a==='tab'){if(S.role==='emp')S.etab=v;else S.tab=v;const m=root.querySelector('.main');if(m)m.scrollTop=0}
+  else if(a==='filter'){S.filter=v}
+  else if(a==='apply'){const id=+v;if(S.applied.includes(id)){S.applied=S.applied.filter(x=>x!==id);toast('Bewerbung zurückgezogen')}else{S.applied.push(id);toast('Beworben. Der Betrieb sieht jetzt dein Profil.')}}
+  else if(a==='instant'){const id=+v;if(S.instant.includes(id)){S.instant=S.instant.filter(x=>x!==id);toast('Buchung storniert')}else{S.instant.push(id);toast('Gebucht. Die Schicht steht unter Meine Schichten.')}}
+  else if(a==='scopen'){S.open=S.open===v?null:v}
+  else if(a==='book'){S.booked.push(v);toast('Angemeldet. Du bekommst eine Erinnerung.')}
+  else if(a==='complete'){const c=S.courses.find(x=>x.id===v);qualify(c.role,'Kurs '+c.name)}
+  else if(a==='rate'){const k=b.dataset.k;if(k[0]==='e'){const x=S.eslots.find(y=>'e'+y.id===k);x.rating=+v;
+     const who=instantFor(x)?'Rudolf M.':x.apps[x.chosen]?.n;
+     if(who==='Rudolf M.'){S.ev=S.ev.filter(e=>e.k!==k);const pts=STARPTS[v];S.ev.push({a:x.area,t:'Schicht '+x.title,p:20,k},{a:x.area,t:v+(v===1?' Stern':' Sterne')+' von '+S.biz,p:pts,k});toast('Bewertung gespeichert. Rudolf M.: '+(20+pts>=0?'+':'')+(20+pts)+' in '+AN(x.area))}
+     else toast('Bewertung gespeichert')}else{S.rated[k]=+v;toast('Bewertung gespeichert')}}
+  else if(a==='choose'){const x=S.eslots.find(y=>y.id===+v);x.chosen=+b.dataset.i;toast(x.apps[x.chosen].n+' ausgewählt und benachrichtigt')}
+  else if(a==='setrole'){if(S.role!==v){S.role=v;if(S.onb<99)S.onb=99}}
+  else if(a==='switch'){S.role=S.role==='emp'?'studi':'emp';if(S.onb<99)S.onb=99}
+  else if(a==='certok'){qualify(v,'Zeugnis '+v)}
+  else if(a==='availgo'){S.tab='profil';save();render();const c=document.getElementById('availcard'),m=root.querySelector('.main');if(c&&m)m.scrollTop=c.offsetTop-m.offsetTop-12;return}
+  else if(a==='certgo'){S.tab='profil';S.certRole=v;save();render();const c=document.getElementById('certcard'),m=root.querySelector('.main');if(c&&m)m.scrollTop=c.offsetTop-m.offsetTop-12;return}
+  else if(a==='reset'){S=fresh();toast('Zurückgesetzt')}
+  const keep=root.querySelector('.main')?.scrollTop||0;
+  save();render();
+  if(a!=='tab'&&a!=='reset'){const m=root.querySelector('.main');if(m)m.scrollTop=keep}
+});
+root.addEventListener('change',e=>{
+  if(e.target.id==='certrole'){S.certRole=e.target.value;save()}
+  if(e.target.id==='cert'&&e.target.files[0]){const r=document.getElementById('certrole').value;S.certs[r]={file:e.target.files[0].name};save();render();toast('Zeugnis für '+r+' wird geprüft')}
+});
+root.addEventListener('submit',e=>{
+  e.preventDefault();
+  const g=id=>document.getElementById(id);
+  const t=g('nt').value.trim()||'Schicht',d=g('nd').value,s=g('ns').value||'17:00',en=g('ne').value||'21:00',p=Math.max(13.9,parseFloat(g('np').value)||13.9),req=g('nr').value||null;
+  const id=Date.now(),area=g('na').value,min=Math.max(0,Math.min(1000,parseInt(g('nm').value,10)||500));
+  S.eslots.unshift({id,title:t,day:d,date:'',s,e:en,pay:p,noExp:g('nx').checked,req,area,min,apps:[],chosen:null,rating:0});
+  S.slots.push({id:id+1,emp:S.biz,title:t,day:d,date:'',s,e:en,pay:p,dist:'neu',noExp:g('nx').checked,req,fields:[],apps:0,area,min,eid:id});
+  S.etab='mine';save();render();toast('Slot veröffentlicht. Studis sehen ihn ab sofort.');
+});
+render();
+}
+</script>
+</body>
+</html>

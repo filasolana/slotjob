@@ -1,0 +1,12 @@
+node_modules/
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
+deploy.py
+package.json
+package-lock.json
+wrangler.jsonc

@@ -1,0 +1,86 @@
+SLOTJOB PLAN  (Stand 27.11.)
+Jeder schreibt einfach unter "Team:" mit Namen.
+
+
+1. INSTANT-ZUSAGE (neu)
+- Bedingungen erfüllt = Schicht sofort, ohne Bewerbung bei score größer gleich 500
+- Bedingungen je Slot: Score-Schwelle je Rolle, wird festgelegt vom betreiber des slots. 
+- Neueinsteiger: zählen zu score unter 500; man muss sich auf einen slot mit anderen bewerben. 
+Team:
+
+
+2. REPUTATION
+- Balken je Rolle ganz oben in Slots
+- Skala -100 bis +1000, Start bei 0
+- Plus: Schichten gut erledigt
+- Minus: unentschuldigt gefehlt, schlechte Arbeit
+- Vorschlag Punkte:
+  Schicht erledigt +20
+  Bewertung 5 Sterne +15, 4 Sterne +5, 3 Sterne 0, 2 Sterne -10, 1 Stern -25
+  Spontan / On-Duty eingesprungen +30
+  Wiederholungsjob beim selben Betrieb +10
+  Unentschuldigt gefehlt -100 (in allen Rollen)
+  Absage unter 24 h -30 (in allen Rollen)
+  Zu spät über 15 Min -10
+  Kurs oder Zeugnis +100 (gleiche Qualifikation zählt nur einmal, max. +200 je Rolle)
+- Beispiel: Kurs + 12 Schichten mit 5 Sternen = 520, also Instant-Zusage
+- Minuspunkte halbieren sich nach 3 Monaten
+Team:
+
+
+3. ROLLEN (5)
+- Gastronomie
+- Handel und Lager      (Vorschlag)
+- Events und Aufbau     (Vorschlag)
+- Campus                (Vorschlag)
+- Büro und IT           (Vorschlag)
+Team:
+
+
+4. FILTER
+- Für mich verfügbar
+- Nicht verfügbar (mit Grund)
+Team:
+
+
+5. ABSAGEN
+- Mehr Geld für spontane Schichten (zahlen wir, Absicherung für Betriebe)
+- On-Duty: Leute auf Abruf springen bei Ausfall ein
+Team:
+
+
+6. EINARBEITUNG
+- Wiederholungsjobs belohnen, z.B. bessere Chancen beim selben Betrieb
+Team:
+
+
+7. BETREUUNG
+- Schichten-Manager bei uns, Ansprechpartner für beide Seiten
+Team:
+
+
+8. GELD
+- Provision pro Vermittlung
+Team:
+
+
+9. VORTEILE FÜR BETRIEBE
+- Schichten sicherer besetzt, auch spontan
+- Geringere Kosten durch unverbindliche Mitarbeiter
+- Keine Recruiting-Kosten
+Team:
+
+
+OFFEN
+- Wie viele Punkte gibt es wofür?
+- Reicht Kurs angemeldet oder erst abgeschlossen?
+- Kurse / Zertifikate / Joberfahrung: noch leer
+Team:
+
+
+AUFGABEN (Name eintragen)
+- Rollen festlegen:
+- Punkte festlegen:
+- Balken bauen:
+- Instant-Zusage bauen:
+- Filter bauen:
