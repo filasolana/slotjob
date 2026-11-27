@@ -59,8 +59,15 @@ Team:
 Team:
 
 
-8. GELD
-- Provision pro Vermittlung
+8. GELD  (entschieden 27.11.: Vertrag läuft über SlotJob)
+- SlotJob ist Arbeitgeber der Studis (Zeitarbeit / Arbeitnehmerüberlassung,
+  braucht Erlaubnis der Bundesagentur für Arbeit). Studi hat einen Rahmenvertrag
+  mit SlotJob und wird pro Slot an Betriebe verliehen.
+- Betrieb zahlt einen Stundensatz an SlotJob, SlotJob zahlt den Lohn.
+  Einnahme = Marge pro Stunde. Grob: Studi 15 €/h, Betrieb zahlt ca. 25 €/h,
+  nach Lohnnebenkosten (9-30 % je nach Anstellung) bleiben ca. 5-8 €/h.
+- Dazu Vermittlungsgebühr, wenn ein Betrieb einen Studi fest übernimmt.
+- Details, Begründung, Rechnung: docs/vertragsmodell.md
 Team:
 
 
@@ -91,18 +98,17 @@ Kritische Punkte zum aktuellen Stand (Jesper, 27.11.):
   On-Duty: Abruf ist gesetzlich nur mit 4 Tagen Vorlauf verpflichtend (§ 12 TzBfG),
   also nur freiwillig, Bereitschaft sollte bezahlt sein.
   Pitch-Formulierung: "Betriebe zahlen nur die Schichten, die sie brauchen."
-- Geschäftsmodell widersprüchlich: "Provision pro Vermittlung" = Marktplatz.
-  "Bonus zahlen wir" + Schichten-Manager = wir treten wie eine Zeitarbeitsfirma auf und haben Kosten.
-  Für Folie 4 eins wählen und rechnen, ob die Provision Bonus und Personal trägt.
+- (erledigt) Geschäftsmodell Marktplatz vs. Zeitarbeit: entschieden, siehe 8. GELD.
 - Profil-Karte "BAföG-Freigrenze 603 €" ist falsch beschriftet: 603 € ist die Minijob-Grenze.
   BAföG rechnet über den Bewilligungszeitraum, Ratgeber nennen 6.251 oder 7.236 €/Jahr
   (siehe docs/recherche.md). Schnelle Lösung: Karte in "Minijob-Grenze" umbenennen.
 
 Noch offene Fragen:
-- Betrieb sagt kurzfristig ab: Bekommt der Studi Ausfallgeld?
-- Wer ist rechtlich Arbeitgeber: der Betrieb (Marktplatz) oder SlotJob (Zeitarbeit, braucht Erlaubnis)?
-- Provision: wer zahlt (Betrieb oder Studi), wie viel, pro Slot oder pro Stunde?
-- Auszahlung: Wann bekommt der Studi sein Geld? Pünktliches Geld war im Interview ein großes Problem.
+- Betrieb sagt kurzfristig ab: Zahlt SlotJob dem Studi Ausfallgeld und stellt es dem Betrieb
+  in Rechnung? (Geht jetzt, weil SlotJob Arbeitgeber ist.)
+- Stundensatz für Betriebe: wie hoch genau? (Vorschlag ca. 25 €/h, siehe docs/vertragsmodell.md)
+- Auszahlung: wie oft zahlt SlotJob aus, z. B. wöchentlich? Pünktliches Geld war im Interview
+  ein großes Problem und wäre ein starkes Argument.
 - Kurse: wer hält sie, wo, wer zahlt, wie lange dauern sie?
 - Konkurrenz: Zenjob, Studitemps u. a. machen schon Schichtjobs für Studis. Was ist unser USP?
 - POV-Satz für Folie 2 fehlt noch.
@@ -116,3 +122,4 @@ AUFGABEN (Name eintragen)
 - Balken bauen:
 - Instant-Zusage bauen:
 - Filter bauen:
+- Betriebsprofil: Hinweis "Provision" ersetzen durch "Stundensatz, SlotJob ist Arbeitgeber, kein Papierkram":

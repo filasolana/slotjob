@@ -26,10 +26,10 @@ SlotJob ist ein Marktplatz mit zwei Seiten, der in jeder Stadt einzeln funktioni
 
 ## Betriebs-Seite
 
-- **Ohne Risiko einsteigen:** Provision nur für besetzte Slots, der erste Slot ist gratis.
+- **Ohne Risiko einsteigen:** Bezahlt wird nur für besetzte Schichten, die erste Schicht ist gratis. Kein Papierkram, weil SlotJob Arbeitgeber ist.
 - **Bei Ketten klein anfangen und ausweiten:** eine Filiale (Kino, Systemgastronomie, Caterer) → alle Filialen in der Stadt → andere Städte.
 - **Saisonspitzen gezielt verkaufen:** Weihnachtsgeschäft, Inventur im Januar, Messen, Festivals. Viele liegen in den Semesterferien, wenn Studis Zeit haben.
-- **Betriebe werben Betriebe:** Ein Café empfiehlt das Nachbar-Café und bekommt Rabatt auf die Provision.
+- **Betriebe werben Betriebe:** Ein Café empfiehlt das Nachbar-Café und bekommt Rabatt auf den Stundensatz.
 - **Stammteam:** Wiederholungsjobs (schon im Score) ausbauen, Betriebe laden gute Studis bevorzugt ein.
 - **Gebühr bei Festanstellung:** Stellt ein Betrieb einen Studi fest ein, zahlt er einmalig. So verdient SlotJob daran, statt Nutzer zu verlieren, wenn beide die Plattform umgehen. Nebeneffekt: Slots werden zu bezahltem Probearbeiten.
 - **Warteliste als Verkaufsargument für neue Städte:** Mit „800 Studis in Leipzig warten auf Slots“ bekommt man Termine bei Betrieben.
@@ -54,7 +54,7 @@ SlotJob ist ein Marktplatz mit zwei Seiten, der in jeder Stadt einzeln funktioni
 - Anteil der Betriebe, die erneut buchen
 - Aktive Studis pro Monat
 - Anteil der Neuanmeldungen über Empfehlungen
-- Kosten pro gewonnenem Studi im Vergleich zur Provision pro Slot
+- Kosten pro gewonnenem Studi im Vergleich zur Marge pro Schicht
 
 ## Risiken beim Wachsen
 

@@ -81,7 +81,7 @@
 5. **Absagen**: mehr Geld für spontane Schichten (zahlt SlotJob, Absicherung für Betriebe). On-Duty: Leute auf Abruf springen bei Ausfall ein.
 6. **Einarbeitung**: Wiederholungsjobs belohnen, z. B. bessere Chancen beim selben Betrieb.
 7. **Betreuung**: Schichten-Manager bei SlotJob als Ansprechpartner für beide Seiten.
-8. **Geld**: Provision pro Vermittlung.
+8. **Geld** (entschieden 27.11.): Der Vertrag läuft über SlotJob. SlotJob ist Arbeitgeber der Studis (Zeitarbeit, Erlaubnis der Bundesagentur für Arbeit nötig) und verleiht sie pro Slot an Betriebe. Betriebe zahlen einen Stundensatz (Vorschlag ca. 25 €/h), SlotJob zahlt den Lohn; Einnahme ist die Marge pro Stunde, dazu eine Vermittlungsgebühr bei Festanstellung. Details: `docs/vertragsmodell.md`.
 9. **Vorteile für Betriebe**: Schichten sicherer besetzt (auch spontan), geringere Kosten durch unverbindliche Mitarbeiter, keine Recruiting-Kosten.
 
 ## Gebaut und offen
@@ -97,7 +97,7 @@ Offen:
 - Absage, Fehlen, Zuspätkommen als Ereignis auslösen (nur als Regel angezeigt)
 - Minuspunkte verblassen nach 3 Monaten
 - On-Duty, Spontan-Bonus, Schichten-Manager
-- Provision (nur als Hinweis im Betriebsprofil)
+- Provision (nur als Hinweis im Betriebsprofil; muss auf Stundensatz umgestellt werden, weil SlotJob jetzt Arbeitgeber ist)
 
 ## Offene Fragen
 
@@ -114,3 +114,4 @@ Offen:
 - `docs/recherche.md`: Desk Research zu Problemen beim Nebenjob (Folie 1)
 - `docs/interview-insights.md`: anonymisierte Insights und Zitate aus dem Interview (Folien 1 und 2)
 - `docs/go-to-market.md`: Ideen für Phase 3 „Wachsen“ (Folie 5)
+- `docs/vertragsmodell.md`: Vertrag über SlotJob, Lohnnebenkosten, Beispielrechnung (Folie 4)
