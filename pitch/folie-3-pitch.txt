@@ -1,29 +1,26 @@
-FOLIE 3: PITCH (ca. 1:40, Rollenspiel Rudolf und Marco)
+FOLIE 3: PITCH (Rollenspiel Rudolf und Marco, Redetext wie folie-3-redetext.txt)
 
-Samstag, 7 Uhr. Marco, Pizzeria Mamma Mia. Sein Kellner ist krank, heute Abend ist der Laden voll.
-Marco schreibt in fünf WhatsApp-Gruppen. Antworten: null.
+Unsere Lösung: SlotJob!
 
-7:14 Uhr. Rudolf, Maschinenbau, 41 Euro auf dem Konto. Fünfzehn Bewerbungen, null Antworten,
-ein Angebot: Pakete weiterleiten. Danke, nein. Er öffnet SlotJob.
+Samstag, 7 Uhr. Marco, Pizzeria Mamma Mia. Sein Kellner ist krank, heute Abend ist der Laden voll. Marco schreibt in fünf WhatsApp-Gruppen. Antworten: null.
 
-Erstens: Es gibt keinen Schichtplan. Rudolf sieht alle offenen Schichten und bucht, wann es passt.
-Heute spontan, in der Prüfungsphase gar nicht. Der Job passt sich dem Studium an, nicht umgekehrt.
+Rudolf. Fünfzehn Bewerbungen, null Antworten, ein Angebot: Pakete weiterleiten. Nein danke. Er öffnet SlotJob.
+
+Erstens: Es gibt keinen Schichtplan. Rudolf sieht alle offenen Schichten und bucht, wann es passt. Heute spontan, in der Prüfungsphase gar nicht. Der Job passt sich dem Studium an, nicht umgekehrt.
 
 Zweitens: Es gibt keine Bewerbung. Dafür gibt es zwei Scores.
+
 Verhalten: Kann man sich auf dich verlassen? Rudolf hat 92 von 100.
-Qualifikation: Kannst du den Job? In der Gastronomie hat er 350: vierzehn Schichten,
-gute Bewertungen und das Arbeitszeugnis aus seinem alten Café-Job.
-Marco hat festgelegt: Verhalten 70, Gastronomie 300. Rudolf liegt drüber.
-Ein Klick, gebucht. Kein Anschreiben, kein Probearbeiten, kein "Wir melden uns".
 
-Drittens: SlotJob ist der Arbeitgeber. Einmal Vertrag, jede Schicht bezahlt, jede Woche.
-Minijob-Grenze? Zählt die App mit.
+Qualifikation: Kannst du den Job? In der Gastronomie hat er 350: vierzehn Schichten, gute Bewertungen und das Arbeitszeugnis aus seinem alten Café-Job.
 
-Und Marco? Um 7:15 sieht er: Rudolf kommt. Perfetto. Für ganz kurzfristige Ausfälle gibt es Spontan-Schichten
-mit Bonus. Und wer einfach nicht auftaucht, verliert 30 Punkte und ist bei den guten Schichten raus.
-Papierkram: keiner. Marco zahlt nur die Schichten, die er braucht.
+Marco hat festgelegt: Verhalten 70, Gastronomie 300. Rudolf liegt drüber. Ein Klick, gebucht. Kein Anschreiben, kein Probearbeiten, kein "Wir melden uns".
 
-18 Uhr: Rudolf steht in der Pizzeria. Marco ist entspannt. Und Rudolfs Score? Steigt.
+Drittens: SlotJob ist der Arbeitgeber. Einmal Vertrag, jede Schicht bezahlt. Minijob-Grenze? Zählt die App mit.
+
+Und Marco? Für ganz kurzfristige Ausfälle gibt es Spontan-Schichten mit Bonus. Und wer einfach nicht auftaucht, verliert Punkte und ist bei den guten Schichten raus. Papierkram: keiner. Marco zahlt nur die Schichten, die er braucht.
+
+Rudolf steht in der Pizzeria. Marco ist entspannt. Und Rudolfs Kontostand? Steigt.
 
 
 SCORE-BEISPIELE (für Fragen)
